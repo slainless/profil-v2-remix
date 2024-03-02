@@ -1,0 +1,23 @@
+{
+  "editorconfig": true,
+  "semi": false,
+  "importOrderSeparation": true,
+  "importOrder": [
+    "^Theme/(.*)$",
+    "^Components/(.*)$",
+    "^Layouts/(.*)$",
+    "^Providers/(.*)$",
+    "^Atoms/(.*)$",
+    "^Assets/(.*)$",
+    "^GraphQL/(.*)$",
+    "^Queries/(.*)$",
+    "^Services/(.*)$",
+    "^Modules/(.*)$",
+    "^Metadata/(.*)$",
+    "^Locale/(.*)$",
+    "^@/(.*)$",
+    "^[./]"
+  ],
+  "importOrderParserPlugins": ["typescript", "jsx", "decorators"],
+  "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-jsdoc"]
+}

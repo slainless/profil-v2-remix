@@ -1,0 +1,45 @@
+{
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/.server/**/*.ts",
+    "**/.server/**/*.tsx",
+    "**/.client/**/*.ts",
+    "**/.client/**/*.tsx"
+  ],
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "types": ["@remix-run/node", "vite/client"],
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "target": "ES2022",
+    "strict": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "Components/*": ["./app/components/*"],
+      "Providers/*": ["./app/providers/*"],
+      "Layouts/*": ["./app/layout/*"],
+      "Atoms/*": ["./app/atoms/*"],
+      "Theme/*": ["./app/theme/*"],
+      "Assets/*": ["./app/assets/*"],
+      "Services/*": ["./app/services/*"],
+      "GraphQL/*": ["./app/graphql/*"],
+      "Queries/*": ["./app/queries/*"],
+      "Modules/*": ["./app/modules/*"],
+      "Metadata/*": ["./app/metadata/*"],
+      "Locale/*": ["./app/locale/*"],
+      "~/*": ["./app/*"]
+    },
+
+    // Vite takes care of building everything, not tsc.
+    "noEmit": true,
+    "allowImportingTsExtensions": true
+  }
+}
