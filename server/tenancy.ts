@@ -1,16 +1,16 @@
+import type { AppLoadContext } from "@remix-run/node"
+import { type Request } from "express"
 import invariant from "tiny-invariant"
 
 import type { Code, Domain } from "Modules/domain-handler.js"
 
-import { memory } from "./memory.server.js"
-
 export function mustGetHost(hostOrRequest: Request | string): string {
-  if (hostOrRequest instanceof Request) {
-    const host = hostOrRequest.headers.get("Host")
+  if (typeof hostOrRequest == "string") return hostOrRequest
+  if (typeof hostOrRequest == "object" && hostOrRequest.headers != null) {
+    const host = hostOrRequest.headers.host
     invariant(host, "Host header must not be empty")
     return host
-  }
-  return hostOrRequest
+  } else throw new Error("Invalid host")
 }
 
 const regexpHostname = new RegExp(`.${process.env.BASE_DOMAIN}$`)
@@ -41,16 +41,26 @@ export function assertSubdomain(
     throw new Response(null, { status: 404 })
 }
 
-export function mustGetSchema(hostOrRequest: Request | string): Code {
-  const code = memory().domain.domainToCode(normalizeHost(hostOrRequest))
+export function getSchema(
+  hostOrRequest: Request | string,
+  context: AppLoadContext,
+): Code | undefined {
+  return context.domain.domainToCode(normalizeHost(hostOrRequest))
+}
+
+export function mustGetSchema(
+  hostOrRequest: Request | string,
+  context: AppLoadContext,
+): Code {
+  const code = getSchema(hostOrRequest, context)
   if (code == null) throw new Response(null, { status: 404 })
   return code
 }
 
-export function mustGetAccessType(request: Request) {
+export function mustGetAccessType(request: Request, context: AppLoadContext) {
   const host = mustGetHost(request)
   if (isSubdomain(host, "oauth")) return { type: "oauth" } as const
-  const code = mustGetSchema(host)
+  const code = mustGetSchema(host, context)
   return {
     type: "profile",
     code,

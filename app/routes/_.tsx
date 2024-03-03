@@ -4,10 +4,8 @@ import type { PropsWithChildren } from "react"
 
 import { JotaiGlobalStore } from "Providers/store.ts"
 
-// import { mustGetSchema } from "Services/tenancy.server.ts"
-
-export async function loader({ request }: LoaderFunctionArgs) {
-  // const schema = mustGetSchema(request)
+export async function loader({ context }: LoaderFunctionArgs) {
+  if (context.schema == null) throw new Response(null, { status: 404 })
   return null
 }
 

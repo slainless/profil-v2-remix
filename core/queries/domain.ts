@@ -1,4 +1,4 @@
-import { gql } from "../graphql/gql.ts"
+import { gql } from "GraphQL/gql.ts"
 
 export const domainMapQuery = gql(`
   query domainMap {

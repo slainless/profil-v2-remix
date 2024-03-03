@@ -9,12 +9,14 @@
     "^Providers/(.*)$",
     "^Atoms/(.*)$",
     "^Assets/(.*)$",
+    "^Metadata/(.*)$",
+    "^Locale/(.*)$",
+
     "^GraphQL/(.*)$",
     "^Queries/(.*)$",
     "^Services/(.*)$",
     "^Modules/(.*)$",
-    "^Metadata/(.*)$",
-    "^Locale/(.*)$",
+
     "^@/(.*)$",
     "^[./]"
   ],

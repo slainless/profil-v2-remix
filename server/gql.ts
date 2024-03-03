@@ -8,6 +8,9 @@ export function createGQLClient() {
     exchanges: [fetchExchange],
     fetchOptions: {
       cache: "no-cache",
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_GRAPHQL_ACCESS_WEBTOKEN}`,
+      },
     },
   })
 }

@@ -29,12 +29,14 @@
       "Atoms/*": ["./app/atoms/*"],
       "Theme/*": ["./app/theme/*"],
       "Assets/*": ["./app/assets/*"],
-      "Services/*": ["./app/services/*"],
-      "GraphQL/*": ["./app/graphql/*"],
-      "Queries/*": ["./app/queries/*"],
-      "Modules/*": ["./app/modules/*"],
       "Metadata/*": ["./app/metadata/*"],
       "Locale/*": ["./app/locale/*"],
+
+      "Services/*": ["./core/services/*"],
+      "GraphQL/*": ["./core/graphql/*"],
+      "Queries/*": ["./core/queries/*"],
+      "Modules/*": ["./core/modules/*"],
+
       "~/*": ["./app/*"]
     },
 
