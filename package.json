@@ -7,6 +7,7 @@
     "build": "remix vite:build",
     "dev": "vite-node ./server.ts",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
+    "themegen": "node scripts/mantine-vars-gen/index.mjs ./app/theme/mantine.mjs",
     "start": "cross-env NODE_ENV=production node ./server.js",
     "typecheck": "tsc",
     "codegen": "graphql-codegen --config codegen.ts"

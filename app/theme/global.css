@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@media (max-width: 48em) {
+  ._access-icon {
+    display: none !important;
+    box-shadow: unset !important;
+    position: fixed !important;
+    bottom: 0.5em !important;
+    left: 45%;
+    transform: translateX(-50%);
+  }
+  ._access-menu.bottom {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+._access-menu.bottom {
+  bottom: 70px !important;
+}
+
+.maplibregl-map {
+  font: inherit !important;
+}

@@ -1,0 +1,5 @@
+/* @type */
+
+.hideLastOfType:last-of-type {
+  display: none;
+}

@@ -1,0 +1,7 @@
+/* @type */
+.containMedia {
+  img,
+  iframe {
+    width: 100%;
+  }
+}

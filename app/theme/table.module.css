@@ -1,0 +1,18 @@
+/* @type */
+
+.gridTable {
+  display: grid;
+
+  tr,
+  tbody,
+  tfoot,
+  thead {
+    display: contents;
+  }
+
+  th,
+  td {
+    border-bottom: var(--_tr-border-bottom, none);
+    background-color: var(--_tr-bg, transparent);
+  }
+}
