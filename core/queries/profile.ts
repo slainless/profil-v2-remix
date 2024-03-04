@@ -31,3 +31,25 @@ export const profileQuery = gql(`
         }
     }
 `)
+
+export const importantContactsQuery = gql(`
+  query importantContacts {
+    contacts: importantContacts {
+      name
+      contact
+      order
+      ID
+    }
+  }
+`)
+
+export const externalLinksQuery = gql(`
+  query externalLinks {
+    links: externalLinks {
+      name
+      URL
+      order
+      ID
+    }
+  }
+`)

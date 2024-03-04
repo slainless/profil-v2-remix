@@ -14,7 +14,12 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n  query domainMap {\n    map: _domainMap { name value }\n  }\n": types.DomainMapDocument,
+    "\n  query pointOfInterests {\n    items: pointOfInterests {\n      ID title description\n      thumbnail { ID URL }\n      point { latitude longitude }\n      category\n    }\n  }\n": types.PointOfInterestsDocument,
+    "\n  query pointOfInterestsByID($itemID: Int!) {\n    item: pointOfInterestByID(ID: $itemID) {\n      ID title description\n      thumbnail { ID URL }\n      point { latitude longitude }\n      category\n    }\n  }\n": types.PointOfInterestsByIdDocument,
+    "\n  query mainPointOfInterest {\n    item: pointOfInterestByID(ID: 1) {\n      point { latitude longitude }\n    }\n  }\n": types.MainPointOfInterestDocument,
     "\n    query profile {\n        profile {\n          postalCode\n          # welcome           { backgroundURL content personName personRole photoURL }\n          alias             { desa dusun pemimpin BPD }\n          name              { deskel ibukota kabkota kecamatan provinsi }\n          serviceEmail\n          socialMedia       { facebook instagram tiktok twitter youtube }\n          phone\n          servicePhone\n          workHour\n          contact\n          email\n          logoURL\n          officeAddress\n          description\n\n          # BPDChart\n          # SPDChart\n\n          primaryPalette\n\n          # landingLayout     { ID visible order }\n          # profileLayout     { ID visible order }\n          # infographyLayout  { ID visible order }\n          # navbarLayout      { ID visible order }\n          # navmenuLayout     { ID visible order }\n        }\n    }\n": types.ProfileDocument,
+    "\n  query importantContacts {\n    contacts: importantContacts {\n      name\n      contact\n      order\n      ID\n    }\n  }\n": types.ImportantContactsDocument,
+    "\n  query externalLinks {\n    links: externalLinks {\n      name\n      URL\n      order\n      ID\n    }\n  }\n": types.ExternalLinksDocument,
 };
 
 /**
@@ -38,7 +43,27 @@ export function gql(source: "\n  query domainMap {\n    map: _domainMap { name v
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function gql(source: "\n  query pointOfInterests {\n    items: pointOfInterests {\n      ID title description\n      thumbnail { ID URL }\n      point { latitude longitude }\n      category\n    }\n  }\n"): (typeof documents)["\n  query pointOfInterests {\n    items: pointOfInterests {\n      ID title description\n      thumbnail { ID URL }\n      point { latitude longitude }\n      category\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query pointOfInterestsByID($itemID: Int!) {\n    item: pointOfInterestByID(ID: $itemID) {\n      ID title description\n      thumbnail { ID URL }\n      point { latitude longitude }\n      category\n    }\n  }\n"): (typeof documents)["\n  query pointOfInterestsByID($itemID: Int!) {\n    item: pointOfInterestByID(ID: $itemID) {\n      ID title description\n      thumbnail { ID URL }\n      point { latitude longitude }\n      category\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query mainPointOfInterest {\n    item: pointOfInterestByID(ID: 1) {\n      point { latitude longitude }\n    }\n  }\n"): (typeof documents)["\n  query mainPointOfInterest {\n    item: pointOfInterestByID(ID: 1) {\n      point { latitude longitude }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function gql(source: "\n    query profile {\n        profile {\n          postalCode\n          # welcome           { backgroundURL content personName personRole photoURL }\n          alias             { desa dusun pemimpin BPD }\n          name              { deskel ibukota kabkota kecamatan provinsi }\n          serviceEmail\n          socialMedia       { facebook instagram tiktok twitter youtube }\n          phone\n          servicePhone\n          workHour\n          contact\n          email\n          logoURL\n          officeAddress\n          description\n\n          # BPDChart\n          # SPDChart\n\n          primaryPalette\n\n          # landingLayout     { ID visible order }\n          # profileLayout     { ID visible order }\n          # infographyLayout  { ID visible order }\n          # navbarLayout      { ID visible order }\n          # navmenuLayout     { ID visible order }\n        }\n    }\n"): (typeof documents)["\n    query profile {\n        profile {\n          postalCode\n          # welcome           { backgroundURL content personName personRole photoURL }\n          alias             { desa dusun pemimpin BPD }\n          name              { deskel ibukota kabkota kecamatan provinsi }\n          serviceEmail\n          socialMedia       { facebook instagram tiktok twitter youtube }\n          phone\n          servicePhone\n          workHour\n          contact\n          email\n          logoURL\n          officeAddress\n          description\n\n          # BPDChart\n          # SPDChart\n\n          primaryPalette\n\n          # landingLayout     { ID visible order }\n          # profileLayout     { ID visible order }\n          # infographyLayout  { ID visible order }\n          # navbarLayout      { ID visible order }\n          # navmenuLayout     { ID visible order }\n        }\n    }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query importantContacts {\n    contacts: importantContacts {\n      name\n      contact\n      order\n      ID\n    }\n  }\n"): (typeof documents)["\n  query importantContacts {\n    contacts: importantContacts {\n      name\n      contact\n      order\n      ID\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query externalLinks {\n    links: externalLinks {\n      name\n      URL\n      order\n      ID\n    }\n  }\n"): (typeof documents)["\n  query externalLinks {\n    links: externalLinks {\n      name\n      URL\n      order\n      ID\n    }\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

@@ -1,0 +1,24 @@
+/* @type */
+
+.navbarItem {
+  &[data-is-active],
+  &:active,
+  &[data-is-hover],
+  &:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 8px;
+  }
+
+  &[data-is-hover],
+  &:hover {
+    /* text-decoration-color: var(--mantine-color-primary-4); */
+    text-decoration-color: var(--mantine-color-white);
+  }
+
+  &:active,
+  &[data-is-active] {
+    /* text-decoration-color: var(--mantine-color-primary-2); */
+    text-decoration-color: var(--mantine-color-white);
+  }
+}

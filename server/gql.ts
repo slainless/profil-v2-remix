@@ -4,12 +4,12 @@ import { Client, fetchExchange } from "@urql/core"
 
 export function createGQLClient() {
   return new Client({
-    url: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT!,
+    url: import.meta.env.VITE_GRAPHQL_ENDPOINT!,
     exchanges: [fetchExchange],
     fetchOptions: {
       cache: "no-cache",
       headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_GRAPHQL_ACCESS_WEBTOKEN}`,
+        Authorization: `Bearer ${import.meta.env.VITE_GRAPHQL_ACCESS_WEBTOKEN}`,
       },
     },
   })

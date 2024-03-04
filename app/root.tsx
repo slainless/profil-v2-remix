@@ -1,3 +1,4 @@
+import { ColorSchemeScript } from "@mantine/core"
 import {
   Links,
   Meta,
@@ -24,6 +25,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         />
         <Meta />
         <Links />
+        <ColorSchemeScript />
       </head>
       <body>
         {children}
