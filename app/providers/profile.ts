@@ -27,13 +27,22 @@ export const baseDomainAtom = atom("localhost")
 interface ProfileHydratorProps {
   profile: NonNullable<ProfileQuery["profile"]>
   schema: string
+  subdomain: string
+  baseDomain: string
 }
-export function ProfileHydrator({ profile, schema }: ProfileHydratorProps) {
+export function ProfileHydrator({
+  profile,
+  schema,
+  subdomain,
+  baseDomain,
+}: ProfileHydratorProps) {
   // @ts-expect-error idk
   useHydrateAtoms(
     [
       [profileAtom, profile],
       [schemaAtom, schema],
+      [subdomainAtom, subdomain],
+      [baseDomainAtom, baseDomain],
     ],
     {
       // dangerouslyForceHydrate: true

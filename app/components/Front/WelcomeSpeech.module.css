@@ -1,0 +1,103 @@
+/* @type */
+
+/* -------------------------------------------------------------------------- */
+/*                              class declaration                             */
+/* -------------------------------------------------------------------------- */
+
+.image {
+}
+
+.imageContainer {
+  grid-area: image;
+  align-items: start;
+}
+
+.title {
+  grid-area: title;
+}
+
+.position {
+  grid-area: position;
+}
+
+.heading {
+  grid-area: heading;
+}
+
+.content {
+  grid-area: content;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   styles                                   */
+/* -------------------------------------------------------------------------- */
+
+.rootContainer {
+  display: grid;
+  grid-template-areas:
+    "image"
+    "heading"
+    "title"
+    "position"
+    "content";
+}
+
+.image {
+  width: rem(192);
+  margin-bottom: rem(24);
+}
+
+.title,
+.heading,
+.position {
+  text-align: center;
+}
+
+.content {
+  margin-top: rem(24);
+}
+
+@mixin larger-than $bp-xs {
+  .rootContainer {
+    grid-template-areas:
+      "image heading"
+      "image title"
+      "image position"
+      "image content";
+    grid-template-rows: repeat(3, auto) 1fr;
+  }
+
+  .image {
+    margin-bottom: 0;
+    margin-right: rem(48);
+    width: rem(224);
+  }
+
+  .title,
+  .heading,
+  .position {
+    text-align: start;
+  }
+
+  .content {
+    margin-top: rem(12);
+  }
+}
+
+@mixin larger-than $bp-sm {
+  .image {
+    width: rem(256);
+  }
+}
+
+@mixin larger-than $bp-md {
+  .image {
+    width: rem(384);
+  }
+}
+
+@mixin larger-than $bp-lg {
+  .rootContainer {
+    padding: 0 rem(64);
+  }
+}

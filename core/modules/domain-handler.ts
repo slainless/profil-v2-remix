@@ -92,6 +92,10 @@ export class DomainHandler {
     return
   }
 
+  codeToSlug(code: Code): string | undefined {
+    return this[codeToSlug][code]
+  }
+
   codeToDomainList(code: Code): Domain[] | undefined {
     return this[codeToDomainList][code]
   }

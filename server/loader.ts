@@ -26,11 +26,13 @@ async function getProfile(
 export function contextLoader(memory: Memory) {
   const m = memory
   return async (req: Request): Promise<AppLoadContext> => {
-    const schema = m.domain.domainToCode(normalizeHost(req))
+    const host = normalizeHost(req)
+    const schema = m.domain.domainToCode(host)
 
     return {
       ...memory,
       schema,
+      host,
       profileQuery: await getProfile(schema, m.gqlClient),
     }
   }

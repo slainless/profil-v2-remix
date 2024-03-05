@@ -1,0 +1,9 @@
+/* @type */
+.popup {
+  width: rem(240);
+  :global(.maplibregl-popup-content) {
+    /* display: contents; */
+    padding: 0;
+    background: none;
+  }
+}

@@ -1,0 +1,17 @@
+/* @type */
+.root {
+  display: grid;
+  grid-template-columns: var(--image-size) auto;
+  width: max-content;
+  align-items: center;
+  gap: 0;
+  overflow-x: hidden;
+}
+
+.image[data-fallback="true"] {
+  filter: grayscale(1);
+  background-color: light-dark(
+    var(--mantine-color-gray-4),
+    var(--mantine-color-gray-8)
+  );
+}

@@ -1,0 +1,42 @@
+/* @type */
+.root {
+  --padding: rem(12);
+  height: 100%;
+  width: rem(272);
+  display: grid;
+  /* grid-template-rows: max-content auto; */
+  grid-template-rows: auto;
+  background-color: var(--mantine-color-layer-1);
+  position: relative;
+  z-index: 99999;
+}
+
+.searchContainer {
+}
+
+.contentContainer {
+}
+
+.detailContainer {
+}
+
+.illustration {
+  opacity: 0.5;
+  filter: grayscale(0.5);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.entry {
+  text-align: start;
+  cursor: pointer;
+  padding-inline: 0;
+  padding-block: 0;
+}
+
+.entryImage {
+  display: none;
+}

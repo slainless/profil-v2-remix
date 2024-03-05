@@ -1,35 +1,36 @@
 import { gql } from "GraphQL/gql.ts"
 
 export const profileQuery = gql(`
-    query profile {
-        profile {
-          postalCode
-          # welcome           { backgroundURL content personName personRole photoURL }
-          alias             { desa dusun pemimpin BPD }
-          name              { deskel ibukota kabkota kecamatan provinsi }
-          serviceEmail
-          socialMedia       { facebook instagram tiktok twitter youtube }
-          phone
-          servicePhone
-          workHour
-          contact
-          email
-          logoURL
-          officeAddress
-          description
+  query profile {
+    profile {
+      postalCode
+      # welcome           { backgroundURL content personName personRole photoURL }
+      welcome           { backgroundURL }
+      alias             { desa dusun pemimpin BPD }
+      name              { deskel ibukota kabkota kecamatan provinsi }
+      serviceEmail
+      socialMedia       { facebook instagram tiktok twitter youtube }
+      phone
+      servicePhone
+      workHour
+      contact
+      email
+      logoURL
+      officeAddress
+      description
 
-          # BPDChart
-          # SPDChart
+      # BPDChart
+      # SPDChart
 
-          primaryPalette
+      primaryPalette
 
-          # landingLayout     { ID visible order }
-          # profileLayout     { ID visible order }
-          # infographyLayout  { ID visible order }
-          # navbarLayout      { ID visible order }
-          # navmenuLayout     { ID visible order }
-        }
+      # landingLayout     { ID visible order }
+      # profileLayout     { ID visible order }
+      # infographyLayout  { ID visible order }
+      # navbarLayout      { ID visible order }
+      # navmenuLayout     { ID visible order }
     }
+  }
 `)
 
 export const importantContactsQuery = gql(`
@@ -50,6 +51,20 @@ export const externalLinksQuery = gql(`
       URL
       order
       ID
+    }
+  }
+`)
+
+export const welcomeQuery = gql(`
+  query welcome {
+    profile {
+      welcome {
+        backgroundURL
+        content
+        personName
+        personRole
+        photoURL
+      }
     }
   }
 `)

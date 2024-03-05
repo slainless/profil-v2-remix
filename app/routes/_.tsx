@@ -1,11 +1,20 @@
+import "@mantine/carousel/styles.css"
+import "@mantine/code-highlight/styles.css"
 import { AppShell, Box, MantineProvider } from "@mantine/core"
 import "@mantine/core/styles.css"
 import { Notifications } from "@mantine/notifications"
+import "@mantine/notifications/styles.css"
 import type { LoaderFunctionArgs } from "@remix-run/node"
 import { Outlet, useLoaderData } from "@remix-run/react"
+import "lightgallery/css/lg-thumbnail.css"
+import "lightgallery/css/lg-zoom.css"
+import "lightgallery/css/lightgallery.css"
 import merge from "lodash.merge"
+import "normalize.css"
 import { Fragment } from "react"
 
+import "Theme/artifact/mantine.css"
+import "Theme/global.css"
 import { theme } from "Theme/mantine.mjs"
 
 import AppFooter from "Components/MainLayouts/Footer.tsx"
@@ -25,6 +34,8 @@ export async function loader({ context }: LoaderFunctionArgs) {
     schema: context.schema,
     clientUrl: import.meta.env.VITE_GRAPHQL_ENDPOINT!,
     token: import.meta.env.VITE_GRAPHQL_ACCESS_WEBTOKEN!,
+    subdomain: context.domain.codeToSlug(context.schema)!,
+    baseDomain: process.env.BASE_DOMAIN!,
   }
 }
 
@@ -38,7 +49,12 @@ export default function Layout() {
     <MantineProvider theme={finalTheme}>
       <JotaiGlobalStore>
         <Fragment /* === Hydrator === */>
-          <ProfileHydrator profile={data.profile} schema={data.schema} />
+          <ProfileHydrator
+            profile={data.profile}
+            schema={data.schema}
+            subdomain={data.subdomain}
+            baseDomain={data.baseDomain}
+          />
         </Fragment>
 
         <Fragment /* === Other === */>

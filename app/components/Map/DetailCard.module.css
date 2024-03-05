@@ -1,0 +1,13 @@
+/* @type */
+.root {
+  padding: var(--padding);
+}
+
+.imageContainer {
+  --image-margin: calc(var(--padding) * -1);
+  margin: var(--image-margin) var(--image-margin) 0 var(--image-margin);
+
+  & > img {
+    width: calc(100% + calc(var(--padding) * 2));
+  }
+}

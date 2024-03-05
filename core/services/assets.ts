@@ -1,3 +1,6 @@
+import { schemaAtom } from "Providers/profile.ts"
+import { globalStore } from "Providers/store.ts"
+
 import { resolver } from "Modules/template.ts"
 
 const slasher = (schema: string) => schema.replaceAll("_", "/")
@@ -61,3 +64,10 @@ namespace Asset {
 }
 
 export { Asset as asset }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function withAtom<T extends (v: any) => string | undefined>(fn: T) {
+  return (v: Partial<Omit<Parameters<T>[0], "schema">>): ReturnType<T> =>
+    // @ts-expect-error ...
+    fn({ ...v, schema: globalStore.get(schemaAtom) })
+}

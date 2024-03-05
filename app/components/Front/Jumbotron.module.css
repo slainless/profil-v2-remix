@@ -1,0 +1,23 @@
+.container {
+  border-radius: var(--mantine-radius-md);
+
+  @mixin larger-than $bp-sm {
+    border-radius: 0;
+  }
+}
+
+.slide {
+  background-color: rgba(29, 29, 29, 0.5);
+  text-shadow: 2px 2px #000;
+  padding: rem(24);
+  align-items: start;
+  text-align: start;
+  justify-content: center;
+
+  @mixin larger-than $bp-sm {
+    text-shadow: 3px 3px #000;
+    padding: rem(100);
+    align-items: center;
+    text-align: center;
+  }
+}
