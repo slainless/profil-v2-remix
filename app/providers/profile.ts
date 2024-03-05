@@ -45,7 +45,7 @@ export function ProfileHydrator({
       [baseDomainAtom, baseDomain],
     ],
     {
-      // dangerouslyForceHydrate: true
+      // dangerouslyForceHydrate: true,
     },
   )
 

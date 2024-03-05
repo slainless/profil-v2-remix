@@ -13,7 +13,9 @@ export function mustGetHost(hostOrRequest: Request | string): string {
   } else throw new Error("Invalid host")
 }
 
-const regexpHostname = new RegExp(`.${process.env.BASE_DOMAIN}$`)
+const regexpHostname = new RegExp(
+  `.${process.env.BASE_DOMAIN}(?:\\:${process.env.PORT})?$`,
+)
 /**
  * Will return normalized host, e.g. host which ends with BASE_DOMAIN will be
  * transformed to .{domain} while custom host/domain will be returned as-is.
