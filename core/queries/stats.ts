@@ -25,3 +25,17 @@ export const populationSummaryQuery = gql(`
     }
   }
 `)
+
+export const stuntingQuery = gql(`
+  query stunting {
+    stunting(limit: 3) {
+      year
+      keluargaSasaran
+      berisiko
+      baduta
+      balita
+      pasanganUsiaSubur
+      pasanganUsiaSuburHamil
+    }
+  }
+`)

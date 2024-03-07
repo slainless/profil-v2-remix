@@ -27,7 +27,6 @@
       "Components/*": ["./app/components/*"],
       "Providers/*": ["./app/providers/*"],
       "Layouts/*": ["./app/layout/*"],
-      "Atoms/*": ["./app/atoms/*"],
       "Theme/*": ["./app/theme/*"],
       "Assets/*": ["./app/assets/*"],
       "Metadata/*": ["./app/metadata/*"],

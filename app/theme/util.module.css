@@ -1,4 +1,6 @@
 /* @type */
+.hideLastOfType {
+}
 
 .hideLastOfType:last-of-type {
   display: none;

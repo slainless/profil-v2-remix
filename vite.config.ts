@@ -1,16 +1,9 @@
 import { vitePlugin as remix } from "@remix-run/dev"
 import { defineConfig } from "vite"
-import { cjsInterop } from "vite-plugin-cjs-interop"
 import tsconfigPaths from "vite-tsconfig-paths"
 
 export default defineConfig({
-  plugins: [
-    remix(),
-    tsconfigPaths(),
-    cjsInterop({
-      dependencies: ["@apollo/client"],
-    }),
-  ],
+  plugins: [remix(), tsconfigPaths()],
   server: {
     fs: {
       // Restrict files that could be served by Vite's dev server.  Accessing

@@ -1,0 +1,13 @@
+/* @type */
+
+.content {
+  &:first-child {
+    --border: 1px solid var(--mantine-color-default-border);
+    border-bottom: var(--border);
+
+    @mixin larger-than $bp-sm {
+      border-bottom: none;
+      border-right: var(--border);
+    }
+  }
+}

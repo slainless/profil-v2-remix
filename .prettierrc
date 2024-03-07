@@ -7,7 +7,6 @@
     "^Components/(.*)$",
     "^Layouts/(.*)$",
     "^Providers/(.*)$",
-    "^Atoms/(.*)$",
     "^Assets/(.*)$",
     "^Metadata/(.*)$",
     "^Locale/(.*)$",

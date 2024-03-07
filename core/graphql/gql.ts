@@ -25,6 +25,8 @@ const documents = {
     "\n  query bumdes {\n    bumdes: articles(type: BUMDES) {\n      thumbnail { URL }\n      title\n      slug\n      short\n    }\n  }\n": types.BumdesDocument,
     "\n  query destinations($limit: Int) {\n    destinations: articles(type: TOURISM, limit: $limit) {\n      thumbnail { URL }\n      title\n      short\n      slug\n    }\n  }\n": types.DestinationsDocument,
     "\n  query potencies {\n    potencies: articles(type: POTENTIAL) {\n      thumbnail { URL }\n      title\n      short\n      slug\n    }\n  }\n": types.PotenciesDocument,
+    "\n  query bansos {\n    bansosStatistic {\n      total { name value }\n    }\n  }\n": types.BansosDocument,
+    "\n  query bansosRecipient($searchQuery: String!) {\n    recipients: bansosRecipient(searchQuery: $searchQuery) {\n      name \n      NIK KK\n      bansos { name }\n    }\n  }\n": types.BansosRecipientDocument,
     "\n  query domainMap {\n    map: _domainMap { name value }\n  }\n": types.DomainMapDocument,
     "\n  query galleryItems($limit: Int, $cursor: Int) {\n    items: gallery(limit: $limit, after: $cursor) {\n      URL\n      caption\n      ID\n    }\n  }\n": types.GalleryItemsDocument,
     "\n  fragment commonReviewFields on MarketItemReview {\n    ID          user { ID photoURL name }\n    comment     rating\n    createdAt   updatedAt\n  }\n": types.CommonReviewFieldsFragmentDoc,
@@ -37,12 +39,14 @@ const documents = {
     "\n  query pointOfInterests {\n    items: pointOfInterests {\n      ID title description\n      thumbnail { ID URL }\n      point { latitude longitude }\n      category\n    }\n  }\n": types.PointOfInterestsDocument,
     "\n  query pointOfInterestsByID($itemID: Int!) {\n    item: pointOfInterestByID(ID: $itemID) {\n      ID title description\n      thumbnail { ID URL }\n      point { latitude longitude }\n      category\n    }\n  }\n": types.PointOfInterestsByIdDocument,
     "\n  query mainPointOfInterest {\n    item: pointOfInterestByID(ID: 1) {\n      point { latitude longitude }\n    }\n  }\n": types.MainPointOfInterestDocument,
+    "\n  query populationStatistic {\n    stats: populationStatistic {\n      total     male      female\n      mutation  temporary\n      \n      religion        { name value }\n      bloodType       { name value }\n      statusInFamily  { name value }\n      maritalStatus   { name value }\n      mutationIn      { name value }\n      mutationOut     { name value }\n      maleAgeRanges   { name value }\n      femaleAgeRanges { name value }\n      dusun           { name value }\n      education       { name value }\n      job             { name value }\n      wajibPilih      { name value }\n    }\n  }\n": types.PopulationStatisticDocument,
     "\n  query profile {\n    profile {\n      postalCode\n      # welcome           { backgroundURL content personName personRole photoURL }\n      welcome           { backgroundURL }\n      alias             { desa dusun pemimpin BPD }\n      name              { deskel ibukota kabkota kecamatan provinsi }\n      serviceEmail\n      socialMedia       { facebook instagram tiktok twitter youtube }\n      phone\n      servicePhone\n      workHour\n      contact\n      email\n      logoURL\n      officeAddress\n      description\n\n      # BPDChart\n      # SPDChart\n\n      primaryPalette\n\n      # landingLayout     { ID visible order }\n      # profileLayout     { ID visible order }\n      # infographyLayout  { ID visible order }\n      # navbarLayout      { ID visible order }\n      # navmenuLayout     { ID visible order }\n    }\n  }\n": types.ProfileDocument,
     "\n  query importantContacts {\n    contacts: importantContacts {\n      name\n      contact\n      order\n      ID\n    }\n  }\n": types.ImportantContactsDocument,
     "\n  query externalLinks {\n    links: externalLinks {\n      name\n      URL\n      order\n      ID\n    }\n  }\n": types.ExternalLinksDocument,
     "\n  query welcome {\n    profile {\n      welcome {\n        backgroundURL\n        content\n        personName\n        personRole\n        photoURL\n      }\n    }\n  }\n": types.WelcomeDocument,
     "\n  query budgetSummary {\n    summary: latestAPBDSummary {\n      expense\n      income\n      financingExpense\n      financingIncome\n      year\n    }\n  }\n": types.BudgetSummaryDocument,
     "\n  query populationSummary {\n    summary: populationStatistic {\n      total\n      male\n      female\n      temporary\n      mutation\n      mutationOut     { value }\n      statusInFamily  { name value }\n    }\n  }\n": types.PopulationSummaryDocument,
+    "\n  query stunting {\n    stunting(limit: 3) {\n      year\n      keluargaSasaran\n      berisiko\n      baduta\n      balita\n      pasanganUsiaSubur\n      pasanganUsiaSuburHamil\n    }\n  }\n": types.StuntingDocument,
     "\n  query user($username: String!) {\n    user: userByUsername(username: $username) {\n      ID\n      desa {\n        deskel\n        kabkota\n        provinsi\n      }\n      name\n      phone\n      photoURL\n    }\n  }\n": types.UserDocument,
 };
 
@@ -111,6 +115,14 @@ export function gql(source: "\n  query potencies {\n    potencies: articles(type
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function gql(source: "\n  query bansos {\n    bansosStatistic {\n      total { name value }\n    }\n  }\n"): (typeof documents)["\n  query bansos {\n    bansosStatistic {\n      total { name value }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query bansosRecipient($searchQuery: String!) {\n    recipients: bansosRecipient(searchQuery: $searchQuery) {\n      name \n      NIK KK\n      bansos { name }\n    }\n  }\n"): (typeof documents)["\n  query bansosRecipient($searchQuery: String!) {\n    recipients: bansosRecipient(searchQuery: $searchQuery) {\n      name \n      NIK KK\n      bansos { name }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function gql(source: "\n  query domainMap {\n    map: _domainMap { name value }\n  }\n"): (typeof documents)["\n  query domainMap {\n    map: _domainMap { name value }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
@@ -159,6 +171,10 @@ export function gql(source: "\n  query mainPointOfInterest {\n    item: pointOfI
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function gql(source: "\n  query populationStatistic {\n    stats: populationStatistic {\n      total     male      female\n      mutation  temporary\n      \n      religion        { name value }\n      bloodType       { name value }\n      statusInFamily  { name value }\n      maritalStatus   { name value }\n      mutationIn      { name value }\n      mutationOut     { name value }\n      maleAgeRanges   { name value }\n      femaleAgeRanges { name value }\n      dusun           { name value }\n      education       { name value }\n      job             { name value }\n      wajibPilih      { name value }\n    }\n  }\n"): (typeof documents)["\n  query populationStatistic {\n    stats: populationStatistic {\n      total     male      female\n      mutation  temporary\n      \n      religion        { name value }\n      bloodType       { name value }\n      statusInFamily  { name value }\n      maritalStatus   { name value }\n      mutationIn      { name value }\n      mutationOut     { name value }\n      maleAgeRanges   { name value }\n      femaleAgeRanges { name value }\n      dusun           { name value }\n      education       { name value }\n      job             { name value }\n      wajibPilih      { name value }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function gql(source: "\n  query profile {\n    profile {\n      postalCode\n      # welcome           { backgroundURL content personName personRole photoURL }\n      welcome           { backgroundURL }\n      alias             { desa dusun pemimpin BPD }\n      name              { deskel ibukota kabkota kecamatan provinsi }\n      serviceEmail\n      socialMedia       { facebook instagram tiktok twitter youtube }\n      phone\n      servicePhone\n      workHour\n      contact\n      email\n      logoURL\n      officeAddress\n      description\n\n      # BPDChart\n      # SPDChart\n\n      primaryPalette\n\n      # landingLayout     { ID visible order }\n      # profileLayout     { ID visible order }\n      # infographyLayout  { ID visible order }\n      # navbarLayout      { ID visible order }\n      # navmenuLayout     { ID visible order }\n    }\n  }\n"): (typeof documents)["\n  query profile {\n    profile {\n      postalCode\n      # welcome           { backgroundURL content personName personRole photoURL }\n      welcome           { backgroundURL }\n      alias             { desa dusun pemimpin BPD }\n      name              { deskel ibukota kabkota kecamatan provinsi }\n      serviceEmail\n      socialMedia       { facebook instagram tiktok twitter youtube }\n      phone\n      servicePhone\n      workHour\n      contact\n      email\n      logoURL\n      officeAddress\n      description\n\n      # BPDChart\n      # SPDChart\n\n      primaryPalette\n\n      # landingLayout     { ID visible order }\n      # profileLayout     { ID visible order }\n      # infographyLayout  { ID visible order }\n      # navbarLayout      { ID visible order }\n      # navmenuLayout     { ID visible order }\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
@@ -180,6 +196,10 @@ export function gql(source: "\n  query budgetSummary {\n    summary: latestAPBDS
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(source: "\n  query populationSummary {\n    summary: populationStatistic {\n      total\n      male\n      female\n      temporary\n      mutation\n      mutationOut     { value }\n      statusInFamily  { name value }\n    }\n  }\n"): (typeof documents)["\n  query populationSummary {\n    summary: populationStatistic {\n      total\n      male\n      female\n      temporary\n      mutation\n      mutationOut     { value }\n      statusInFamily  { name value }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query stunting {\n    stunting(limit: 3) {\n      year\n      keluargaSasaran\n      berisiko\n      baduta\n      balita\n      pasanganUsiaSubur\n      pasanganUsiaSuburHamil\n    }\n  }\n"): (typeof documents)["\n  query stunting {\n    stunting(limit: 3) {\n      year\n      keluargaSasaran\n      berisiko\n      baduta\n      balita\n      pasanganUsiaSubur\n      pasanganUsiaSuburHamil\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

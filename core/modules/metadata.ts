@@ -1,11 +1,23 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { MetaDescriptor } from "@remix-run/node"
+import type {
+  BreadcrumbList,
+  GovernmentOrganization,
+  ItemList,
+  Thing,
+  WebPage,
+  WebSite,
+  WithContext,
+} from "schema-dts"
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 export const title = (string: string) => ({ title: string }) as const
+
 export const metadata = (name: string, content: string) =>
   ({ name, content }) as const
 export const metadatas = (name: string, contents?: string[]) =>
   contents?.map((content) => ({ name, content }) as const) ?? []
+
 type LinkRel =
   | "alternate"
   | "author"
@@ -38,6 +50,20 @@ export const link = (
   href,
   ...others,
 })
+
+export const richData = (data: WithContext<Thing>) => ({
+  "script:ld+json": data,
+})
+type RichData<T extends Thing> = (data: WithContext<T>) => {
+  "script:ld+json": WithContext<T>
+}
+export const webSite = richData as any as RichData<WebSite>
+export const breadcrumb = richData as any as RichData<BreadcrumbList>
+export const itemList = richData as any as RichData<ItemList>
+export const governmentOrganization =
+  richData as any as RichData<GovernmentOrganization>
+export const webPage = richData as any as RichData<WebPage>
+
 const createMeta =
   <T extends string, C extends string>(name: T, constraint: readonly C[]) =>
   (content: C) =>
