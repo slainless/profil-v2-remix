@@ -1,21 +1,23 @@
-import { atom } from "jotai"
+import { atom, useSetAtom } from "jotai"
+import { useEffect } from "react"
 import { PartialDeep } from "type-fest"
+import { useQuery } from "urql"
 
-import {
-  GetPpidCategoriesQuery,
+import type {
+  PpidCategoriesQuery,
   PpidFile,
   PpidType,
-} from "GraphQL/codegen/graphql"
+} from "GraphQL/graphql.ts"
 
-export const PPIDCategoriesAtom = atom<GetPpidCategoriesQuery["categories"]>([])
+import { PPIDCategoriesQuery } from "Queries/PPID.ts"
+
+export const PPIDCategoriesAtom = atom<PpidCategoriesQuery["categories"]>([])
 
 export const PPIDCategoriesMapAtom = atom((get) => {
-  // @ts-expect-error
-  const map: Record<PpidType, GetPpidCategoriesQuery["categories"]> = {}
+  const map: Record<PpidType, PpidCategoriesQuery["categories"]> =
+    Object.create(null)
   for (const category of get(PPIDCategoriesAtom)) {
-    if (map[category.type] == null) {
-      map[category.type] = []
-    }
+    if (map[category.type] == null) map[category.type] = []
 
     map[category.type].push(category)
   }
@@ -24,3 +26,13 @@ export const PPIDCategoriesMapAtom = atom((get) => {
 })
 
 export const PPIDItemsAtom = atom<Record<string, PartialDeep<PpidFile>>>({})
+
+export const PPIDCategoryProvider = () => {
+  const setPPIDCategories = useSetAtom(PPIDCategoriesAtom)
+  const [{ data }] = useQuery({ query: PPIDCategoriesQuery })
+  useEffect(() => {
+    if (data?.categories != null) setPPIDCategories(data.categories)
+  }, [data, setPPIDCategories])
+
+  return null
+}

@@ -13,6 +13,8 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
+    "\n  query PPIDCategories {\n    categories: PPIDCategories {\n      ID          name\n      description type\n    }\n  }\n": types.PpidCategoriesDocument,
+    "\n  query PPIDFiles($categoryID: Int, $after: Int) {\n    files: PPIDFiles(categoryID: $categoryID, after: $after) {\n      ID fileURL\n      name\n      category { name type }\n      downloadCount\n      updatedAt\n    }\n  }\n": types.PpidFilesDocument,
     "\n  fragment commonTxnFields on Transaction {\n    year\n    budget\n    category { ID }\n    details {\n      name\n      value\n    }\n  }\n": types.CommonTxnFieldsFragmentDoc,
     "\n  fragment commonTxnCategoryFields on TransactionCategory {\n    ID\n    name\n    type\n  }\n": types.CommonTxnCategoryFieldsFragmentDoc,
     "\n  query getAPBDesReports($from: Int, $to: Int) {\n    reports: APBDReport(fromYear: $from, toYear: $to) {\n      ...commonTxnFields\n    }\n  }\n": types.GetApbDesReportsDocument,
@@ -64,6 +66,14 @@ const documents = {
  */
 export function gql(source: string): unknown;
 
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query PPIDCategories {\n    categories: PPIDCategories {\n      ID          name\n      description type\n    }\n  }\n"): (typeof documents)["\n  query PPIDCategories {\n    categories: PPIDCategories {\n      ID          name\n      description type\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query PPIDFiles($categoryID: Int, $after: Int) {\n    files: PPIDFiles(categoryID: $categoryID, after: $after) {\n      ID fileURL\n      name\n      category { name type }\n      downloadCount\n      updatedAt\n    }\n  }\n"): (typeof documents)["\n  query PPIDFiles($categoryID: Int, $after: Int) {\n    files: PPIDFiles(categoryID: $categoryID, after: $after) {\n      ID fileURL\n      name\n      category { name type }\n      downloadCount\n      updatedAt\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
