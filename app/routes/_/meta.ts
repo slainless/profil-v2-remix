@@ -4,7 +4,6 @@ import {
   desaFullname,
   description,
   websiteTitle,
-  documentTitle,
   orgName,
 } from "Metadata/utils.ts"
 
@@ -25,7 +24,6 @@ export type LoaderData = NonNullable<MetaArgs<typeof loader>["data"]>
 export const standard = (locale: LocaleType, { profile }: LoaderData) => {
   const desa_fullname = desaFullname(locale, profile)
   return {
-    title: documentTitle(locale, profile, desa_fullname),
     description: description(locale, profile, desa_fullname),
     robots: ["index", "follow"],
     publisher: orgName(locale, profile, desa_fullname),
