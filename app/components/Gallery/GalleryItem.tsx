@@ -18,7 +18,7 @@ import { asset, withAtom } from "Services/assets"
 
 import { contentsOrNone } from "Modules/css-utils"
 
-import { container } from "./GalleryItem.module.css"
+import containerStyle from "./GalleryItem.module.css"
 
 function GalleryItem() {
   const {
@@ -49,7 +49,7 @@ function GalleryItem() {
 
   return (
     <Box>
-      <Grid className={container}>
+      <Grid className={containerStyle.container}>
         <LightGallery
           onInit={onInit}
           speed={100}
