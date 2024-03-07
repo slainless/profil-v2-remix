@@ -1,0 +1,22 @@
+/* @type */
+
+.container {
+  & :global(.lg-react-element) {
+    display: contents;
+  }
+}
+
+/* .items {
+  display: flex;
+  --col-flex-basis: 33.333333333333336%;
+  --col-max-width: 33.333333333333336%;
+  flex-basis: var(--col-flex-basis);
+  flex-grow: var(--col-flex-grow, 0);
+  flex-shrink: 0;
+  margin-left: var(--_col-ml, var(--col-offset, 0));
+  margin-right: var(--_col-mr, 0);
+  max-width: var(--col-max-width);
+  order: var(--col-order);
+  padding: calc(var(--grid-gutter) / 2);
+  width: var(--col-width);
+} */
