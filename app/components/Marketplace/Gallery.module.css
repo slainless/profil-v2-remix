@@ -1,0 +1,11 @@
+/* @type */
+
+.hoverableImage {
+  transition: border-color 0.25s ease;
+  border: 3px solid transparent;
+  &:hover,
+  &[data-is-active="true"] {
+    border: 3px solid var(--mantine-color-primary-4);
+    cursor: pointer;
+  }
+}
