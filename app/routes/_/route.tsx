@@ -4,7 +4,7 @@ import { AppShell, Box, MantineProvider } from "@mantine/core"
 import "@mantine/core/styles.css"
 import { Notifications } from "@mantine/notifications"
 import "@mantine/notifications/styles.css"
-import type { LoaderFunctionArgs } from "@remix-run/node"
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node"
 import { Outlet, useLoaderData } from "@remix-run/react"
 import "lightgallery/css/lg-thumbnail.css"
 import "lightgallery/css/lg-zoom.css"
@@ -12,6 +12,7 @@ import "lightgallery/css/lightgallery.css"
 import merge from "lodash.merge"
 import "normalize.css"
 import { Fragment } from "react"
+import invariant from "tiny-invariant"
 
 import "Theme/artifact/mantine.css"
 import "Theme/global.css"
@@ -24,19 +25,29 @@ import { ProfileHydrator } from "Providers/profile.ts"
 import { JotaiGlobalStore } from "Providers/store.ts"
 import { UrqlProvider } from "Providers/urql.ts"
 
+import { websiteTitle } from "Metadata/utils.ts"
+
+import { getLocale } from "Locale/locale.ts"
+
+import { mustNormalizeContext } from "Services/.server/context.ts"
+
+import { Base, title } from "Modules/metadata.ts"
+
+import { favicon, openGraph, standard } from "./meta.ts"
+
 export async function loader({ context }: LoaderFunctionArgs) {
-  if (context.schema == null)
-    throw new Response("Client not found", { status: 404 })
-  if (context.profileQuery[0] == null)
-    throw new Response("No profile found", { status: 500 })
-  return {
-    profile: context.profileQuery[0],
-    schema: context.schema,
-    clientUrl: import.meta.env.VITE_GRAPHQL_ENDPOINT!,
-    token: import.meta.env.VITE_GRAPHQL_ACCESS_WEBTOKEN!,
-    subdomain: context.domain.codeToSlug(context.schema)!,
-    baseDomain: process.env.BASE_DOMAIN!,
-  }
+  return mustNormalizeContext(context)
+}
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  invariant(data, "No profile found")
+  const locale = getLocale("ID")
+  return [
+    title(websiteTitle(locale, data.profile)),
+    favicon(data),
+    ...Base.standard(standard(locale, data)),
+    ...Base.openGraph(openGraph(locale, data)),
+  ]
 }
 
 export default function Layout() {
@@ -63,7 +74,7 @@ export default function Layout() {
 
         <UrqlProvider
           schema={data.schema}
-          endpoint={data.clientUrl}
+          endpoint={import.meta.env.VITE_GRAPHQL_ENDPOINT}
           token={data.token}
         >
           <AppShell

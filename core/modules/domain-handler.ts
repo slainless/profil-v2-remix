@@ -111,6 +111,12 @@ export class DomainHandler {
     return
   }
 
+  getCanonDomain(domain: Domain): Domain {
+    const possibleCanon = this.getCustomDomain(domain)
+    if (possibleCanon == null) return domain
+    return possibleCanon
+  }
+
   update(newMap: DomainToCodeMap) {
     this[domainToCode] = {}
     for (const domain in newMap) {

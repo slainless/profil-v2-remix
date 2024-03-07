@@ -3,13 +3,16 @@ import { ErrorCode } from "Services/data.ts"
 import { errTitle, errMsg } from "Modules/strings.ts"
 
 export default {
-  DESA_PROFILE_WEBSITE_TITLE: "Website Resmi {{desa_name}}",
+  DESA_PROFILE_WEBSITE_TITLE: "Website Resmi {{desa_fullname}}",
+  DESA_PROFILE_PAGE_TITLE: "{{ page_name }} | Website Resmi {{desa_fullname}}",
   DESA_PROFILE_FULLNAME: "{{desa_alias}} {{desa_name}}",
   DESA_PROFILE_BANNER_DEFAULT_TEXT:
-    "Banner Halaman {{page_name}} {{desa_name}}",
-  DESA_PROFILE_ORGANIZATION_NAME: "Pemerintah {{desa_name}}",
+    "Banner Halaman {{page_name}} {{desa_fullname}}",
+  DESA_PROFILE_ORGANIZATION_NAME: "Pemerintah {{desa_fullname}}",
+  DESA_PROFILE_DESCRIPTION_FALLBACK:
+    "Website Resmi {{desa_fullname}}, bekerja sama dengan DIGIDES",
 
-  ARTICLE_AUTHOR_FALLBACK: "Admin {{desa_name}}",
+  ARTICLE_AUTHOR_FALLBACK: "Admin {{desa_fullname}}",
 
   /* -------------------------------------------------------------------------- */
   /*                                 Error Title                                */

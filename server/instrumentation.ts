@@ -1,4 +1,4 @@
-import { mustGetDomainList } from "Services/domain.server.ts"
+import { mustGetDomainList } from "Services/.server/domain.js"
 
 import { DomainHandler } from "Modules/domain-handler.ts"
 

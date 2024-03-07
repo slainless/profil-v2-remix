@@ -1,39 +1,50 @@
 import type { AppLoadContext } from "@remix-run/node"
 import type { Request } from "express"
-import type { Client } from "urql"
 
-import { profileQuery } from "Queries/profile.ts"
-
-import type { Code } from "Modules/domain-handler.ts"
-import { withHeaders } from "Modules/urql.ts"
+import { getCanonUrl } from "Services/.server/domain.ts"
+import { getProfile } from "Services/.server/profile.ts"
+import { mustGetHost, normalizeHost } from "Services/tenancy.ts"
 
 import type { Memory } from "./memory.ts"
-import { normalizeHost } from "./tenancy.ts"
-
-async function getProfile(
-  schema: Code | undefined,
-  client: Client,
-): Promise<AppLoadContext["profileQuery"]> {
-  if (schema == null) return [undefined, undefined]
-  const { data, error } = await client.query(
-    profileQuery,
-    {},
-    withHeaders(schema),
-  )
-  return [data?.profile, error]
-}
 
 export function contextLoader(memory: Memory) {
   const m = memory
-  return async (req: Request): Promise<AppLoadContext> => {
-    const host = normalizeHost(req)
+  const err = (res: Response) => ({ ...m, error: res })
+  return async (request: Request): Promise<AppLoadContext> => {
+    const url =
+      request.protocol + "://" + request.get("host") + request.originalUrl
+    const host = normalizeHost(mustGetHost(request))
     const schema = m.domain.domainToCode(host)
 
+    if (schema == null)
+      return err(
+        new Response(
+          `ProfileLoadError: schema is not registered on client list`,
+          { status: 404 },
+        ),
+      )
+
+    const { data: profile, error } = await getProfile(schema, m.gqlClient)
+    if (error != null)
+      return err(new Response(`ProfileLoadError: ${error}`, { status: 500 }))
+
+    if (profile?.profile == null)
+      return err(
+        new Response(`ProfileLoadError: failed to load profile data`, {
+          status: 500,
+        }),
+      )
+
     return {
-      ...memory,
+      ...m,
+      profile: profile.profile!,
+      url,
       schema,
-      host,
-      profileQuery: await getProfile(schema, m.gqlClient),
+      canonUrl: getCanonUrl(m.domain, host, url),
+
+      baseDomain: process.env.BASE_DOMAIN!,
+      subdomain: m.domain.codeToSlug(schema)!,
+      token: import.meta.env.VITE_GRAPHQL_ACCESS_WEBTOKEN!,
     }
   }
 }

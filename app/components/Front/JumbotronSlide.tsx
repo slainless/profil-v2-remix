@@ -70,12 +70,12 @@ export const WelcomeSlide = () => {
           Selamat Datang
           <br />
           {render(getLocale("ID").DESA_PROFILE_WEBSITE_TITLE, {
-            desa_name: desa,
+            desa_fullname: desa,
           })}
         </span>
         <span style={{ display: isLtSmall ? "none" : "contents" }}>
           {render(getLocale("ID").DESA_PROFILE_WEBSITE_TITLE, {
-            desa_name: "",
+            desa_fullname: "",
           }).trim()}
           <br />
           {desa}
