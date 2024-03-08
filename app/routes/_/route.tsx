@@ -30,7 +30,7 @@ import { getLocale } from "Locale/locale.ts"
 import { mustNormalizeContext } from "Services/.server/context.ts"
 import { asset } from "Services/assets.ts"
 
-import { governmentOrganization, webSite } from "Modules/metadata.ts"
+import { governmentOrganization } from "Modules/metadata.ts"
 
 import {
   createMetadata,
@@ -59,18 +59,18 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
     ...renderTitle(title),
     ...renderDescription(description),
     ...renderMetadata(metadata),
-    webSite({
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": canonUrl,
-      name: title.pageTitle,
-      url: canonUrl,
-      alternateName: [
-        metadata.publisher,
-        `Website ${metadata.desa_fullname}`,
-        metadata.desa_fullname,
-      ],
-    }),
+    // webSite({
+    //   "@context": "https://schema.org",
+    //   "@type": "WebSite",
+    //   "@id": canonUrl,
+    //   name: title.pageTitle,
+    //   url: canonUrl,
+    //   alternateName: [
+    //     metadata.publisher,
+    //     `Website ${metadata.desa_fullname}`,
+    //     metadata.desa_fullname,
+    //   ],
+    // }),
     governmentOrganization({
       "@context": "https://schema.org",
       "@type": "GovernmentOrganization",
@@ -118,7 +118,7 @@ export default function Layout() {
         <Fragment /* === Hydrator === */>
           <ProfileHydrator
             profile={data.profile}
-            schema={data.schema}
+            schema={data.schema.replaceAll(".", "_")}
             subdomain={data.subdomain}
             baseDomain={data.baseDomain}
           />

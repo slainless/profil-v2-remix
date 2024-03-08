@@ -3,7 +3,7 @@ import type { MetaDescriptor } from "@remix-run/node"
 import type {
   BreadcrumbList,
   GovernmentOrganization,
-  ItemList,
+  ListItem,
   Thing,
   WebPage,
   WebSite,
@@ -59,7 +59,7 @@ type RichData<T extends Thing> = (data: WithContext<T>) => {
 }
 export const webSite = richData as any as RichData<WebSite>
 export const breadcrumb = richData as any as RichData<BreadcrumbList>
-export const itemList = richData as any as RichData<ItemList>
+export const listItem = richData as any as RichData<ListItem>
 export const governmentOrganization =
   richData as any as RichData<GovernmentOrganization>
 export const webPage = richData as any as RichData<WebPage>

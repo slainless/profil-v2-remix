@@ -44,20 +44,30 @@ const documentTitle = (
 export const createTitle = (
   locale: Loc,
   profile: Pick<Profile, "alias" | "name">,
-  page_name?: string,
+  regularTitle?: string,
+  ogTitle?: string,
   desa_fullname?: string,
 ) => {
   const desa = desaFullname(locale, profile, desa_fullname)
   let docTitle, pageTitle: string
-  if (page_name == null || page_name === "")
+  if (
+    (regularTitle == null || regularTitle === "") &&
+    (ogTitle == null || ogTitle === "")
+  )
     docTitle = pageTitle = websiteTitle(locale, profile, desa)
   else {
-    pageTitle = render(page_name, {
+    const args = {
       desa_name: profile.name.deskel,
       desa_alias: profile.alias.desa,
       desa_fullname: desa,
-    })
-    docTitle = documentTitle(locale, profile, pageTitle, desa)
+    }
+    pageTitle = render((ogTitle ?? regularTitle)!, args)
+    docTitle = documentTitle(
+      locale,
+      profile,
+      render((regularTitle ?? ogTitle)!, args),
+      desa,
+    )
   }
 
   return { pageTitle, documentTitle: docTitle }
