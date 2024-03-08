@@ -117,9 +117,11 @@ export const colorScheme = createMeta("color-scheme", [
 ])
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const create: any = (props: Record<string, string>) =>
+export const create: any = (props: Record<string, string>) =>
   Object.entries(props).map(([name, content]) => ({ name, content }))
 type Create<T> = (p: T) => MetaDescriptor[]
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const createMedia = (media?: any[]) => media?.flatMap(create) ?? []
 
 namespace OpenGraph {
   interface Media {
@@ -184,8 +186,6 @@ namespace OpenGraph {
     "og:type": "profile"
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const createMedia = (media?: any[]) => media?.flatMap(create) ?? []
   export const createGraph = ({
     image,
     video,

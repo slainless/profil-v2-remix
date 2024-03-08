@@ -25,22 +25,21 @@ import { ProfileHydrator } from "Providers/profile.ts"
 import { JotaiGlobalStore } from "Providers/store.ts"
 import { UrqlProvider } from "Providers/urql.ts"
 
-import { desaFullname, websiteTitle } from "Metadata/utils.ts"
-
 import { getLocale } from "Locale/locale.ts"
 
 import { mustNormalizeContext } from "Services/.server/context.ts"
 import { asset } from "Services/assets.ts"
 
-import {
-  Base,
-  governmentOrganization,
-  link,
-  title,
-  webSite,
-} from "Modules/metadata.ts"
+import { governmentOrganization, webSite } from "Modules/metadata.ts"
 
-import { favicon, openGraph, standard } from "./meta.ts"
+import {
+  createMetadata,
+  renderMetadata,
+  createTitle,
+  createDescription,
+  renderTitle,
+  renderDescription,
+} from "./meta.ts"
 
 export async function loader({ context }: LoaderFunctionArgs) {
   return mustNormalizeContext(context)
@@ -51,35 +50,34 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   const { canonUrl, profile, schema } = data
 
   const locale = getLocale("ID")
-  const desa_fullname = desaFullname(locale, profile)
-  const documentTitle = websiteTitle(locale, profile, desa_fullname)
-  const standardMeta = standard(locale, data)
+
+  const metadata = createMetadata(locale, data)
+  const title = createTitle(locale, data.profile)
+  const description = createDescription(locale, data.profile)
 
   return [
-    title(documentTitle),
-    favicon(data),
-    link("canonical", canonUrl),
-    ...Base.standard(standardMeta),
-    ...Base.openGraph(openGraph(locale, data)),
+    ...renderTitle(title),
+    ...renderDescription(description),
+    ...renderMetadata(metadata),
     webSite({
       "@context": "https://schema.org",
       "@type": "WebSite",
       "@id": canonUrl,
-      name: documentTitle,
+      name: title.pageTitle,
       url: canonUrl,
       alternateName: [
-        standardMeta.publisher,
-        `Website ${desa_fullname}`,
-        desa_fullname,
+        metadata.publisher,
+        `Website ${metadata.desa_fullname}`,
+        metadata.desa_fullname,
       ],
     }),
     governmentOrganization({
       "@context": "https://schema.org",
       "@type": "GovernmentOrganization",
       "@id": canonUrl,
-      name: standardMeta.publisher,
+      name: metadata.publisher,
       alternateName: profile.name.deskel,
-      description: standardMeta.description,
+      description,
       logo: asset.logo300({ schema, file: profile.logoURL }),
       url: canonUrl,
       sameAs: [
