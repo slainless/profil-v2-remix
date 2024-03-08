@@ -33,6 +33,20 @@ export const profileQuery = gql(`
   }
 `)
 
+export const desaProfileQuery = gql(`
+  query desaProfile {
+    profile {
+      vision
+      mission
+      history { photoURL content }
+      borders { name value }
+      area
+      BPDChart
+      SPDChart
+    }
+  }
+`)
+
 export const importantContactsQuery = gql(`
   query importantContacts {
     contacts: importantContacts {

@@ -26,6 +26,15 @@ export const populationSummaryQuery = gql(`
   }
 `)
 
+export const populationMutationSummaryQuery = gql(`
+  query populationMutationSummary {
+    summary: populationStatistic {
+      total
+      mutationOut { value }
+    }
+  }
+`)
+
 export const stuntingQuery = gql(`
   query stunting {
     stunting(limit: 3) {
