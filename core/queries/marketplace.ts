@@ -61,9 +61,17 @@ export const productCardsQuery = gql(`
   }
 `)
 
+export const productQuery = gql(`
+  query product($ID: Int!, $schema: String!) {
+    products: marketItemByID(ID: $ID, desa: $schema) {
+      ...commonItemFields
+    }
+  }
+`)
+
 export const productWithReviewsQuery = gql(`
   query productWithReviews($ID: Int!, $schema: String!, $reviewNumbers: Int) {
-    products: marketItemByID(ID: $ID, desa: $schema) {
+    product: marketItemByID(ID: $ID, desa: $schema) {
       ...commonItemFields
     },
     reviews: marketItemReviews(itemID: $ID, limit: $reviewNumbers) {

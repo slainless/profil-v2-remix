@@ -1,13 +1,13 @@
-import type { Code, UnderscoredCode } from "./domain-handler.ts"
+import type { UnderscoredCode } from "./domain-handler.ts"
 
 export function withHeaders(
-  schema: Code | UnderscoredCode,
+  schema: UnderscoredCode,
   rest?: Record<string, string>,
 ) {
   return {
     fetchOptions: {
       headers: {
-        "X-Digides-Schema": schema.replaceAll(".", "_"),
+        "X-Digides-Schema": schema,
         ...rest,
       },
     },

@@ -5,6 +5,8 @@ import { getCanonUrl } from "Services/.server/domain.ts"
 import { getProfile } from "Services/.server/profile.ts"
 import { mustGetHost, normalizeHost } from "Services/tenancy.ts"
 
+import type { UnderscoredCode } from "Modules/domain-handler.ts"
+
 import type { Memory } from "./memory.ts"
 
 export function contextLoader(memory: Memory) {
@@ -24,7 +26,10 @@ export function contextLoader(memory: Memory) {
         ),
       )
 
-    const { data: profile, error } = await getProfile(schema, m.gqlClient)
+    const { data: profile, error } = await getProfile(
+      schema.replaceAll(".", "_") as UnderscoredCode,
+      m.gqlClient,
+    )
     if (error != null)
       return err(new Response(`ProfileLoadError: ${error}`, { status: 500 }))
 

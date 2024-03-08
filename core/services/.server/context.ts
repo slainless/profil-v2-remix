@@ -2,7 +2,7 @@ import type { AppLoadContext } from "@remix-run/node"
 
 import type { ProfileQuery } from "GraphQL/graphql.ts"
 
-import type { Code } from "Modules/domain-handler.ts"
+import type { Code, UnderscoredCode } from "Modules/domain-handler.ts"
 
 export interface Context {
   profile: NonNullable<ProfileQuery["profile"]>
@@ -15,7 +15,10 @@ export interface Context {
   token: string
 }
 
-export function mustNormalizeContext(context: AppLoadContext): Context {
+export function mustNormalizeContext(context: AppLoadContext) {
   if (context.error) throw context.error
-  return context as Context
+  return {
+    ...context,
+    schema: context.schema?.replaceAll(".", "_") as UnderscoredCode,
+  } as Omit<Context, "schema"> & { schema: UnderscoredCode }
 }

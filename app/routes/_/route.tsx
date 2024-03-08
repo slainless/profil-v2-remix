@@ -118,7 +118,7 @@ export default function Layout() {
         <Fragment /* === Hydrator === */>
           <ProfileHydrator
             profile={data.profile}
-            schema={data.schema.replaceAll(".", "_")}
+            schema={data.schema}
             subdomain={data.subdomain}
             baseDomain={data.baseDomain}
           />

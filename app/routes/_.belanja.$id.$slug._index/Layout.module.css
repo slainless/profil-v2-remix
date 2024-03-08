@@ -1,0 +1,31 @@
+/* @type */
+
+.gallery {
+  grid-area: gallery;
+}
+
+.content {
+  grid-area: content;
+}
+
+.container {
+  display: grid;
+  gap: var(--mantine-spacing-xl);
+  grid-template-areas: "gallery" "content";
+
+  .layoutGallery {
+    & > div {
+      max-width: 320px;
+      margin: 0 auto;
+    }
+  }
+
+  @mixin larger-than $bp-sm {
+    grid-template-areas: "gallery content";
+    grid-template-columns: max-content auto;
+
+    .layoutGallery {
+      width: 320px;
+    }
+  }
+}
