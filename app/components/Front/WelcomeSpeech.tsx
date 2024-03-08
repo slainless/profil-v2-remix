@@ -25,15 +25,7 @@ import { welcomeQuery } from "Queries/profile.ts"
 
 import { asset } from "Services/assets"
 
-import {
-  rootContainer,
-  image,
-  title,
-  position,
-  content,
-  heading,
-  imageContainer,
-} from "./WelcomeSpeech.module.css"
+import styles from "./WelcomeSpeech.module.css"
 
 const WelcomeSpeech = () => {
   const [{ data }] = useQuery({ query: welcomeQuery })
@@ -43,12 +35,12 @@ const WelcomeSpeech = () => {
   const welcome = data?.profile?.welcome
 
   return (
-    <Box style={{ overflow: "visible" }} className={rootContainer}>
-      <Center className={imageContainer}>
+    <Box style={{ overflow: "visible" }} className={styles.rootContainer}>
+      <Center className={styles.imageContainer}>
         <Image
           radius={"50%"}
           // radius="md"
-          className={image}
+          className={styles.image}
           fit="contain"
           fallbackSrc={placeholder}
           src={asset.common({ schema, file: welcome?.photoURL })}
@@ -56,20 +48,20 @@ const WelcomeSpeech = () => {
           style={{ boxShadow: vars("shadow-lg") }}
         />
       </Center>
-      <Title fz={24} className={title}>
+      <Title fz={24} className={styles.title}>
         {welcome?.personName}
       </Title>
-      <Text fw={600} className={position}>
+      <Text fw={600} className={styles.position}>
         {welcome?.personRole}
       </Text>
       <Title
         fz={{ base: 20, sm: 32, md: 44 }}
         c={vars("color-primary-5")}
-        className={heading}
+        className={styles.heading}
       >
         Sambutan Kepala {aliasDesa}
       </Title>
-      <Box className={content}>
+      <Box className={styles.content}>
         <ScrollArea
           h={16 * 1.55 * 8}
           display={{

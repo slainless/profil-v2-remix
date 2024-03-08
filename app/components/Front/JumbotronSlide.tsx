@@ -20,7 +20,7 @@ import { asset, withAtom } from "Services/assets.ts"
 
 import { largerThan } from "Modules/css-utils"
 
-import jumbotronSlideStyle from "./Jumbotron.module.css"
+import styles from "./Jumbotron.module.css"
 
 export const Slide = (props: {
   background?: string
@@ -36,9 +36,9 @@ export const Slide = (props: {
         component={props.href ? Link : undefined}
         // @ts-expect-error ...
         to={props.href ?? undefined}
-        className={jumbotronSlideStyle.container}
+        className={styles.container}
       >
-        <Stack h="inherit" className={jumbotronSlideStyle.slide}>
+        <Stack h="inherit" className={styles.slide}>
           {props.children}
         </Stack>
       </BackgroundImage>

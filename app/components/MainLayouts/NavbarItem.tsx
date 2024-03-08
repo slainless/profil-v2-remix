@@ -8,7 +8,7 @@ import { vars } from "Theme/artifact/vars.mjs"
 
 import { aliasDesaAtom } from "Providers/profile.ts"
 
-import { navbarItem } from "./NavbarItem.module.css"
+import styles from "./NavbarItem.module.css"
 import { NavbarRoute } from "./navbar-menu.ts"
 
 interface Props {
@@ -34,7 +34,7 @@ export const NavbarItem = ({
         component={Link}
         to={item.href ?? "#"}
         // className={isActive ? underlinedItemStyle : hoveredItemStyle}
-        className={navbarItem}
+        className={styles.navbarItem}
         onClick={onClick}
         data-is-active={isActive}
       >
@@ -61,7 +61,7 @@ export const NavbarItem = ({
       >
         <Menu.Target>
           <Anchor
-            className={navbarItem}
+            className={styles.navbarItem}
             href={item.href ?? "#"}
             onClick={(event) => item.href != null && event.preventDefault()}
             td={"none"}

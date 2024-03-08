@@ -12,7 +12,7 @@ import type { GalleryItem } from "GraphQL/graphql.ts"
 
 import { asset } from "Services/assets"
 
-import { hoverableImage } from "./Gallery.module.css"
+import styles from "./Gallery.module.css"
 
 interface Props {
   images: GalleryItem[]
@@ -56,7 +56,7 @@ export const Gallery = ({ images }: Props) => {
                 w={"100%"}
                 src={asset.marketItem({ file: image.URL })}
                 alt={image.caption}
-                className={hoverableImage}
+                className={styles.hoverableImage}
                 data-is-active={image.ID === previewed?.ID}
                 onClick={() => setSelectedImage(image)}
                 onMouseEnter={() => {
