@@ -1,0 +1,28 @@
+.separator {
+  width: 100%;
+  pointer-events: none;
+  user-select: none;
+  font-size: rem(12);
+  color: var(--mantine-color-dimmed);
+  position: relative;
+  text-align: center;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    width: calc(50% - 3ch);
+    top: 50%;
+    transform: translateY(-50%);
+    height: 0;
+    border-top: 1px solid var(--mantine-color-default-border);
+  }
+
+  &::after {
+    left: 0;
+  }
+
+  &::before {
+    right: 0;
+  }
+}
