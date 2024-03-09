@@ -4,6 +4,7 @@ import type {
   BreadcrumbList,
   GovernmentOrganization,
   ListItem,
+  Product,
   Thing,
   WebPage,
   WebSite,
@@ -63,6 +64,7 @@ export const listItem = richData as any as RichData<ListItem>
 export const governmentOrganization =
   richData as any as RichData<GovernmentOrganization>
 export const webPage = richData as any as RichData<WebPage>
+export const product = richData as any as RichData<Product>
 
 const createMeta =
   <T extends string, C extends string>(name: T, constraint: readonly C[]) =>
@@ -123,7 +125,7 @@ type Create<T> = (p: T) => MetaDescriptor[]
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const createMedia = (media?: any[]) => media?.flatMap(create) ?? []
 
-namespace OpenGraph {
+export namespace OpenGraph {
   interface Media {
     url: string
     type: string

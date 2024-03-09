@@ -70,8 +70,5 @@ const theme = {
   },
 }
 
-if (typeof module !== "undefined") {
-  module.exports = theme
-}
-
 export default theme
+export { theme }

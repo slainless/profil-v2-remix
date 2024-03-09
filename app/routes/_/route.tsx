@@ -16,7 +16,7 @@ import invariant from "tiny-invariant"
 
 import "Theme/artifact/mantine.css"
 import "Theme/global.css"
-import { theme } from "Theme/mantine.mjs"
+import { theme } from "Theme/mantine.js"
 
 import AppFooter from "Components/MainLayouts/Footer.tsx"
 import AppHeader from "Components/MainLayouts/Header.tsx"
@@ -31,6 +31,7 @@ import { mustNormalizeContext } from "Services/.server/context.ts"
 import { asset } from "Services/assets.ts"
 
 import { governmentOrganization } from "Modules/metadata.ts"
+import { stripURL } from "Modules/url.ts"
 
 import {
   createMetadata,
@@ -48,6 +49,7 @@ export async function loader({ context }: LoaderFunctionArgs) {
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   invariant(data, "No profile found")
   const { canonUrl, profile, schema } = data
+  const baseUrl = stripURL(canonUrl)
 
   const locale = getLocale("ID")
 
@@ -74,12 +76,12 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
     governmentOrganization({
       "@context": "https://schema.org",
       "@type": "GovernmentOrganization",
-      "@id": canonUrl,
+      "@id": baseUrl,
       name: metadata.publisher,
       alternateName: profile.name.deskel,
       description,
       logo: asset.logo300({ schema, file: profile.logoURL }),
-      url: canonUrl,
+      url: baseUrl,
       sameAs: [
         profile.socialMedia?.facebook,
         profile.socialMedia?.instagram,
@@ -110,10 +112,12 @@ export default function Layout() {
   const data = useLoaderData<typeof loader>()
   const finalTheme = merge({}, theme)
   if (data.profile.primaryPalette.length === 10)
-    // @ts-expect-error ...
     finalTheme.colors["primary"] = data.profile.primaryPalette
   return (
-    <MantineProvider theme={finalTheme}>
+    <MantineProvider
+      // @ts-expect-error mismatching color type
+      theme={finalTheme}
+    >
       <JotaiGlobalStore>
         <Fragment /* === Hydrator === */>
           <ProfileHydrator

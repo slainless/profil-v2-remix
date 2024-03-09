@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { MetaArgs } from "@remix-run/node"
+import type { WritableDeep } from "type-fest"
 
 import type { Locale } from "Locale/locale.ts"
 
@@ -15,6 +16,7 @@ import {
   title,
   metadata,
 } from "Modules/metadata.ts"
+import { stripURL } from "Modules/url.ts"
 
 import {
   desaFullname,
@@ -31,25 +33,22 @@ import type { loader } from "./route.tsx"
 type LocaleType = Record<keyof typeof Locale.ID, string>
 export type LoaderData = NonNullable<MetaArgs<typeof loader>["data"]>
 
-export interface Metadata
-  extends Partial<Base.Standard>,
-    Partial<Base.WebsiteGraph> {
+type OpenGraph = Base.WebsiteGraph | Base.ArticleGraph | Base.ProfileGraph
+export type Metadata = {
   desa_alias: string
   desa_name: string
   desa_fullname: string
   favicon: ReturnType<typeof link>
   canonical: ReturnType<typeof link>
-}
+} & Partial<Base.Standard & OpenGraph>
 
-export const createMetadata = <
-  T extends Partial<Base.Standard & Base.WebsiteGraph>,
->(
+export const createMetadata = <T extends Partial<Base.Standard & OpenGraph>>(
   locale: LocaleType,
   data: LoaderData,
   overrides?: T,
 ) => {
   const desa_fullname = desaFullname(locale, data.profile)
-  return {
+  const metadata = {
     desa_fullname,
     desa_alias: data.profile.alias.desa,
     desa_name: data.profile.name.deskel,
@@ -63,7 +62,7 @@ export const createMetadata = <
 
     favicon: favicon(data),
 
-    "og:url": data.canonUrl,
+    "og:url": stripURL(data.canonUrl),
     "og:site_name": websiteTitle(locale, data.profile, desa_fullname),
     image: [
       {
@@ -80,6 +79,8 @@ export const createMetadata = <
     "og:type": "website",
     ...overrides,
   } as const satisfies Metadata
+
+  return metadata as WritableDeep<typeof metadata>
 }
 
 export const renderMetadata = (metadata: Metadata) => {

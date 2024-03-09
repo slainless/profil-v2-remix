@@ -8,6 +8,7 @@ import PageContainer from "Components/PageContainer.tsx"
 import { getLocale } from "Locale/locale.ts"
 
 import { breadcrumb } from "Modules/metadata.ts"
+import { stripURL } from "Modules/url.ts"
 
 import { mustGetRootLayoutData } from "../_/data.ts"
 import { createDescription, createTitle } from "../_/meta-utils.ts"
@@ -27,7 +28,8 @@ const page = {
 
 export const meta: MetaFunction = ({ matches }) => {
   const data = mustGetRootLayoutData(matches)
-  const { profile } = data
+  const { profile, canonUrl } = data
+  const baseUrl = stripURL(canonUrl)
 
   const locale = getLocale("ID")
   const title = createTitle(locale, profile, page.title, page.ogTitle)
@@ -46,6 +48,7 @@ export const meta: MetaFunction = ({ matches }) => {
           "@type": "ListItem",
           position: 1,
           name: "Beli",
+          item: baseUrl,
         },
       ],
     }),

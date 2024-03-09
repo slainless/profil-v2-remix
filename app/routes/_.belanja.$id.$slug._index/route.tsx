@@ -1,6 +1,7 @@
 import { Box, Group, Stack, Text } from "@mantine/core"
-import type { LoaderFunctionArgs } from "@remix-run/node"
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
+import { stripHtml } from "string-strip-html"
 import type { RequiredDeep } from "type-fest"
 
 import { WhatsappContactButton } from "Components/Marketplace/BuyButton.tsx"
@@ -15,6 +16,8 @@ import { VariantSelector } from "Components/Marketplace/VariantSelector.tsx"
 
 import { MarketItemHydrator } from "Providers/marketplace.ts"
 
+import { getLocale } from "Locale/locale.ts"
+
 import type { MarketItemCategory } from "GraphQL/graphql.ts"
 
 import { mustNormalizeContext } from "Services/.server/context.ts"
@@ -22,9 +25,36 @@ import {
   mustGetMarketItemWithReviews,
   mustGetVariant,
 } from "Services/.server/marketplace.ts"
-import { getVariantPhoto, getDefaultPhoto } from "Services/marketplace.ts"
+import {
+  getVariantPhoto,
+  getDefaultPhoto,
+  getName,
+} from "Services/marketplace.ts"
 
+import {
+  breadcrumb,
+  link,
+  metadata,
+  metadatas,
+  product,
+} from "Modules/metadata.ts"
+import { stripURL } from "Modules/url.ts"
+
+import {
+  createDescription,
+  createMetadata,
+  createTitle,
+  renderDescription,
+  renderMetadata,
+  renderTitle,
+} from "../_/meta.ts"
 import { Layout } from "./Layout.tsx"
+import {
+  createBreadcrumb,
+  createOGImages,
+  createProduct,
+  getTrueUrl,
+} from "./meta.ts"
 
 export async function loader({ params, context }: LoaderFunctionArgs) {
   const ctx = mustNormalizeContext(context)
@@ -38,14 +68,54 @@ export async function loader({ params, context }: LoaderFunctionArgs) {
   )
 
   const variant = mustGetVariant(data.product, params)
-  const baseUrl = new URL(ctx.canonUrl)
-  baseUrl.search = ""
+  const baseUrl = stripURL(ctx.canonUrl)
   return {
     product: data.product,
+    reviews: data.reviews,
     variant,
-    baseUrl: baseUrl.href,
+    baseUrl,
     id,
+    ...ctx,
   }
+}
+
+export const meta: MetaFunction<typeof loader> = ({ data, location }) => {
+  const _data = data as RequiredDeep<typeof data>
+  const { product: _product, variant, profile, baseUrl } = _data
+  const params = new URLSearchParams(location.search)
+  const url = getTrueUrl(baseUrl, variant, params)
+
+  const locale = getLocale("ID")
+
+  const productName = getName(_product, variant)
+  const title = createTitle(locale, profile, productName)
+  const description = createDescription(
+    locale,
+    profile,
+    stripHtml(_product.description).result,
+  )
+  const author = _product.user?.name ?? `[User dihapus]`
+
+  const _metadata = createMetadata(locale, _data, {
+    image: createOGImages(_data, params),
+    author,
+    canonical: link("canonical", url),
+    "og:url": url,
+    // @ts-expect-error ...
+    "og:type": "product",
+  })
+
+  return [
+    ...renderTitle(title),
+    ...renderDescription(description),
+    ...renderMetadata(_metadata),
+    ...metadatas("creator", [author, "PT Digital Desa Indonesia"]),
+    metadata("product:plural_title", productName),
+    metadata("product:price.amount", variant.price),
+    metadata("product:price.currency", "IDR"),
+    breadcrumb(createBreadcrumb(_data, params)),
+    product(createProduct(_data, params)),
+  ]
 }
 
 export default function MarketplaceProduct() {

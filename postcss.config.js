@@ -1,15 +1,15 @@
-const { breakpoints } = require("./app/theme/mantine.cjs")
+import { theme } from "./app/theme/mantine.js"
 
 const prefixKeys =
   (prefix) =>
   ([k, v]) => [`${prefix}-${k}`, v]
 
-module.exports = {
+export default {
   plugins: {
     "postcss-preset-mantine": {},
     "postcss-simple-vars": {
       variables: Object.fromEntries([
-        ...Object.entries(breakpoints).map(prefixKeys("bp")),
+        ...Object.entries(theme.breakpoints).map(prefixKeys("bp")),
       ]),
     },
   },
