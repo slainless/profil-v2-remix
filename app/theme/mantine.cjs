@@ -1,6 +1,6 @@
 const vars = (str) => `var(--mantine-${str})`
 
-module.exports = {
+const theme = {
   breakpoints: {
     xs: "36em",
     sm: "48em",
@@ -69,3 +69,9 @@ module.exports = {
     },
   },
 }
+
+if (typeof module !== "undefined") {
+  module.exports = theme
+}
+
+export default theme
