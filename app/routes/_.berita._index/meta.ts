@@ -1,6 +1,6 @@
-export const page = {
-  title: "Berita",
-  ogTitle: "Berita {{ desa_fullname }}",
-  description:
-    "Menyajikan informasi terbaru tentang peristiwa, berita terkini, dan artikel-artikel jurnalistik dari {{ desa_fullname }}",
+export namespace page {
+  export const title = "Berita"
+  export const ogTitle = "Berita {{ desa_fullname }}"
+  export const description =
+    "Menyajikan informasi terbaru tentang peristiwa, berita terkini, dan artikel-artikel jurnalistik dari {{ desa_fullname }}"
 }

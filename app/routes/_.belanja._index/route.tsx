@@ -19,11 +19,11 @@ import {
   renderTitle,
 } from "../_/meta.ts"
 
-const page = {
-  title: "Beli dari {{ desa_alias }}",
-  ogTitle: "Beli dari {{ desa_fullname }}",
-  description:
-    "Layanan yang disediakan untuk promosi produk UMKM sehingga mampu meningkatkan perekonomian masyarakat {{ desa_fullname }}",
+namespace page {
+  export const title = "Beli dari {{ desa_alias }}"
+  export const ogTitle = "Beli dari {{ desa_fullname }}"
+  export const description =
+    "Layanan yang disediakan untuk promosi produk UMKM sehingga mampu meningkatkan perekonomian masyarakat {{ desa_fullname }}"
 }
 
 export const meta: MetaFunction = ({ matches }) => {
