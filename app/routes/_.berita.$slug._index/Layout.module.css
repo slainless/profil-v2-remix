@@ -1,0 +1,19 @@
+/* @type */
+
+.content {
+  grid-area: content;
+}
+.sidebar {
+  grid-area: sidebar;
+}
+
+.root {
+  display: grid;
+  gap: rem(12px);
+  grid-template-areas: "content" "sidebar";
+
+  @mixin larger-than $bp-lg {
+    grid-template-areas: "content sidebar";
+    grid-template-columns: auto 25%;
+  }
+}

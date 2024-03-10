@@ -1,0 +1,79 @@
+/* @type */
+
+.header {
+  display: grid;
+
+  :global(.date),
+  :global(.views),
+  :global(.author) {
+    opacity: 0.8;
+
+    span {
+      font-size: rem(12);
+      @mixin larger-than $bp-sm {
+        font-size: rem(15);
+      }
+    }
+  }
+
+  :global(.breadcrumb) {
+    grid-area: breadcrumb;
+    margin-bottom: rem(12);
+  }
+  :global(.thumbnail) {
+    grid-area: thumbnail;
+    margin-bottom: rem(12);
+  }
+  :global(.title) {
+    grid-area: title;
+    margin-bottom: rem(10);
+  }
+  :global(.date) {
+    grid-area: date;
+  }
+  :global(.author) {
+    grid-area: author;
+  }
+  :global(.views) {
+    grid-area: views;
+  }
+
+  grid-template-areas:
+    "breadcrumb"
+    "thumbnail"
+    "title"
+    "date"
+    "author"
+    "views";
+
+  @mixin larger-than $bp-sm {
+    grid-template-areas:
+      "breadcrumb breadcrumb breadcrumb"
+      "title title title"
+      "date author views"
+      "thumbnail thumbnail thumbnail";
+
+    grid-template-columns: auto auto 1fr;
+
+    gap: rem(15);
+
+    :global(.views) {
+      justify-content: flex-end;
+    }
+
+    :global(.thumbnail) {
+      margin-top: rem(12);
+    }
+
+    :global(.title) {
+      margin-bottom: 0;
+    }
+  }
+
+  @mixin smaller-than $bp-sm {
+    :global(.iconSize) {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+}

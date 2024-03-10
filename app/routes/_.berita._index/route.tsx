@@ -16,13 +16,7 @@ import {
 } from "../_/meta.ts"
 import { Content } from "./Content.tsx"
 import { Header } from "./Header.tsx"
-
-const page = {
-  title: "Berita",
-  ogTitle: "Berita {{ desa_fullname }}",
-  description:
-    "Menyajikan informasi terbaru tentang peristiwa, berita terkini, dan artikel-artikel jurnalistik dari {{ desa_fullname }}",
-}
+import { page } from "./meta.ts"
 
 export const meta: MetaFunction = ({ matches }) => {
   const data = mustGetRootLayoutData(matches)
