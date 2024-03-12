@@ -1,4 +1,4 @@
-import { Stack, Box, Flex, Title, Tabs } from "@mantine/core"
+import { Stack, Box, Flex, Title } from "@mantine/core"
 import type { MetaFunction } from "@remix-run/node"
 import { IconCircleX } from "@tabler/icons-react"
 import ReactECharts from "echarts-for-react"
@@ -17,17 +17,15 @@ import { stuntingQuery } from "Queries/stats.ts"
 import { contentsOrNone } from "Modules/css-utils.ts"
 
 import { renderMetadata } from "../_.infografis/meta.ts"
-import { useSetTab } from "../_.infografis/use-set-tab.ts"
 
 export const meta: MetaFunction = (args) => {
   return renderMetadata(args, "stunting")
 }
 
 export default function Stunting() {
-  useSetTab("stunting")
   const [{ data }] = useQuery({ query: stuntingQuery })
   return (
-    <Tabs.Panel value="stunting">
+    <>
       {/* Mobile */}
       <Stack hiddenFrom="sm">
         <Box
@@ -118,6 +116,6 @@ export default function Stunting() {
         </Stack>
       </Stack>
       {/* End Desktop */}
-    </Tabs.Panel>
+    </>
   )
 }

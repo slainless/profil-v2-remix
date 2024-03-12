@@ -1,4 +1,4 @@
-import { Stack, Box, Tabs } from "@mantine/core"
+import { Stack, Box } from "@mantine/core"
 import type { MetaFunction } from "@remix-run/react"
 
 import { BudgetStatsByYear } from "Components/Infography/APBDes/BudgetStatsByYear.tsx"
@@ -13,35 +13,31 @@ import IncomeExpense from "Components/Infography/APBDes/IncomeExpenseChart.tsx"
 import { APBDReportLoader } from "Providers/APBD.ts"
 
 import { renderMetadata } from "../_.infografis/meta.ts"
-import { useSetTab } from "../_.infografis/use-set-tab.ts"
 
 export const meta: MetaFunction = (args) => {
   return renderMetadata(args, "anggaran")
 }
 
 export default function Anggaran() {
-  useSetTab("anggaran")
   return (
-    <Tabs.Panel value="anggaran">
-      <Stack gap={100}>
-        <APBDReportLoader />
-        <BudgetStatsByYear />
-        <Box mt={{ base: -65, sm: 0 }}>
-          <IncomeExpense />
-        </Box>
-        <Stack gap={30}>
-          <Income />
-          <IncomeDetails />
-        </Stack>
-        <Stack gap={30}>
-          <Expense />
-          <ExpenseDetails />
-        </Stack>
-        <Stack gap={30}>
-          <Financing />
-          <FinancingDetails />
-        </Stack>
+    <Stack gap={100}>
+      <APBDReportLoader />
+      <BudgetStatsByYear />
+      <Box mt={{ base: -65, sm: 0 }}>
+        <IncomeExpense />
+      </Box>
+      <Stack gap={30}>
+        <Income />
+        <IncomeDetails />
       </Stack>
-    </Tabs.Panel>
+      <Stack gap={30}>
+        <Expense />
+        <ExpenseDetails />
+      </Stack>
+      <Stack gap={30}>
+        <Financing />
+        <FinancingDetails />
+      </Stack>
+    </Stack>
   )
 }

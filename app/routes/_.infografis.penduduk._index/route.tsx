@@ -1,4 +1,4 @@
-import { Stack, Box, Tabs } from "@mantine/core"
+import { Stack, Box } from "@mantine/core"
 import type { MetaFunction } from "@remix-run/node"
 
 import PopulationByAgama from "Components/Infography/Penduduk/PopulationByAgama.tsx"
@@ -14,32 +14,28 @@ import PopulationSummary from "Components/Infography/Penduduk/PopulationSummary.
 import { PopulationStatisticLoader } from "Providers/population.ts"
 
 import { renderMetadata } from "../_.infografis/meta.ts"
-import { useSetTab } from "../_.infografis/use-set-tab.ts"
 
 export const meta: MetaFunction = (args) => {
   return renderMetadata(args, "penduduk")
 }
 
 export default function Penduduk() {
-  useSetTab("penduduk")
   return (
-    <Tabs.Panel value="penduduk">
-      <Stack gap={100}>
-        <PopulationStatisticLoader />
-        <Stack gap={0}>
-          <PopulationByYear />
-          <PopulationSummary />
-        </Stack>
-        <Box mt={{ base: -65, sm: 0 }}>
-          <PopulationByAgeCategory />
-        </Box>
-        <PopulationByDusunCategory />
-        <PopulationByPendidikan />
-        <PopulationByPekerjaan />
-        <PopulationByWajibPilih />
-        <PopulationByPerkawinan />
-        <PopulationByAgama />
+    <Stack gap={100}>
+      <PopulationStatisticLoader />
+      <Stack gap={0}>
+        <PopulationByYear />
+        <PopulationSummary />
       </Stack>
-    </Tabs.Panel>
+      <Box mt={{ base: -65, sm: 0 }}>
+        <PopulationByAgeCategory />
+      </Box>
+      <PopulationByDusunCategory />
+      <PopulationByPendidikan />
+      <PopulationByPekerjaan />
+      <PopulationByWajibPilih />
+      <PopulationByPerkawinan />
+      <PopulationByAgama />
+    </Stack>
   )
 }

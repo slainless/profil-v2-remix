@@ -1,4 +1,4 @@
-import { Stack, Box, Tabs } from "@mantine/core"
+import { Stack, Box } from "@mantine/core"
 import type { MetaFunction } from "@remix-run/node"
 import { useAtomValue, useSetAtom } from "jotai"
 import { useEffect } from "react"
@@ -15,7 +15,6 @@ import { getAvailableIDM, getIDM } from "Services/idm.ts"
 import type { UnderscoredCode } from "Modules/domain-handler.ts"
 
 import { renderMetadata } from "../_.infografis/meta.ts"
-import { useSetTab } from "../_.infografis/use-set-tab.ts"
 
 export const meta: MetaFunction = (args) => {
   return renderMetadata(args, "idm")
@@ -35,7 +34,6 @@ async function loadIDM(schema: UnderscoredCode) {
 }
 
 export default function IDMView() {
-  useSetTab("idm")
   const schema = useAtomValue(schemaAtom)
   const setIDMs = useSetAtom(IDMsAtom)
 
@@ -50,18 +48,16 @@ export default function IDMView() {
   }, [schema, setIDMs])
 
   return (
-    <Tabs.Panel value="idm">
-      <Stack gap={100} mt={64}>
-        <Box mt={{ base: -65, sm: 0 }}>
-          <IdmSummary />
-        </Box>
-        <Box mt={{ base: -65, sm: 0 }}>
-          <IdmScoreYearByYear />
-        </Box>
-        <Box mt={{ base: -65, sm: 0 }}>
-          <IdmTable />
-        </Box>
-      </Stack>
-    </Tabs.Panel>
+    <Stack gap={100} mt={64}>
+      <Box mt={{ base: -65, sm: 0 }}>
+        <IdmSummary />
+      </Box>
+      <Box mt={{ base: -65, sm: 0 }}>
+        <IdmScoreYearByYear />
+      </Box>
+      <Box mt={{ base: -65, sm: 0 }}>
+        <IdmTable />
+      </Box>
+    </Stack>
   )
 }
