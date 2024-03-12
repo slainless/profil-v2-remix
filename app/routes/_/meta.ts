@@ -2,7 +2,7 @@
 import type { MetaArgs } from "@remix-run/node"
 import type { WritableDeep } from "type-fest"
 
-import type { Locale } from "Locale/locale.ts"
+import { getLocale, type Locale } from "Locale/locale.ts"
 
 import { asset } from "Services/assets.ts"
 
@@ -18,11 +18,13 @@ import {
 } from "Modules/metadata.ts"
 import { stripURL } from "Modules/url.ts"
 
+import { mustGetRootLayoutData } from "./data.ts"
 import {
   desaFullname,
   orgName,
   websiteTitle,
-  type createTitle,
+  createTitle,
+  createDescription,
 } from "./meta-utils.ts"
 import type { loader } from "./route.tsx"
 
@@ -130,3 +132,24 @@ export const renderDescription = (desc: string) => [
   metadata("description", desc),
   metadata("og:description", desc),
 ]
+
+export interface Page {
+  title: string
+  ogTitle: string
+  description: string
+}
+export function renderCommonMetadata(data: MetaArgs, page: Page) {
+  const parentData = mustGetRootLayoutData(data.matches)
+  const { profile } = parentData
+  const locale = getLocale("ID")
+
+  const title = createTitle(locale, profile, page.title, page.ogTitle)
+  const description = createDescription(locale, profile, page.description)
+  const metadata = createMetadata(locale, parentData)
+
+  return [
+    ...renderTitle(title),
+    ...renderDescription(description),
+    ...renderMetadata(metadata),
+  ]
+}
