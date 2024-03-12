@@ -20,6 +20,7 @@ import { theme } from "Theme/mantine.js"
 
 import AppFooter from "Components/MainLayouts/Footer.tsx"
 import AppHeader from "Components/MainLayouts/Header.tsx"
+import { PageLoadingBar } from "Components/PageLoadingBar.tsx"
 
 import { ProfileHydrator } from "Providers/profile.ts"
 import { JotaiGlobalStore } from "Providers/store.ts"
@@ -93,6 +94,7 @@ export default function Layout() {
 
         <Fragment /* === Other === */>
           <Notifications />
+          <PageLoadingBar />
         </Fragment>
 
         <UrqlProvider
