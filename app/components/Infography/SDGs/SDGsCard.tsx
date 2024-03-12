@@ -1,6 +1,6 @@
 import { Card, Box, Title, Stack, Image, Text } from "@mantine/core"
 
-import { cardLayoutStyle } from "./SDGsCard.css"
+import { cardLayoutStyle } from "./SDGsCard.css.ts"
 
 export const SDGsCard = (props: {
   title: string

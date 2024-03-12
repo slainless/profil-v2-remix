@@ -2,9 +2,9 @@ import ky from "ky"
 import urlJoin from "url-join"
 
 export const rest = ky.create({
-  prefixUrl: urlJoin(process.env.VITE_GRAPHQL_ENDPOINT!, "../"),
+  prefixUrl: urlJoin(import.meta.env.VITE_GRAPHQL_ENDPOINT!, "../"),
   headers: {
-    Authorization: "Bearer " + process.env.VITE_GRAPHQL_ACCESS_WEBTOKEN,
+    Authorization: "Bearer " + import.meta.env.VITE_GRAPHQL_ACCESS_WEBTOKEN,
   },
 })
 

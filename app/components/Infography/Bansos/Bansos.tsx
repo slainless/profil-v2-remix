@@ -1,12 +1,16 @@
 "use client"
 
-import * as am4charts from "@amcharts/amcharts4/charts"
-import * as am4core from "@amcharts/amcharts4/core"
+import { PieChart3D, PieSeries3D } from "@amcharts/amcharts4/charts"
+import {
+  useTheme as amchartsUseTheme,
+  create,
+  options,
+  percent,
+} from "@amcharts/amcharts4/core"
 import am4themes_animated from "@amcharts/amcharts4/themes/animated"
 import { Stack, Box, Grid, Text, Title } from "@mantine/core"
 import { IconCircleX } from "@tabler/icons-react"
-import { useMemo } from "react"
-import { useEffect } from "react"
+import { useMemo, useEffect } from "react"
 import { useQuery } from "urql"
 
 import { vars } from "Theme/artifact/vars.mjs"
@@ -17,7 +21,7 @@ import { bansosQuery } from "Queries/bansos.ts"
 
 import { contentsOrNone } from "Modules/css-utils"
 
-am4core.useTheme(am4themes_animated)
+amchartsUseTheme(am4themes_animated)
 
 const Card = ({ name, value }: { name: string; value: number }) => {
   return (
@@ -65,16 +69,16 @@ const Bansos = () => {
 
   useEffect(() => {
     // Create the chart
-    const chart = am4core.create("bansosChart", am4charts.PieChart3D)
+    const chart = create("bansosChart", PieChart3D)
     chart.hiddenState.properties.opacity = 0 // Initial fade-in
-    am4core.options.commercialLicense = true
+    options.commercialLicense = true
 
     chart.data = bansos || []
 
-    chart.radius = am4core.percent(90)
-    chart.innerRadius = am4core.percent(20)
+    chart.radius = percent(90)
+    chart.innerRadius = percent(20)
 
-    const series = chart.series.push(new am4charts.PieSeries3D())
+    const series = chart.series.push(new PieSeries3D())
     series.dataFields.value = "value"
     series.dataFields.category = "name"
     series.depth = 10

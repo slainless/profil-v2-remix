@@ -81,8 +81,8 @@ const PopulationByPekerjaan = () => {
                   </Table.Tr>
                 </Table.Thead>
                 <Table.Tbody>
-                  {sorted?.map((i) => (
-                    <Table.Tr key={i.name + i.value}>
+                  {sorted?.map((i, index) => (
+                    <Table.Tr key={index}>
                       <Table.Td>{i.name}</Table.Td>
                       <Table.Td>{i.value}</Table.Td>
                     </Table.Tr>
@@ -95,8 +95,8 @@ const PopulationByPekerjaan = () => {
             <Grid style={{ overflow: "visible" }}>
               {sorted
                 ?.slice(0, 6)
-                .map((i) => (
-                  <Card name={i.name} value={i.value} key={i.name + i.value} />
+                .map((i, index) => (
+                  <Card name={i.name} value={i.value} key={index} />
                 ))}
             </Grid>
           </Grid.Col>
