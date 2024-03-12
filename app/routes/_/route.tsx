@@ -28,10 +28,6 @@ import { UrqlProvider } from "Providers/urql.ts"
 import { getLocale } from "Locale/locale.ts"
 
 import { mustNormalizeContext } from "Services/.server/context.ts"
-import { asset } from "Services/assets.ts"
-
-import { governmentOrganization } from "Modules/metadata.ts"
-import { stripURL } from "Modules/url.ts"
 
 import {
   createMetadata,
@@ -40,6 +36,7 @@ import {
   createDescription,
   renderTitle,
   renderDescription,
+  renderGovernmentRichData,
 } from "./meta.ts"
 
 export async function loader({ context }: LoaderFunctionArgs) {
@@ -48,9 +45,6 @@ export async function loader({ context }: LoaderFunctionArgs) {
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   invariant(data, "No profile found")
-  const { canonUrl, profile, schema } = data
-  const baseUrl = stripURL(canonUrl)
-
   const locale = getLocale("ID")
 
   const metadata = createMetadata(locale, data)
@@ -73,38 +67,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
     //     metadata.desa_fullname,
     //   ],
     // }),
-    governmentOrganization({
-      "@context": "https://schema.org",
-      "@type": "GovernmentOrganization",
-      "@id": baseUrl,
-      name: metadata.publisher,
-      alternateName: profile.name.deskel,
-      description,
-      logo: asset.logo300({ schema, file: profile.logoURL }),
-      url: baseUrl,
-      sameAs: [
-        profile.socialMedia?.facebook,
-        profile.socialMedia?.instagram,
-        profile.socialMedia?.tiktok,
-        profile.socialMedia?.twitter,
-        profile.socialMedia?.youtube,
-        // should also add link to wikipedia, something like https://id.wikipedia.org/wiki/Pao-Pao,_Tanete_Rilau,_Barru
-      ],
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: profile.officeAddress,
-        addressLocality: profile.name.kabkota,
-        addressRegion: profile.name.provinsi,
-        postalCode: profile.postalCode,
-        addressCountry: "ID",
-      },
-      contactPoint: {
-        "@type": "ContactPoint",
-        email: profile.email,
-        telephone: profile.phone,
-        contactType: "Official Contact",
-      },
-    }),
+    ...renderGovernmentRichData(locale, data, metadata),
   ]
 }
 

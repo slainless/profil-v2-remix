@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { MetaArgs } from "@remix-run/node"
-import type { WritableDeep } from "type-fest"
+import type { RequiredDeep, WritableDeep } from "type-fest"
 
 import { getLocale, type Locale } from "Locale/locale.ts"
 
@@ -15,6 +15,7 @@ import {
   robots,
   title,
   metadata,
+  governmentOrganization,
 } from "Modules/metadata.ts"
 import { stripURL } from "Modules/url.ts"
 
@@ -151,5 +152,48 @@ export function renderCommonMetadata(data: MetaArgs, page: Page) {
     ...renderTitle(title),
     ...renderDescription(description),
     ...renderMetadata(metadata),
+  ]
+}
+
+export function renderGovernmentRichData(
+  locale: LocaleType,
+  { profile, canonUrl, schema }: LoaderData,
+  metadata: Metadata,
+) {
+  const baseUrl = stripURL(canonUrl)
+  const description = createDescription(locale, profile)
+  return [
+    governmentOrganization({
+      "@context": "https://schema.org",
+      "@type": "GovernmentOrganization",
+      "@id": baseUrl,
+      name: metadata.publisher,
+      alternateName: profile.name.deskel,
+      description,
+      logo: asset.logo300({ schema, file: profile.logoURL }),
+      url: baseUrl,
+      sameAs: [
+        profile.socialMedia?.facebook,
+        profile.socialMedia?.instagram,
+        profile.socialMedia?.tiktok,
+        profile.socialMedia?.twitter,
+        profile.socialMedia?.youtube,
+        // should also add link to wikipedia, something like https://id.wikipedia.org/wiki/Pao-Pao,_Tanete_Rilau,_Barru
+      ],
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: profile.officeAddress,
+        addressLocality: profile.name.kabkota,
+        addressRegion: profile.name.provinsi,
+        postalCode: profile.postalCode,
+        addressCountry: "ID",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: profile.email,
+        telephone: profile.phone,
+        contactType: "Official Contact",
+      },
+    }),
   ]
 }
