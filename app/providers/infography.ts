@@ -5,7 +5,7 @@ export const currentTabAtom = atom("")
 
 export const TabHydrator = ({ currentTab }: { currentTab: string }) => {
   useHydrateAtoms([[currentTabAtom, currentTab]], {
-    // dangerouslyForceHydrate: true,
+    dangerouslyForceHydrate: true,
   })
 
   return null
