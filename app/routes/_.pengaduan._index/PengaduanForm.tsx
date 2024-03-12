@@ -19,7 +19,7 @@ import {
   IconThumbUp,
 } from "@tabler/icons-react"
 import { useAtomValue } from "jotai"
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { Controller, useForm } from "react-hook-form"
 import { WritableDeep } from "type-fest"
 
@@ -39,9 +39,8 @@ import { formData, rest } from "Services/rest.ts"
 
 import { errMsg, errTitle } from "Modules/strings.ts"
 
-const resolver = typeboxResolver(Schema.payload)
-
 export function PengaduanForm() {
+  const resolver = useMemo(() => typeboxResolver(Schema.payload), [])
   const schema = useAtomValue(schemaAtom)
 
   const [loading, setLoading] = useState<boolean>(false)

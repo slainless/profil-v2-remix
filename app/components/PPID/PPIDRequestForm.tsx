@@ -21,7 +21,7 @@ import {
   IconThumbUp,
 } from "@tabler/icons-react"
 import { useAtomValue } from "jotai"
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { useForm } from "react-hook-form"
 
 import { vars } from "Theme/artifact/vars.mjs"
@@ -33,9 +33,8 @@ import { formData, rest } from "Services/rest.ts"
 
 import { fieldSpanFullStyle, requestFormStyle } from "./PPIDRequestForm.css"
 
-const resolver = typeboxResolver(Schema.payload)
-
 export const PPIDRequestForm = () => {
+  const resolver = useMemo(() => typeboxResolver(Schema.payload), [])
   const schema = useAtomValue(schemaAtom)
   const [loading, setLoading] = useState(false)
 

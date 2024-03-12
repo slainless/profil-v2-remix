@@ -1,4 +1,3 @@
-import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer"
 import {
   ModalRoot,
   ModalContent,
@@ -10,13 +9,14 @@ import {
   Group,
   Stack,
 } from "@mantine/core"
+import { Viewer, Worker } from "@react-pdf-viewer/core"
+import "@react-pdf-viewer/core/lib/styles/index.css"
+import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout"
+import "@react-pdf-viewer/default-layout/lib/styles/index.css"
 import { useAtomValue } from "jotai"
 import { useCallback, useLayoutEffect, useMemo } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
-
 import { usePathHash } from "Components/Hooks/use-path-hash.ts"
-import { useWindowSize } from "Components/Hooks/use-window-size.ts"
 
 import { PPIDItemsAtom } from "Providers/PPID.ts"
 
@@ -27,6 +27,7 @@ import "./PPIDViewModal.css"
 const regexpViewHash = /^#view-(\d+)$/
 
 export const PPIDViewModal = () => {
+  const defaultLayoutPluginInstance = defaultLayoutPlugin()
   const PPIDItems = useAtomValue(PPIDItemsAtom)
   const hash = usePathHash()
   const viewIndex = useMemo(() => regexpViewHash.exec(hash)?.[1] ?? "", [hash])
@@ -51,15 +52,6 @@ export const PPIDViewModal = () => {
     }
   }, [hash])
 
-  const { width, tresholdWidth } = useWindowSize()
-  const pdfDefaultZoom = useMemo(() => {
-    if (width == null || width > tresholdWidth) return 1
-    else if (width > 660) return 1.1
-    else if (width > 550) return 1.2
-    else if (width > 420) return 1.3
-    else return 1.4
-  }, [tresholdWidth, width])
-
   return (
     <ModalRoot
       opened={opened}
@@ -79,38 +71,16 @@ export const PPIDViewModal = () => {
           </Stack>
         </ModalHeader>
         <ModalBody>
-          {item !== undefined ? (
-            <DocViewer
-              documents={[
-                { uri: withAtom(asset.ppid)({ file: item?.fileURL }) },
-              ]}
-              pluginRenderers={DocViewerRenderers}
-              config={{
-                header: {
-                  disableHeader: true,
-                  // disableFileName: false,
-                  // retainURLParams: false,
-                },
-                // csvDelimiter: ",",
-                pdfZoom: {
-                  defaultZoom: pdfDefaultZoom!,
-                  zoomJump: 0.1,
-                },
-                pdfVerticalScrollByDefault: true,
-              }}
-              theme={{
-                primary: "#fff",
-                secondary: vars("color-primary-0"),
-                tertiary: vars("color-primary-5"),
-                textPrimary: vars("color-primary-0"),
-                textSecondary: vars("color-primary-7"),
-                textTertiary: vars("color-primary-9"),
-                disableThemeScrollbar: false,
-              }}
-            />
-          ) : (
-            "Tidak ada file yang ditampilkan."
-          )}
+          <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
+            {item !== undefined ? (
+              <Viewer
+                fileUrl={withAtom(asset.ppid)({ file: item?.fileURL })}
+                plugins={[defaultLayoutPluginInstance]}
+              />
+            ) : (
+              "Tidak ada file yang ditampilkan."
+            )}
+          </Worker>
         </ModalBody>
       </ModalContent>
     </ModalRoot>

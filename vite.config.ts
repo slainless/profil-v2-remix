@@ -31,5 +31,8 @@ export default defineConfig({
   },
   ssr: {
     noExternal: ["@amcharts/amcharts4"],
+    optimizeDeps: {
+      include: [],
+    },
   },
 })

@@ -15,7 +15,7 @@ import {
   TextInput,
 } from "@mantine/core"
 import { useUncontrolled } from "@mantine/hooks"
-import { useCallback } from "react"
+import { useCallback, useMemo } from "react"
 import { useForm } from "react-hook-form"
 
 import { vars } from "Theme/artifact/vars.mjs"
@@ -48,8 +48,6 @@ export interface LoginFormProps {
   onChangeLoading?: (newValue: LoadingType) => void
 }
 
-const resolver = typeboxResolver(Schema.form)
-
 export function LoginForm({
   onLoginSubmit,
   onRegisterClick,
@@ -59,6 +57,7 @@ export function LoginForm({
   loading,
   onChangeLoading,
 }: LoginFormProps) {
+  const resolver = useMemo(() => typeboxResolver(Schema.form), [])
   const {
     register,
     handleSubmit,

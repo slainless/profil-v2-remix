@@ -12,7 +12,7 @@ import {
 } from "@mantine/core"
 import { useUncontrolled } from "@mantine/hooks"
 import { IconAt, IconPhone } from "@tabler/icons-react"
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
 import { useForm } from "react-hook-form"
 
 import { vars } from "Theme/artifact/vars.mjs"
@@ -26,8 +26,6 @@ import { RegisterPayload, Schema } from "Services/.client/register.ts"
 import { Service } from "Services/oauth"
 
 import { parsePhoneNumber } from "Modules/intl"
-
-const resolver = typeboxResolver(Schema.form)
 
 export interface RegisterFormPrefill {
   name: string
@@ -50,6 +48,7 @@ interface RegisterFormProps {
   onAlertClose?: () => void
 }
 export function RegisterForm({ prefill, ...props }: RegisterFormProps) {
+  const resolver = useMemo(() => typeboxResolver(Schema.form), [])
   const {
     register,
     formState,
