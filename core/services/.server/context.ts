@@ -16,7 +16,10 @@ export interface Context {
 }
 
 export function mustNormalizeContext(context: AppLoadContext) {
-  if (context.error) throw context.error
+  if (context.error)
+    throw new Response(JSON.stringify(context.error), {
+      status: context.error.status,
+    })
   return {
     ...context,
     schema: context.schema?.replaceAll(".", "_") as UnderscoredCode,

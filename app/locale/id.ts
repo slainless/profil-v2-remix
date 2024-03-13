@@ -58,6 +58,10 @@ export default {
   [errTitle(ErrorCode.NotImplemented)]: "Belum terimplementasi",
   [errTitle(ErrorCode.Ok)]: "Berhasil",
 
+  [errTitle(ErrorCode.SchemaNotFound)]: "Data belum terdaftar",
+  [errTitle(ErrorCode.ProfileLoadError)]: "Gagal membaca data desa",
+  [errTitle(ErrorCode.ProfileDataEmpty)]: "Gagal membaca data desa",
+
   /* -------------------------------------------------------------------------- */
   /*                                Error Message                               */
   /* -------------------------------------------------------------------------- */
@@ -115,4 +119,10 @@ export default {
   [errMsg(ErrorCode.NotImplemented)]:
     "Jika anda menerima pesan ini, tolong hubungi administrator DIGIDES",
   [errMsg(ErrorCode.Ok)]: "OK",
+  [errMsg(ErrorCode.SchemaNotFound)]:
+    "Desa belum bergabung ke dalam platform DIGIDES atau baru-baru saja melakukan aktivasi",
+  [errMsg(ErrorCode.ProfileLoadError)]:
+    "Silakan diulangi kembali beberapa saat lagi atau hubungi administrator DIGIDES",
+  [errMsg(ErrorCode.ProfileDataEmpty)]:
+    "Data desa kosong! Silakan hubungi administrator DIGIDES",
 } as const

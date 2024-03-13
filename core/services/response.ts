@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Static, TSchema } from "@sinclair/typebox"
-import { TypeCheck } from "@sinclair/typebox/compiler"
+import { Static, TSchema, Type } from "@sinclair/typebox"
+import { TypeCheck, TypeCompiler } from "@sinclair/typebox/compiler"
 import { HTTPError, TimeoutError } from "ky"
 import { render } from "micromustache"
 import type { Writable } from "type-fest"
@@ -9,12 +9,23 @@ import { ErrorCode, ErrorCodeReverse, is } from "Services/data.ts"
 
 import { errMsg, errTitle } from "Modules/strings.ts"
 
-export interface NormalizedError {
-  status: number
-  code: ErrorCode
-  error?: unknown
-  text?: string | null
+export namespace Schema {
+  export const normalizedError = Type.Object({
+    status: Type.Number(),
+    code: Type.Enum(ErrorCode),
+    error: Type.Optional(Type.Unknown()),
+    text: Type.Optional(Type.Union([Type.String(), Type.Null()])),
+  })
 }
+
+export namespace Compiled {
+  export const normalizedError = TypeCompiler.Compile(Schema.normalizedError)
+}
+
+export type NormalizedError = Static<typeof Schema.normalizedError>
+export const isNormalizedError = Compiled.normalizedError.Check.bind(
+  Compiled.normalizedError,
+)
 
 export interface Feedback {
   title?: any
@@ -23,7 +34,9 @@ export interface Feedback {
   icon?: any
 }
 
-const r = <T extends NormalizedError>(resp: Writable<Readonly<T>>) => resp
+export const createNormalizedError = <T extends Partial<NormalizedError>>(
+  resp: Writable<Readonly<T>>,
+) => ({ status: 0, ...resp })
 
 const statusCodeMap = {
   400: ErrorCode.BadRequest,
@@ -62,15 +75,15 @@ export async function getError(res: unknown): Promise<NormalizedError> {
   } else if (res instanceof HTTPError) {
     resp = res.response
   } else if (res instanceof TimeoutError) {
-    return r({ status: 0, code: ErrorCode.Timeout })
+    return createNormalizedError({ status: 0, code: ErrorCode.Timeout })
   } else if (res instanceof TypeError) {
-    return r({ status: 0, code: ErrorCode.FailedFetch })
+    return createNormalizedError({ status: 0, code: ErrorCode.FailedFetch })
   } else {
-    return r({ status: 0, code: ErrorCode.OtherError })
+    return createNormalizedError({ status: 0, code: ErrorCode.OtherError })
   }
 
   if (200 <= resp.status && resp.status < 300) {
-    return r({ status: resp.status, code: ErrorCode.Ok })
+    return createNormalizedError({ status: resp.status, code: ErrorCode.Ok })
   }
 
   let json: any | null = null
@@ -83,7 +96,7 @@ export async function getError(res: unknown): Promise<NormalizedError> {
   }
 
   if (json == null)
-    return r({
+    return createNormalizedError({
       // @ts-expect-error ...
       code: statusCodeMap[resp.status] ?? ErrorCode.OtherError,
       status: resp.status,
@@ -92,13 +105,13 @@ export async function getError(res: unknown): Promise<NormalizedError> {
 
   if (is.error(json))
     if (json.code in ErrorCodeReverse)
-      return r({
+      return createNormalizedError({
         code: json.code as ErrorCode,
         status: resp.status,
         error: json.error,
       })
 
-  return r({
+  return createNormalizedError({
     code: ErrorCode.OtherError,
     status: resp.status,
     error: json.error,

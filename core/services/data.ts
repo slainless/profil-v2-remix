@@ -42,6 +42,13 @@ export enum ErrorCode {
 
   // otp
   WrongOTP = "wrong_otp",
+
+  /* -------------------------------------------------------------------------- */
+  /*                                Local Errors                                */
+  /* -------------------------------------------------------------------------- */
+  SchemaNotFound = "schema_not_found",
+  ProfileLoadError = "profile_load_error",
+  ProfileDataEmpty = "profile_data_empty",
 }
 
 export const ErrorCodeReverse = Object.fromEntries(

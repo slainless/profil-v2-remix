@@ -1,22 +1,11 @@
-import "@mantine/carousel/styles.css"
-import "@mantine/code-highlight/styles.css"
-import { AppShell, Box, MantineProvider } from "@mantine/core"
-import "@mantine/core/styles.css"
+import { AppShell, Box } from "@mantine/core"
 import { Notifications } from "@mantine/notifications"
-import "@mantine/notifications/styles.css"
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node"
 import { Outlet, useLoaderData } from "@remix-run/react"
 import "lightgallery/css/lg-thumbnail.css"
 import "lightgallery/css/lg-zoom.css"
 import "lightgallery/css/lightgallery.css"
-import merge from "lodash.merge"
-import "normalize.css"
 import { Fragment } from "react"
-import invariant from "tiny-invariant"
-
-import "Theme/artifact/mantine.css"
-import "Theme/global.css"
-import { theme } from "Theme/mantine.js"
 
 import AppFooter from "Components/MainLayouts/Footer.tsx"
 import AppHeader from "Components/MainLayouts/Header.tsx"
@@ -45,7 +34,7 @@ export async function loader({ context }: LoaderFunctionArgs) {
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
-  invariant(data, "No profile found")
+  if (data == null) return []
   const locale = getLocale("ID")
 
   const metadata = createMetadata(locale, data)
@@ -74,54 +63,46 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 
 export default function Layout() {
   const data = useLoaderData<typeof loader>()
-  const finalTheme = merge({}, theme)
-  if (data.profile.primaryPalette.length === 10)
-    finalTheme.colors["primary"] = data.profile.primaryPalette
   return (
-    <MantineProvider
-      // @ts-expect-error mismatching color type
-      theme={finalTheme}
-    >
-      <JotaiGlobalStore>
-        <Fragment /* === Hydrator === */>
-          <ProfileHydrator
-            profile={data.profile}
-            schema={data.schema}
-            subdomain={data.subdomain}
-            baseDomain={data.baseDomain}
-          />
-        </Fragment>
-
-        <Fragment /* === Other === */>
-          <Notifications />
-          <PageLoadingBar />
-        </Fragment>
-
-        <UrqlProvider
+    <JotaiGlobalStore>
+      <Fragment /* === Hydrator === */>
+        <ProfileHydrator
+          profile={data.profile}
           schema={data.schema}
-          endpoint={import.meta.env.VITE_GRAPHQL_ENDPOINT}
-          token={data.token}
+          subdomain={data.subdomain}
+          baseDomain={data.baseDomain}
+        />
+      </Fragment>
+
+      <Fragment /* === Other === */>
+        <Notifications />
+        <PageLoadingBar />
+      </Fragment>
+
+      <UrqlProvider
+        schema={data.schema}
+        endpoint={import.meta.env.VITE_GRAPHQL_ENDPOINT}
+        token={data.token}
+      >
+        <AppShell
+          padding={0}
+          bg={"#F6F6F6"}
+          styles={{
+            root: {
+              minHeight: "100vh",
+              display: "grid",
+              gridTemplateRows: "auto max-content",
+              gridTemplateColumns: "100%",
+            },
+          }}
         >
-          <AppShell
-            padding={0}
-            bg={"#F6F6F6"}
-            styles={{
-              root: {
-                minHeight: "100vh",
-                display: "grid",
-                gridTemplateRows: "auto max-content",
-                gridTemplateColumns: "100%",
-              },
-            }}
-          >
-            <AppHeader />
-            <Box>
-              <Outlet />
-            </Box>
-            <AppFooter />
-          </AppShell>
-        </UrqlProvider>
-      </JotaiGlobalStore>
-    </MantineProvider>
+          <AppHeader />
+          <Box>
+            <Outlet />
+          </Box>
+          <AppFooter />
+        </AppShell>
+      </UrqlProvider>
+    </JotaiGlobalStore>
   )
 }

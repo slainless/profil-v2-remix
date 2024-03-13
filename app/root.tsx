@@ -1,4 +1,8 @@
-import { ColorSchemeScript } from "@mantine/core"
+import "@mantine/carousel/styles.css"
+import "@mantine/code-highlight/styles.css"
+import { Box, Center, ColorSchemeScript, MantineProvider } from "@mantine/core"
+import "@mantine/core/styles.css"
+import "@mantine/notifications/styles.css"
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node"
 import {
   Links,
@@ -6,17 +10,33 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  isRouteErrorResponse,
+  useRouteError,
+  useRouteLoaderData,
 } from "@remix-run/react"
+import merge from "lodash.merge"
+import "normalize.css"
 
-import { Base, title } from "Modules/metadata.ts"
+import "Theme/artifact/mantine.css"
+import "Theme/global.css"
+import theme from "Theme/mantine.js"
 
-export function loader({ request }: LoaderFunctionArgs) {
-  return {
-    path: request.url,
-  }
+import { ErrorSimple } from "Components/ErrorSimple"
+import { ErrorWithStackTrace } from "Components/ErrorWithStackTrace"
+
+import { getLocale } from "Locale/locale.ts"
+
+import { mustNormalizeContext } from "Services/.server/context.ts"
+import { isNormalizedError } from "Services/response.ts"
+
+import { Base } from "Modules/metadata.ts"
+import { errMsg, errTitle } from "Modules/strings.ts"
+
+export function loader({ context }: LoaderFunctionArgs) {
+  return mustNormalizeContext(context)
 }
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => {
+export const meta: MetaFunction<typeof loader> = () => {
   const standard = {
     title: "Digital Desa",
     description:
@@ -33,7 +53,6 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   }
 
   return [
-    title(standard.title),
     ...Base.standard(standard),
     ...Base.openGraph({
       "og:type": "website",
@@ -41,7 +60,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
       "og:description": standard.description,
       "og:locale": "ID",
       "og:site_name": standard.title,
-      "og:url": data?.path,
+      "og:url": "https://profil.digitaldesa.id",
       image: [image],
     }),
     {
@@ -84,6 +103,11 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const data = useRouteLoaderData<typeof loader>("root")
+  const finalTheme = merge({}, theme)
+  if (data && data.profile.primaryPalette.length === 10)
+    finalTheme.colors["primary"] = data.profile.primaryPalette
+
   return (
     <html lang="en">
       <head>
@@ -104,7 +128,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <ColorSchemeScript />
       </head>
       <body>
-        {children}
+        <MantineProvider
+          // @ts-expect-error mismatching color type
+          theme={finalTheme}
+        >
+          {children}
+        </MantineProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -114,4 +143,66 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return <Outlet />
+}
+
+const mainUrl = "https://profil.digitaldesa.id"
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const wrap = (children: any) => (
+  <Center mih="100vh">
+    <Box maw="85%">{children}</Box>
+  </Center>
+)
+export function ErrorBoundary() {
+  const locale = getLocale("ID")
+  const error = useRouteError()
+
+  if (isRouteErrorResponse(error)) {
+    try {
+      const err = JSON.parse(error.data)
+      if (isNormalizedError(err) == false) throw null
+      switch (error.status) {
+        case 404:
+          return wrap(
+            <ErrorSimple
+              mainUrl={mainUrl}
+              title={locale[errTitle(err.code)]}
+              message={locale[errMsg(err.code)]}
+              icon={404}
+            />,
+          )
+        default:
+          return wrap(
+            <ErrorSimple
+              mainUrl={mainUrl}
+              title={locale[errTitle(err.code)]}
+              message={locale[errMsg(err.code)]}
+              icon={500}
+            />,
+          )
+      }
+    } catch {
+      switch (error.status) {
+        case 404:
+          return wrap(<ErrorSimple icon={404} mainUrl={mainUrl} />)
+        default:
+          return wrap(
+            <ErrorSimple
+              mainUrl={mainUrl}
+              title={`Status: ${error.status}`}
+              message={
+                typeof error.data == "string"
+                  ? error.data
+                  : JSON.stringify(error.data)
+              }
+            />,
+          )
+      }
+    }
+  } else if (error instanceof Error) {
+    return wrap(
+      <ErrorWithStackTrace stackTrace={error.stack} message={error.message} />,
+    )
+  }
+
+  return wrap(<ErrorWithStackTrace message="Unknown error" />)
 }
