@@ -1,6 +1,6 @@
+import type { MetaArgs } from "@remix-run/node"
 import normalizeUrl from "normalize-url"
 import type { Article, WithContext } from "schema-dts"
-import type { RequiredDeep } from "type-fest"
 import urlJoin from "url-join"
 
 import { type Locale } from "Locale/locale.ts"
@@ -16,10 +16,11 @@ import {
 } from "../_/meta.ts"
 import type { loader } from "./route.tsx"
 
+type Data = NonNullable<MetaArgs<typeof loader>["data"]>
 type LocaleType = Record<keyof typeof Locale.ID, string>
 export function renderMetadata(
   locale: LocaleType,
-  data: RequiredDeep<Awaited<ReturnType<typeof loader>>>,
+  data: Data,
   overrides?: Parameters<typeof crtMetadata>[2],
 ) {
   const { article, schema } = data
@@ -48,10 +49,7 @@ export function renderMetadata(
   return rdrMetadata(metadata)
 }
 
-export function renderArticleRichData(
-  locale: LocaleType,
-  data: RequiredDeep<Awaited<ReturnType<typeof loader>>>,
-) {
+export function renderArticleRichData(locale: LocaleType, data: Data) {
   const { article, schema, profile, canonUrl } = data
   return [
     richData({

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import type { MetaArgs } from "@remix-run/node"
 import normalizeUrl from "normalize-url"
 import type { BreadcrumbList, Product, Review, WithContext } from "schema-dts"
-import type { RequiredDeep } from "type-fest"
 import urlJoin from "url-join"
 
 import type { GalleryItem, MarketItemVariant } from "GraphQL/graphql.ts"
@@ -13,7 +13,7 @@ import { OpenGraph } from "Modules/metadata.ts"
 
 import type { loader } from "./route.tsx"
 
-type Data = RequiredDeep<Awaited<ReturnType<typeof loader>>>
+type Data = NonNullable<MetaArgs<typeof loader>["data"]>
 export function createBreadcrumb(data: Data, params: URLSearchParams) {
   const { baseUrl, product, variant } = data
   const vid = params.get("v_id")

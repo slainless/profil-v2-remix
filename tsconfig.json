@@ -37,6 +37,8 @@
       "Queries/*": ["./core/queries/*"],
       "Modules/*": ["./core/modules/*"],
 
+      "Server/*": ["./server/*"],
+
       "~/*": ["./app/*"]
     },
 

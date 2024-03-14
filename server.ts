@@ -4,8 +4,7 @@ import compression from "compression"
 import express from "express"
 import morgan from "morgan"
 
-import { instrumentation } from "./server/instrumentation.js"
-import { contextLoader } from "./server/loader.js"
+import { createExpressContextLoader } from "./server/loader.express.js"
 
 installGlobals()
 
@@ -18,13 +17,12 @@ const viteDevServer =
         }),
       )
 
-const memory = await instrumentation()
 const remixHandler = createRequestHandler({
   // @ts-expect-error ...
   build: viteDevServer
     ? () => viteDevServer.ssrLoadModule("virtual:remix/server-build")
     : await import("./build/server/index.js"),
-  getLoadContext: contextLoader(memory),
+  getLoadContext: await createExpressContextLoader(),
 })
 
 const app = express()

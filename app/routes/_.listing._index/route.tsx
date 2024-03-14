@@ -1,20 +1,17 @@
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
-import invariant from "tiny-invariant"
 
 import MapSection from "Components/Map/MapSection.tsx"
 import PageContainer from "Components/PageContainer.tsx"
 
-import type { Code } from "Modules/domain-handler.ts"
+import { assertCommonContext } from "Server/context.ts"
 
 import { renderCommonMetadata } from "../_/meta.ts"
 
 export async function loader({ context }: LoaderFunctionArgs) {
-  invariant(context.schema, "Schema is undefined")
+  assertCommonContext(context)
   return {
-    slug: context.domain.codeToSlug(
-      context.schema.replaceAll("_", ".") as Code,
-    ),
+    slug: context.slug,
   }
 }
 

@@ -4,7 +4,6 @@ import { useAtomValue } from "jotai"
 import { render } from "micromustache"
 import normalizeUrl from "normalize-url"
 import invariant from "tiny-invariant"
-import type { RequiredDeep } from "type-fest"
 import urlJoin from "url-join"
 
 import { ArticleHeader } from "Components/Article/ArticleHeader.tsx"
@@ -18,10 +17,11 @@ import { getLocale } from "Locale/locale.ts"
 import { ArticleTypeValue } from "GraphQL/graphql.ts"
 
 import { mustGetArticle } from "Services/.server/articles.ts"
-import { mustNormalizeContext } from "Services/.server/context.ts"
 import { asset } from "Services/assets.ts"
 
 import { stripURL } from "Modules/url.ts"
+
+import { mustGetCommonContext } from "Server/context.ts"
 
 import { Layout } from "../_.berita.$slug._index/Layout.tsx"
 import {
@@ -33,13 +33,13 @@ import { createDescription, createTitle } from "../_/meta-utils.ts"
 import { renderDescription, renderTitle } from "../_/meta.ts"
 
 export async function loader({ context, params }: LoaderFunctionArgs) {
-  const ctx = mustNormalizeContext(context)
+  const ctx = mustGetCommonContext(context)
   const baseUrl = stripURL(ctx.canonUrl)
   const slug = params["slug"]
   invariant(slug, "Slug is not defined")
 
   const article = await mustGetArticle(
-    context.gqlClient,
+    ctx.gqlClient,
     ctx.schema,
     slug,
     ArticleTypeValue.Tourism,
@@ -53,8 +53,8 @@ export async function loader({ context, params }: LoaderFunctionArgs) {
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
-  const _data = data as RequiredDeep<typeof data>
-  const { profile, article } = _data
+  if (data == null) return []
+  const { profile, article } = data
   const locale = getLocale("ID")
 
   const title = createTitle(locale, profile, article.title)
@@ -63,8 +63,8 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   return [
     ...renderTitle(title),
     ...renderDescription(description),
-    ...renderMetadata(locale, _data),
-    ...renderArticleRichData(locale, _data),
+    ...renderMetadata(locale, data),
+    ...renderArticleRichData(locale, data),
   ]
 }
 

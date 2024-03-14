@@ -21,19 +21,20 @@ import "Theme/artifact/mantine.css"
 import "Theme/global.css"
 import theme from "Theme/mantine.js"
 
-import { ErrorSimple } from "Components/ErrorSimple"
-import { ErrorWithStackTrace } from "Components/ErrorWithStackTrace"
+import { ErrorSimple } from "Components/ErrorSimple.tsx"
+import { ErrorWithStackTrace } from "Components/ErrorWithStackTrace.tsx"
 
 import { getLocale } from "Locale/locale.ts"
 
-import { mustNormalizeContext } from "Services/.server/context.ts"
 import { isNormalizedError } from "Services/response.ts"
 
 import { Base } from "Modules/metadata.ts"
 import { errMsg, errTitle } from "Modules/strings.ts"
 
+import { mustGetCommonContext } from "Server/context.ts"
+
 export function loader({ context }: LoaderFunctionArgs) {
-  return mustNormalizeContext(context)
+  return mustGetCommonContext(context)
 }
 
 export const meta: MetaFunction<typeof loader> = () => {

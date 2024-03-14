@@ -20,7 +20,6 @@ import { getLocale } from "Locale/locale.ts"
 
 import type { MarketItemCategory } from "GraphQL/graphql.ts"
 
-import { mustNormalizeContext } from "Services/.server/context.ts"
 import {
   mustGetMarketItemWithReviews,
   mustGetVariant,
@@ -40,6 +39,8 @@ import {
 } from "Modules/metadata.ts"
 import { stripURL } from "Modules/url.ts"
 
+import { mustGetCommonContext } from "Server/context.ts"
+
 import {
   createDescription,
   createMetadata,
@@ -57,15 +58,11 @@ import {
 } from "./meta.ts"
 
 export async function loader({ params, context }: LoaderFunctionArgs) {
-  const ctx = mustNormalizeContext(context)
+  const ctx = mustGetCommonContext(context)
 
   const id = Number.parseInt(params["id"] ?? "NaN")
   if (Number.isNaN(id) || id < 1) throw new Response(null, { status: 404 })
-  const data = await mustGetMarketItemWithReviews(
-    context.gqlClient,
-    ctx.schema,
-    id,
-  )
+  const data = await mustGetMarketItemWithReviews(ctx.gqlClient, ctx.schema, id)
 
   const variant = mustGetVariant(data.product, params)
   const baseUrl = stripURL(ctx.canonUrl)
@@ -80,8 +77,8 @@ export async function loader({ params, context }: LoaderFunctionArgs) {
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data, location }) => {
-  const _data = data as RequiredDeep<typeof data>
-  const { product: _product, variant, profile, baseUrl } = _data
+  if (data == null) return []
+  const { product: _product, variant, profile, baseUrl } = data
   const params = new URLSearchParams(location.search)
   const url = getTrueUrl(baseUrl, variant, params)
 
@@ -96,8 +93,8 @@ export const meta: MetaFunction<typeof loader> = ({ data, location }) => {
   )
   const author = _product.user?.name ?? `[User dihapus]`
 
-  const _metadata = createMetadata(locale, _data, {
-    image: createOGImages(_data, params),
+  const _metadata = createMetadata(locale, data, {
+    image: createOGImages(data, params),
     author,
     canonical: link("canonical", url),
     "og:url": url,
@@ -113,8 +110,8 @@ export const meta: MetaFunction<typeof loader> = ({ data, location }) => {
     metadata("product:plural_title", productName),
     metadata("product:price.amount", variant.price),
     metadata("product:price.currency", "IDR"),
-    breadcrumb(createBreadcrumb(_data, params)),
-    product(createProduct(_data, params)),
+    breadcrumb(createBreadcrumb(data, params)),
+    product(createProduct(data, params)),
   ]
 }
 

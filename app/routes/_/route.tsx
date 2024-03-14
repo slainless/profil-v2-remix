@@ -1,10 +1,9 @@
 import { AppShell, Box } from "@mantine/core"
 import { Notifications } from "@mantine/notifications"
-import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node"
+import type { MetaFunction } from "@remix-run/node"
 import {
   Outlet,
   isRouteErrorResponse,
-  useLoaderData,
   useRouteError,
   useRouteLoaderData,
 } from "@remix-run/react"
@@ -12,6 +11,7 @@ import "lightgallery/css/lg-thumbnail.css"
 import "lightgallery/css/lg-zoom.css"
 import "lightgallery/css/lightgallery.css"
 import { Fragment } from "react"
+import type { loader } from "~/root.tsx"
 
 import { ErrorSimple } from "Components/ErrorSimple.tsx"
 import { ErrorWithStackTrace } from "Components/ErrorWithStackTrace.tsx"
@@ -26,8 +26,7 @@ import { UrqlProvider } from "Providers/urql.ts"
 
 import { getLocale } from "Locale/locale.ts"
 
-import { mustNormalizeContext } from "Services/.server/context.ts"
-
+import { mustGetRootLayoutData } from "./data.ts"
 import {
   createMetadata,
   renderMetadata,
@@ -38,12 +37,8 @@ import {
   renderGovernmentRichData,
 } from "./meta.ts"
 
-export async function loader({ context }: LoaderFunctionArgs) {
-  return mustNormalizeContext(context)
-}
-
-export const meta: MetaFunction<typeof loader> = ({ data }) => {
-  if (data == null) return []
+export const meta: MetaFunction = ({ matches }) => {
+  const data = mustGetRootLayoutData(matches)
   const locale = getLocale("ID")
 
   const metadata = createMetadata(locale, data)
@@ -71,14 +66,14 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 }
 
 export default function Layout() {
-  const data = useLoaderData<typeof loader>()
+  const data = useRouteLoaderData<typeof loader>("root")!
   return (
     <JotaiGlobalStore key="store">
       <Fragment key="hydrator" /* === Hydrator === */>
         <ProfileHydrator
           profile={data.profile}
           schema={data.schema}
-          subdomain={data.subdomain}
+          subdomain={data.slug}
           baseDomain={data.baseDomain}
         />
       </Fragment>
@@ -127,7 +122,7 @@ export function ErrorBoundary() {
         <ProfileHydrator
           profile={data.profile}
           schema={data.schema}
-          subdomain={data.subdomain}
+          subdomain={data.slug}
           baseDomain={data.baseDomain}
         />
       </Fragment>

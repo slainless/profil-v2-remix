@@ -18,10 +18,11 @@ import { getLocale } from "Locale/locale.ts"
 import { ArticleTypeValue } from "GraphQL/graphql.ts"
 
 import { mustGetArticle } from "Services/.server/articles.ts"
-import { mustNormalizeContext } from "Services/.server/context.ts"
 import { asset } from "Services/assets.ts"
 
 import { stripURL } from "Modules/url.ts"
+
+import { mustGetCommonContext } from "Server/context.ts"
 
 import { Layout } from "../_.berita.$slug._index/Layout.tsx"
 import {
@@ -33,13 +34,13 @@ import { createDescription, createTitle } from "../_/meta-utils.ts"
 import { renderDescription, renderTitle } from "../_/meta.ts"
 
 export async function loader({ context, params }: LoaderFunctionArgs) {
-  const ctx = mustNormalizeContext(context)
+  const ctx = mustGetCommonContext(context)
   const baseUrl = stripURL(ctx.canonUrl)
   const slug = params["slug"]
   invariant(slug, "Slug is not defined")
 
   const article = await mustGetArticle(
-    context.gqlClient,
+    ctx.gqlClient,
     ctx.schema,
     slug,
     ArticleTypeValue.Potential,

@@ -1,13 +1,12 @@
 import type { MetaArgs, MetaDescriptor } from "@remix-run/node"
 import invariant from "tiny-invariant"
-import type { RequiredDeep } from "type-fest"
 
-import type { loader } from "./route.tsx"
+import type { loader } from "../../root.tsx"
 
 const getRootLayoutMatch = (matches: MetaArgs["matches"]) =>
-  matches.find((match) => match.id === "routes/_")
+  matches.find((match) => match.id === "root")
 
-export type LoaderData = RequiredDeep<MetaArgs<typeof loader>["data"]>
+export type LoaderData = NonNullable<MetaArgs<typeof loader>["data"]>
 export function getRootLayoutData(
   matches: MetaArgs["matches"],
 ): LoaderData | undefined {
