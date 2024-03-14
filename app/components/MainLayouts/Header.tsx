@@ -51,8 +51,8 @@ const AppHeader = ({ forceNonTransparent }: AppHeaderProps) => {
   const schema = useAtomValue(schemaAtom)
   const location = useLocation()
   const isUsingTransparentHeader = useMemo(
-    () => forceNonTransparent == false && location.pathname == "/",
-    [location],
+    () => !forceNonTransparent && location.pathname == "/",
+    [location, forceNonTransparent],
   )
 
   const isTransparentCallback = useCallback(
