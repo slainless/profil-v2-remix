@@ -42,13 +42,16 @@ import { navbarMenu } from "./navbar-menu.ts"
 
 const checkIsTop = () => window.scrollY < 20
 
-const AppHeader = () => {
+interface AppHeaderProps {
+  forceNonTransparent?: boolean
+}
+const AppHeader = ({ forceNonTransparent }: AppHeaderProps) => {
   const [isTransparent, setIsTransparent] = useState(false)
   const profile = useAtomValue(profileAtom)
   const schema = useAtomValue(schemaAtom)
   const location = useLocation()
   const isUsingTransparentHeader = useMemo(
-    () => location.pathname == "/",
+    () => forceNonTransparent == false && location.pathname == "/",
     [location],
   )
 
