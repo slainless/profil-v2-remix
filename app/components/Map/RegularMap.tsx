@@ -87,8 +87,8 @@ const RegularMap = () => {
   const ms = useMemo(() => mapStyle[style ?? Style.SATELLITE], [style])
   const schema = useAtomValue(schemaAtom)
 
-  const { borderDesa } = useBorderDesa(schema)
-  // if (errorDesa) console.error("Unhandled error:", errorDesa)
+  const { borderDesa, errorDesa } = useBorderDesa(schema)
+  if (errorDesa != null) console.error("BorderMapError:", errorDesa)
   const { borderPoi, centerPoi, countPoi } = useBorderPoi(result)
   const isLoadedPoi = useAtomValue(isLoadedPoiAtom)
 

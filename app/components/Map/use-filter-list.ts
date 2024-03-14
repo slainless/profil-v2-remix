@@ -1,7 +1,7 @@
 import Fuse from "fuse.js"
 import { useState, useMemo } from "react"
 
-import { PointOfInterest } from "GraphQL/codegen/graphql"
+import { PointOfInterest } from "GraphQL/graphql.ts"
 
 import { centerOfIndonesia } from "Modules/geojson-utils"
 

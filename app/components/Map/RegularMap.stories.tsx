@@ -1,17 +1,14 @@
 import { Box, TextInput } from "@mantine/core"
 import { Meta, StoryObj } from "@storybook/react"
-import { Provider, createStore, useAtom } from "jotai"
-import { useHydrateAtoms } from "jotai/utils"
+import { useAtom } from "jotai"
 import debounce from "lodash.debounce"
 import { useCallback } from "react"
 
-import { schemaAtom } from "Atoms/profile"
+import { schemaAtom } from "Providers/profile"
 
-import { DomainHandler, UnderscoredCode } from "Modules/domain-handler"
+import { DomainHandler } from "Modules/domain-handler"
 
 import RegularMap from "./RegularMap"
-
-const store = createStore()
 
 const meta = {
   title: "Map/Regular Map",
@@ -39,7 +36,7 @@ export const Preview = {
             value={schema}
             onChange={(e) => {
               const v = e.target.value
-              // @ts-expect-error
+              // @ts-expect-error ...
               debouncedSetSchema(DomainHandler.normalizeCode(v))
             }}
             placeholder="Set schema lookup"

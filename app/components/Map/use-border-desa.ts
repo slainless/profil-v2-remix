@@ -27,11 +27,10 @@ export function useBorderDesa(schema: UnderscoredCode) {
       try {
         const result = await ky.get(asset.geojson({ schema })).json()
         if (BorderDesa.Check(result)) {
-          setResult({ borderDesa: result })
+          return setResult({ borderDesa: result })
         }
         setResult({ errorDesa: Array.from(BorderDesa.Errors(result)) })
       } catch (e) {
-        console.dir(e)
         setResult({ errorDesa: e as Error })
       }
     })()
