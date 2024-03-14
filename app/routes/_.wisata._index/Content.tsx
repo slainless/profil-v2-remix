@@ -41,8 +41,9 @@ export const Content = () => {
   })
 
   useEffect(() => {
+    if (loading == true) return
     if (data?.articles != null) addResult(data.articles)
-  }, [addResult, data])
+  }, [addResult, data, loading])
 
   // const [view, setView] = useState<"list" | "carousel">("list")
   // const iconProps = {

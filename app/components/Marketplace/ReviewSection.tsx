@@ -52,8 +52,9 @@ export const ReviewSection = ({ productID }: { productID: number }) => {
   })
 
   useEffect(() => {
+    if (loading == true) return
     if (data?.reviews != null) addResult(data.reviews)
-  }, [addResult, data])
+  }, [addResult, data, loading])
 
   return (
     <Card withBorder>

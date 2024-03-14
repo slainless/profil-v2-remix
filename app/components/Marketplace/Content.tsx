@@ -43,8 +43,9 @@ function Content() {
   })
 
   useEffect(() => {
+    if (loading == true) return
     if (data?.products != null) addResult(data.products)
-  }, [addResult, data])
+  }, [addResult, data, loading])
   return (
     <Box>
       <Stack

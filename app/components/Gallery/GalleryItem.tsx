@@ -40,8 +40,9 @@ function GalleryItem() {
   })
 
   useEffect(() => {
+    if (loading == true) return
     if (data?.items != null) addResult(data?.items)
-  }, [addResult, data])
+  }, [addResult, data, loading])
 
   const onInit = () => {
     // console.log("lightGallery has been initialized")
