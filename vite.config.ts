@@ -1,13 +1,24 @@
-import { vitePlugin as remix } from "@remix-run/dev"
+import {
+  vitePlugin as remix,
+  cloudflareDevProxyVitePlugin as remixCloudflareDevProxy,
+} from "@remix-run/dev"
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin"
 import { remixDevTools } from "remix-development-tools"
 import { defineConfig } from "vite"
 import { cjsInterop } from "vite-plugin-cjs-interop"
 import tsconfigPaths from "vite-tsconfig-paths"
 
+import { cloudflareContextLoader } from "./server/loader.cloudflare.ts"
+
+const isDev = process.env.NODE_ENV == "development"
+const isCloudflare = process.env.USE_CLOUDFLARE != null
+
 export default defineConfig({
   plugins: [
-    remixDevTools(),
+    ...(isCloudflare
+      ? [remixCloudflareDevProxy({ getLoadContext: cloudflareContextLoader })]
+      : []),
+    ...(isDev ? [remixDevTools()] : []),
     remix(),
     tsconfigPaths(),
     vanillaExtractPlugin(),

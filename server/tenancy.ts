@@ -1,7 +1,7 @@
 import { type Request as ExpressRequest } from "express"
 import invariant from "tiny-invariant"
 
-import type { Domain } from "Modules/domain-handler.js"
+import type { Domain } from "../core/modules/domain-handler.js"
 
 export function mustGetHost(
   hostOrRequest: Request | ExpressRequest | string,

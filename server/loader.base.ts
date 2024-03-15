@@ -5,12 +5,13 @@ import type { ProfileQuery } from "../core/graphql/graphql.ts"
 import { getProfile } from "../core/services/.server/profile.ts"
 import { ErrorCode } from "../core/services/data.ts"
 import {
-  createNormalizedError,
-  type NormalizedError,
-} from "../core/services/response.ts"
+  createErrorContext,
+  type Context,
+  type ErrorContext,
+} from "./context.ts"
 import { getCanonUrl, type DomainContext } from "./domain.ts"
 
-export interface BaseContext {
+export interface BaseContext extends Context {
   profile: NonNullable<ProfileQuery["profile"]>
   url: string
   canonUrl: string
@@ -20,20 +21,13 @@ export interface BaseContext {
   gqlClient: Client
 }
 
-export interface ErrorContext {
-  error: NormalizedError
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const createError = (code: ErrorCode, status: number, data?: any) =>
-  createNormalizedError({ code, error: data, status })
-
 export async function baseContextLoader(
   request: Request | ExpressRequest,
   client: Client,
   domainCtx?: DomainContext,
 ): Promise<ErrorContext | BaseContext> {
-  if (domainCtx == null) return createError(ErrorCode.SchemaNotFound, 404)
+  if (domainCtx == null)
+    return createErrorContext(ErrorCode.SchemaNotFound, 404)
 
   const url =
     request instanceof Request
@@ -41,10 +35,10 @@ export async function baseContextLoader(
       : request.protocol + "://" + request.get("host") + request.originalUrl
 
   const { data: profile, error } = await getProfile(domainCtx.schema, client)
-  if (error != null) return createError(ErrorCode.ProfileLoadError, 500)
+  if (error != null) return createErrorContext(ErrorCode.ProfileLoadError, 500)
 
   if (profile?.profile == null)
-    return createError(ErrorCode.ProfileDataEmpty, 500)
+    return createErrorContext(ErrorCode.ProfileDataEmpty, 500)
 
   return {
     profile: profile.profile!,

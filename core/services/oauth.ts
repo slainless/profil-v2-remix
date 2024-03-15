@@ -6,10 +6,18 @@ export enum Service {
   Google = "google",
 }
 
-export const clientIds = {
-  [Service.Google]: import.meta.env.VITE_GOOGLE_OAUTH_CLIENT_ID,
-  [Service.Facebook]: import.meta.env.VITE_FACEBOOK_OAUTH_CLIENT_ID,
-}
+export const clientIds = (() => {
+  if (typeof process == "undefined" || process?.env == null)
+    return {
+      [Service.Google]: import.meta.env.VITE_GOOGLE_OAUTH_CLIENT_ID,
+      [Service.Facebook]: import.meta.env.VITE_FACEBOOK_OAUTH_CLIENT_ID,
+    }
+  else
+    return {
+      [Service.Google]: process.env.VITE_GOOGLE_OAUTH_CLIENT_ID,
+      [Service.Facebook]: process.env.VITE_FACEBOOK_OAUTH_CLIENT_ID,
+    }
+})()
 
 export const channel = "oauth_channel"
 

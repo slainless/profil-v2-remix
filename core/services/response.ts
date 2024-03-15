@@ -5,9 +5,8 @@ import { HTTPError, TimeoutError } from "ky"
 import { render } from "micromustache"
 import type { Writable } from "type-fest"
 
-import { ErrorCode, ErrorCodeReverse, is } from "Services/data.ts"
-
-import { errMsg, errTitle } from "Modules/strings.ts"
+import { errMsg, errTitle } from "../modules/strings.ts"
+import { ErrorCode, ErrorCodeReverse, is } from "./data.ts"
 
 export namespace Schema {
   export const normalizedError = Type.Object({

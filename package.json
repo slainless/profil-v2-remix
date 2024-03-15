@@ -4,13 +4,17 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "remix vite:build",
+    "build": "remix vite:build && esbuild server.ts --packages=external --outfile=server.js",
     "dev": "vite-node ./server.ts",
+    "dev:cloudflare": "cross-env USE_CLOUDFLARE=true remix vite:dev",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "themegen": "node scripts/mantine-vars-gen/index.mjs ./app/theme/mantine.js",
     "start": "cross-env NODE_ENV=production node ./server.js",
     "typecheck": "tsc",
-    "codegen": "graphql-codegen --config codegen.ts"
+    "codegen": "graphql-codegen --config codegen.ts",
+    "start:wrangler": "wrangler pages dev ./build/client",
+    "deploy:wrangler": "wrangler pages deploy ./build/client",
+    "typegen": "wrangler types"
   },
   "dependencies": {
     "@amcharts/amcharts4": "^4.10.38",

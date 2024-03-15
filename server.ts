@@ -4,7 +4,7 @@ import compression from "compression"
 import express from "express"
 import morgan from "morgan"
 
-import { createExpressContextLoader } from "./server/loader.express.js"
+import { createExpressContextLoader } from "./server/loader.express.ts"
 
 installGlobals()
 

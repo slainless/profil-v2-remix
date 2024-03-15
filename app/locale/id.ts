@@ -61,6 +61,7 @@ export default {
   [errTitle(ErrorCode.SchemaNotFound)]: "Data belum terdaftar",
   [errTitle(ErrorCode.ProfileLoadError)]: "Gagal membaca data desa",
   [errTitle(ErrorCode.ProfileDataEmpty)]: "Gagal membaca data desa",
+  [errTitle(ErrorCode.ContextEmpty)]: "Kesalahan konfigurasi",
 
   /* -------------------------------------------------------------------------- */
   /*                                Error Message                               */
@@ -125,4 +126,6 @@ export default {
     "Silakan diulangi kembali beberapa saat lagi atau hubungi administrator DIGIDES",
   [errMsg(ErrorCode.ProfileDataEmpty)]:
     "Data desa kosong! Silakan hubungi administrator DIGIDES",
+  [errMsg(ErrorCode.ContextEmpty)]:
+    "Konfigurasi konteks server bermasalah, silakan hubungi administrator DIGIDES",
 } as const

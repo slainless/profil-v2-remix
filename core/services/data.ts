@@ -49,6 +49,8 @@ export enum ErrorCode {
   SchemaNotFound = "schema_not_found",
   ProfileLoadError = "profile_load_error",
   ProfileDataEmpty = "profile_data_empty",
+
+  ContextEmpty = "context_empty",
 }
 
 export const ErrorCodeReverse = Object.fromEntries(
