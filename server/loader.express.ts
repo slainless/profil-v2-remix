@@ -5,20 +5,28 @@ import { ErrorCode } from "Services/data.ts"
 import { DomainHandler } from "../core/modules/domain-handler.ts"
 import { createErrorContext, type CommonContext } from "./context.ts"
 import { domainContextLoader, mustGetDomainList } from "./express.ts"
-import { createGQLClient } from "./gql.ts"
 import { baseContextLoader } from "./loader.base.ts"
+import { createServerContext } from "./loader.server.ts"
 
 export async function createExpressContextLoader() {
-  const client = createGQLClient()
-  const domainHandler = new DomainHandler(await mustGetDomainList(client))
+  const serverContext = createServerContext()
+  const domainHandler = new DomainHandler(
+    await mustGetDomainList(serverContext.gqlClient),
+  )
 
   return async (request: Request) => {
+    if (request.hostname === process.env.BASE_DOMAIN) return serverContext
     const domainContext = await domainContextLoader(request, domainHandler)
     if (domainContext == null)
       return createErrorContext(ErrorCode.SchemaNotFound, 404)
     return {
+      ...serverContext,
       ...domainContext,
-      ...(await baseContextLoader(request, client, domainContext)),
+      ...(await baseContextLoader(
+        request,
+        serverContext.gqlClient,
+        domainContext,
+      )),
     } as CommonContext
   }
 }

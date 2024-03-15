@@ -18,7 +18,6 @@ export interface BaseContext extends Context {
   baseDomain: string
 
   token: string
-  gqlClient: Client
 }
 
 export async function baseContextLoader(
@@ -46,7 +45,6 @@ export async function baseContextLoader(
     canonUrl: getCanonUrl(domainCtx, url),
 
     token: process.env.VITE_GRAPHQL_ACCESS_WEBTOKEN!,
-    gqlClient: client,
     baseDomain: process.env.BASE_DOMAIN!,
   } satisfies BaseContext
 }

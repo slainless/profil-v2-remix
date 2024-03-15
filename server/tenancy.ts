@@ -10,7 +10,7 @@ export function mustGetHost(
   if (typeof hostOrRequest == "object" && hostOrRequest.headers != null) {
     const host =
       hostOrRequest instanceof Request
-        ? hostOrRequest.headers.get("host")
+        ? new URL(hostOrRequest.url).hostname
         : hostOrRequest.headers.host
     invariant(host, "Host header must not be empty")
     return host
