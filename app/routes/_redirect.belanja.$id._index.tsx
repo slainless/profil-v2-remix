@@ -1,6 +1,6 @@
 import { redirect, type LoaderFunctionArgs } from "@remix-run/node"
 
-import { mustGetMarketItemSlug } from "Services/.server/marketplace.ts"
+import { mustGetMarketItemSlug } from "Services/marketplace.ts"
 
 import { assertCommonContext } from "Server/context"
 

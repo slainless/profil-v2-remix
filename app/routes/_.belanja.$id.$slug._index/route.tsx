@@ -23,7 +23,7 @@ import type { MarketItemCategory } from "GraphQL/graphql.ts"
 import {
   mustGetMarketItemWithReviews,
   mustGetVariant,
-} from "Services/.server/marketplace.ts"
+} from "Services/marketplace.ts"
 import {
   getVariantPhoto,
   getDefaultPhoto,

@@ -2,8 +2,8 @@ import type { Request as ExpressRequest } from "express"
 import type { Client } from "urql"
 
 import type { ProfileQuery } from "../core/graphql/graphql.ts"
-import { getProfile } from "../core/services/.server/profile.ts"
 import { ErrorCode } from "../core/services/data.ts"
+import { getProfile } from "../core/services/profile.ts"
 import {
   createErrorContext,
   type Context,

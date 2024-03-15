@@ -46,4 +46,19 @@ export default defineConfig({
       include: [],
     },
   },
+  build: {
+    rollupOptions: {
+      onwarn(warning, defaultHandler) {
+        if (
+          warning.code === "SOURCEMAP_ERROR" &&
+          warning.loc?.column === 0 &&
+          warning.loc.line === 1
+        ) {
+          return
+        }
+
+        defaultHandler(warning)
+      },
+    },
+  },
 })

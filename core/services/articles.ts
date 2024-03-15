@@ -4,7 +4,7 @@ import { ArticleTypeValue } from "GraphQL/graphql.ts"
 
 import { articleDetailQuery } from "Queries/articles.ts"
 
-import { UnderscoredCode } from "Modules/domain-handler"
+import type { UnderscoredCode } from "Modules/domain-handler"
 import { withHeaders } from "Modules/urql.ts"
 
 export const getArticle = (

@@ -17,7 +17,7 @@ import { getLocale } from "Locale/locale.ts"
 
 import { ArticleTypeValue } from "GraphQL/graphql.ts"
 
-import { mustGetArticle } from "Services/.server/articles.ts"
+import { mustGetArticle } from "Services/articles.ts"
 import { asset } from "Services/assets.ts"
 
 import { stripURL } from "Modules/url.ts"
