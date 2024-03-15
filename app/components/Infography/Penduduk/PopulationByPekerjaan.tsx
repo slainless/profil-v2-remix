@@ -5,11 +5,11 @@ import cx from "clsx"
 import { useAtomValue } from "jotai"
 import { useMemo, useState } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { populationStatisticAtom } from "Providers/population.ts"
+import { populationStatisticAtom } from "#providers/population.ts"
 
-import { FormattedNumber } from "Modules/intl"
+import { FormattedNumber } from "#modules/intl.ts"
 
 import classes from "./PopulationByPekerjaan.module.css"
 

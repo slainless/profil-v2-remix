@@ -3,9 +3,9 @@
 import { Stack, Box, Title, Text } from "@mantine/core"
 import { useAtomValue } from "jotai"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { aliasDesaAtom, desaAtom } from "Providers/profile.ts"
+import { aliasDesaAtom, desaAtom } from "#providers/profile.ts"
 
 import IframeMap from "./IframeMap"
 import { InteractiveMap } from "./InteractiveMap"

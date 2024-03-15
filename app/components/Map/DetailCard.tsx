@@ -4,11 +4,11 @@ import clsx from "clsx"
 import { useAtomValue } from "jotai"
 import { render } from "micromustache"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { aliasDesaAtom } from "Providers/profile.ts"
+import { aliasDesaAtom } from "#providers/profile.ts"
 
-import fallback from "Assets/location-illustration.svg"
+import fallback from "#assets/location-illustration.svg"
 
 import styles from "./DetailCard.module.css"
 import previewCardStyles from "./PreviewCard.module.css"

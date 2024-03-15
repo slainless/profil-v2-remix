@@ -1,6 +1,5 @@
-import { ErrorCode } from "Services/data.ts"
-
-import { errTitle, errMsg } from "Modules/strings.ts"
+import { errTitle, errMsg } from "#modules/strings.ts"
+import { ErrorCode } from "#services/data.ts"
 
 export default {
   DESA_PROFILE_WEBSITE_TITLE: "Website Resmi {{desa_fullname}}",

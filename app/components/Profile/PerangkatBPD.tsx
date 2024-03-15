@@ -6,12 +6,12 @@ import lgThumbnail from "lightgallery/plugins/thumbnail"
 import lgZoom from "lightgallery/plugins/zoom"
 import LightGallery from "lightgallery/react"
 
-import { desaProfileAtom } from "Providers/desa-profile.ts"
-import { profileAtom } from "Providers/profile.ts"
+import { desaProfileAtom } from "#providers/desa-profile.ts"
+import { profileAtom } from "#providers/profile.ts"
 
-import member from "Assets/member.png"
+import member from "#assets/member.png"
 
-import { asset, withAtom } from "Services/assets.ts"
+import { asset, withAtom } from "#services/assets.ts"
 
 function PerangkatBPD() {
   const profile = useAtomValue(profileAtom)

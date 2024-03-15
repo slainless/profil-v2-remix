@@ -4,13 +4,13 @@ import clsx from "clsx"
 import { useAtomValue } from "jotai"
 import { useMap } from "react-map-gl/maplibre"
 
-import { isLoadedPoiAtom } from "Providers/map.ts"
-import { schemaAtom } from "Providers/profile.ts"
+import { isLoadedPoiAtom } from "#providers/map.ts"
+import { schemaAtom } from "#providers/profile.ts"
 
-import { PointOfInterest } from "GraphQL/graphql.ts"
+import { PointOfInterest } from "#graphql/graphql.ts"
 
-import bbox from "Modules/geojson-bbox.js"
-import { centerOfIndonesia } from "Modules/geojson-utils"
+import bbox from "#modules/geojson-bbox.js"
+import { centerOfIndonesia } from "#modules/geojson-utils.ts"
 
 import styles from "./StyleSwitcher.module.css"
 import { useBorderDesa, useBorderPoi } from "./use-border-desa"

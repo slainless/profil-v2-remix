@@ -23,12 +23,12 @@ import {
   useState,
 } from "react"
 
-import { usePathHash } from "Components/Hooks/use-path-hash.ts"
+import { usePathHash } from "#components/Hooks/use-path-hash.ts"
 
-import { scoreAtom } from "Providers/SDGs.ts"
-import { schemaAtom } from "Providers/profile.ts"
+import { scoreAtom } from "#providers/SDGs.ts"
+import { schemaAtom } from "#providers/profile.ts"
 
-import { Goal, getSDGsGoal } from "Services/sdgs.ts"
+import { Goal, getSDGsGoal } from "#services/sdgs.ts"
 
 import { SDGsRecommendationTable } from "./SDGsRecommendationTable.tsx"
 import { SDGsTargetTable } from "./SDGsTargetTable.tsx"

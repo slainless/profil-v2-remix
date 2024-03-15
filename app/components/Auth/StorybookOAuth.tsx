@@ -1,10 +1,9 @@
 "use client"
 
+import { Status, channel, getOAuthResponse } from "#services/oauth.ts"
 import { Code, Table } from "@mantine/core"
 import { useHash } from "@mantine/hooks"
 import { useMemo } from "react"
-
-import { Status, channel, getOAuthResponse } from "Services/oauth.ts"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const row = (a: any, b: any) => (

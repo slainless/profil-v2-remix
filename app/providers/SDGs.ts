@@ -1,6 +1,6 @@
 import { atom } from "jotai"
 
-import { Score } from "Services/sdgs"
+import { Score } from "#services/sdgs.ts"
 
 export const currentYearAtom = atom<number | null>(null)
 export const scoreAtom = atom<Score.Main | null>(null)

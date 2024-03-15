@@ -1,9 +1,9 @@
 import { atom } from "jotai"
 
-import { UserLevel, UserStatus } from "GraphQL/graphql.ts"
+import { UserLevel, UserStatus } from "#graphql/graphql.ts"
 
-import { TokenResponse } from "Services/.client/login.ts"
-import { User } from "Services/user.ts"
+import { TokenResponse } from "#services/.client/login.ts"
+import { User } from "#services/user.ts"
 
 export const usernameAtom = atom<string | null>(null)
 export const userAtom = atom<User | null>(null)

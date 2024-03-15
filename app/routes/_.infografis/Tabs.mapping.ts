@@ -8,12 +8,12 @@ import {
   IconCrown,
 } from "@tabler/icons-react"
 
-// import { APBDView } from "Components/Infography/APBDes/APBDView.tsx"
-// import { BansosView } from "Components/Infography/Bansos/BansosView.tsx"
-// import { IDMView } from "Components/Infography/IDM/IDMView.tsx"
-// import { PendudukView } from "Components/Infography/Penduduk/PendudukView.tsx"
-// import { SDGsView } from "Components/Infography/SDGs/SDGsView.tsx"
-// import { StuntingView } from "Components/Infography/Stunting/StuntingView.tsx"
+// import { APBDView } from "#components/Infography/APBDes/APBDView.tsx"
+// import { BansosView } from "#components/Infography/Bansos/BansosView.tsx"
+// import { IDMView } from "#components/Infography/IDM/IDMView.tsx"
+// import { PendudukView } from "#components/Infography/Penduduk/PendudukView.tsx"
+// import { SDGsView } from "#components/Infography/SDGs/SDGsView.tsx"
+// import { StuntingView } from "#components/Infography/Stunting/StuntingView.tsx"
 
 export type TabType = {
   title?: string

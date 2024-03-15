@@ -1,9 +1,8 @@
+import { formatDateOnly } from "#modules/date.ts"
+import { FormattedNumber } from "#modules/intl.ts"
 import { Group, Stack, Text, Image, Card } from "@mantine/core"
 import { Link } from "@remix-run/react"
 import { IconClock, IconEye } from "@tabler/icons-react"
-
-import { formatDateOnly } from "Modules/date.ts"
-import { FormattedNumber } from "Modules/intl.ts"
 
 type Props = {
   title: string

@@ -8,7 +8,7 @@ import type {
   MainPointOfInterestQuery, // MainPointOfInterestQuery,
   PointOfInterest,
   Point as PointType,
-} from "GraphQL/graphql.ts"
+} from "#graphql/graphql.ts"
 
 export const boundsOfIndonesia: [number, number, number, number] = [
   // 94.791205, -10.945325, 141.138935, 6.033016, // @audit original points

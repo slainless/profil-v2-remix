@@ -23,24 +23,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
-    "paths": {
-      "Components/*": ["./app/components/*"],
-      "Providers/*": ["./app/providers/*"],
-      "Layouts/*": ["./app/layout/*"],
-      "Theme/*": ["./app/theme/*"],
-      "Assets/*": ["./app/assets/*"],
-      "Metadata/*": ["./app/metadata/*"],
-      "Locale/*": ["./app/locale/*"],
-
-      "Services/*": ["./core/services/*"],
-      "GraphQL/*": ["./core/graphql/*"],
-      "Queries/*": ["./core/queries/*"],
-      "Modules/*": ["./core/modules/*"],
-
-      "Server/*": ["./server/*"],
-
-      "~/*": ["./app/*"]
-    },
 
     // Vite takes care of building everything, not tsc.
     "noEmit": true,

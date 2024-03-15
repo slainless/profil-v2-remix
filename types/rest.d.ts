@@ -1,5 +1,5 @@
 // type JsonObject = import("type-fest").JsonObject
-type StandardResponse<T extends object> = T | import("Services/data").Error
+type StandardResponse<T extends object> = T | import("#services/data").Error
 type ResponsePromise<T extends object> = Omit<
   import("ky").ResponsePromise,
   "json"

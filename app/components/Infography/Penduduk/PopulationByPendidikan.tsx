@@ -6,12 +6,18 @@ import ReactECharts from "echarts-for-react"
 import { useAtomValue } from "jotai"
 import { useMemo } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { populationStatisticAtom } from "Providers/population.ts"
+import { populationStatisticAtom } from "#providers/population.ts"
 
-import { createSortByValue, sortByValue } from "Modules/array.ts"
-import { FormattedNumber } from "Modules/intl.ts"
+import { createSortByValue, sortByValue } from "#modules/array.ts"
+import { FormattedNumber } from "#modules/intl.ts"
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 

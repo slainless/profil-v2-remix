@@ -4,9 +4,9 @@ import { IconChevronDown } from "@tabler/icons-react"
 import { useAtomValue } from "jotai"
 import { render } from "micromustache"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { aliasDesaAtom } from "Providers/profile.ts"
+import { aliasDesaAtom } from "#providers/profile.ts"
 
 import styles from "./NavbarItem.module.css"
 import { NavbarRoute } from "./navbar-menu.ts"

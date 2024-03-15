@@ -11,9 +11,9 @@ import {
   Text,
 } from "@mantine/core"
 
-import { Report, WithTotal } from "Providers/APBD.ts"
+import { Report, WithTotal } from "#providers/APBD.ts"
 
-import { IDRFormatter } from "Modules/intl"
+import { IDRFormatter } from "#modules/intl.ts"
 
 export const APBDReportAccordionItem = ({
   category,

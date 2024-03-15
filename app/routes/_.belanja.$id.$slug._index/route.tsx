@@ -4,31 +4,31 @@ import { useLoaderData } from "@remix-run/react"
 import { stripHtml } from "string-strip-html"
 import type { RequiredDeep } from "type-fest"
 
-import { WhatsappContactButton } from "Components/Marketplace/BuyButton.tsx"
-import { FavoriteButton } from "Components/Marketplace/FavoriteButton.tsx"
-import { Gallery } from "Components/Marketplace/Gallery.tsx"
-import { ProductMeta } from "Components/Marketplace/ProductMeta.tsx"
-import ProductName from "Components/Marketplace/ProductName.tsx"
-import ProductPrice from "Components/Marketplace/ProductPrice.tsx"
-import { ReviewSection } from "Components/Marketplace/ReviewSection.tsx"
-import { ShareButtons } from "Components/Marketplace/ShareButton.tsx"
-import { VariantSelector } from "Components/Marketplace/VariantSelector.tsx"
+import { WhatsappContactButton } from "#components/Marketplace/BuyButton.tsx"
+import { FavoriteButton } from "#components/Marketplace/FavoriteButton.tsx"
+import { Gallery } from "#components/Marketplace/Gallery.tsx"
+import { ProductMeta } from "#components/Marketplace/ProductMeta.tsx"
+import ProductName from "#components/Marketplace/ProductName.tsx"
+import ProductPrice from "#components/Marketplace/ProductPrice.tsx"
+import { ReviewSection } from "#components/Marketplace/ReviewSection.tsx"
+import { ShareButtons } from "#components/Marketplace/ShareButton.tsx"
+import { VariantSelector } from "#components/Marketplace/VariantSelector.tsx"
 
-import { MarketItemHydrator } from "Providers/marketplace.ts"
+import { MarketItemHydrator } from "#providers/marketplace.ts"
 
-import { getLocale } from "Locale/locale.ts"
+import { getLocale } from "#locale/locale.ts"
 
-import type { MarketItemCategory } from "GraphQL/graphql.ts"
+import type { MarketItemCategory } from "#graphql/graphql.ts"
 
 import {
   mustGetMarketItemWithReviews,
   mustGetVariant,
-} from "Services/marketplace.ts"
+} from "#services/marketplace.ts"
 import {
   getVariantPhoto,
   getDefaultPhoto,
   getName,
-} from "Services/marketplace.ts"
+} from "#services/marketplace.ts"
 
 import {
   breadcrumb,
@@ -36,10 +36,10 @@ import {
   metadata,
   metadatas,
   product,
-} from "Modules/metadata.ts"
-import { stripURL } from "Modules/url.ts"
+} from "#modules/metadata.ts"
+import { stripURL } from "#modules/url.ts"
 
-import { mustGetCommonContext } from "Server/context.ts"
+import { mustGetCommonContext } from "#server/context.ts"
 
 import {
   createDescription,

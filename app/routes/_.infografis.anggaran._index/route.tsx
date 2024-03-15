@@ -1,16 +1,16 @@
 import { Stack, Box } from "@mantine/core"
 import type { MetaFunction } from "@remix-run/react"
 
-import { BudgetStatsByYear } from "Components/Infography/APBDes/BudgetStatsByYear.tsx"
-import Expense from "Components/Infography/APBDes/ExpenseChart.tsx"
-import ExpenseDetails from "Components/Infography/APBDes/ExpenseDetails.tsx"
-import Financing from "Components/Infography/APBDes/FinancingChart.tsx"
-import FinancingDetails from "Components/Infography/APBDes/FinancingDetails.tsx"
-import Income from "Components/Infography/APBDes/IncomeChart.tsx"
-import IncomeDetails from "Components/Infography/APBDes/IncomeDetails.tsx"
-import IncomeExpense from "Components/Infography/APBDes/IncomeExpenseChart.tsx"
+import { BudgetStatsByYear } from "#components/Infography/APBDes/BudgetStatsByYear.tsx"
+import Expense from "#components/Infography/APBDes/ExpenseChart.tsx"
+import ExpenseDetails from "#components/Infography/APBDes/ExpenseDetails.tsx"
+import Financing from "#components/Infography/APBDes/FinancingChart.tsx"
+import FinancingDetails from "#components/Infography/APBDes/FinancingDetails.tsx"
+import Income from "#components/Infography/APBDes/IncomeChart.tsx"
+import IncomeDetails from "#components/Infography/APBDes/IncomeDetails.tsx"
+import IncomeExpense from "#components/Infography/APBDes/IncomeExpenseChart.tsx"
 
-import { APBDReportLoader } from "Providers/APBD.ts"
+import { APBDReportLoader } from "#providers/APBD.ts"
 
 import { renderMetadata } from "../_.infografis/meta.ts"
 

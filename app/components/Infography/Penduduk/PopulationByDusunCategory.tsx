@@ -6,14 +6,22 @@ import { IconCircleX } from "@tabler/icons-react"
 import ReactECharts from "echarts-for-react"
 import { useAtomValue } from "jotai"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { DimmedNotice } from "Components/DimmedNotice.tsx"
+import { DimmedNotice } from "#components/DimmedNotice.tsx"
 
-import { populationStatisticAtom } from "Providers/population.ts"
+import { populationStatisticAtom } from "#providers/population.ts"
 
-import { contentsOrNone } from "Modules/css-utils.ts"
-import { FormattedNumber } from "Modules/intl.ts"
+import { contentsOrNone } from "#modules/css-utils.ts"
+import { FormattedNumber } from "#modules/intl.ts"
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 

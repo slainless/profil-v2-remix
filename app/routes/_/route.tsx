@@ -13,18 +13,18 @@ import "lightgallery/css/lightgallery.css"
 import { Fragment } from "react"
 import type { loader } from "~/root.tsx"
 
-import { ErrorSimple } from "Components/ErrorSimple.tsx"
-import { ErrorWithStackTrace } from "Components/ErrorWithStackTrace.tsx"
-import AppFooter from "Components/MainLayouts/Footer.tsx"
-import AppHeader from "Components/MainLayouts/Header.tsx"
-import PageContainer from "Components/PageContainer.tsx"
-import { PageLoadingBar } from "Components/PageLoadingBar.tsx"
+import { ErrorSimple } from "#components/ErrorSimple.tsx"
+import { ErrorWithStackTrace } from "#components/ErrorWithStackTrace.tsx"
+import AppFooter from "#components/MainLayouts/Footer.tsx"
+import AppHeader from "#components/MainLayouts/Header.tsx"
+import PageContainer from "#components/PageContainer.tsx"
+import { PageLoadingBar } from "#components/PageLoadingBar.tsx"
 
-import { ProfileHydrator } from "Providers/profile.ts"
-import { JotaiGlobalStore } from "Providers/store.ts"
-import { UrqlProvider } from "Providers/urql.ts"
+import { ProfileHydrator } from "#providers/profile.ts"
+import { JotaiGlobalStore } from "#providers/store.ts"
+import { UrqlProvider } from "#providers/urql.ts"
 
-import { getLocale } from "Locale/locale.ts"
+import { getLocale } from "#locale/locale.ts"
 
 import { mustGetRootLayoutData } from "./data.ts"
 import {

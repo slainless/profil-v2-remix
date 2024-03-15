@@ -1,8 +1,8 @@
 import { style } from "@vanilla-extract/css"
 
-import { bp, vars } from "Theme/artifact/vars.mjs"
+import { bp, vars } from "#theme/artifact/vars.mjs"
 
-import { largerThan } from "Modules/css-utils.ts"
+import { largerThan } from "#modules/css-utils.ts"
 
 export const cardLayoutStyle = style({
   display: "grid",

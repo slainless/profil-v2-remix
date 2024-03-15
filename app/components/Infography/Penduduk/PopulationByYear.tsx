@@ -2,9 +2,9 @@
 
 import { Group, Title, Text, Image, Grid } from "@mantine/core"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import otherImage from "Assets/other-1.png"
+import otherImage from "#assets/other-1.png"
 
 const PopulationByYear = () => {
   return (

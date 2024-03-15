@@ -15,7 +15,7 @@ const isCloudflare = process.env.USE_CLOUDFLARE != null
 
 export default defineConfig({
   plugins: [
-    ...(isCloudflare
+    ...(isCloudflare && isDev
       ? [remixCloudflareDevProxy({ getLoadContext: cloudflareContextLoader })]
       : []),
     ...(isDev ? [remixDevTools()] : []),
@@ -38,13 +38,15 @@ export default defineConfig({
     },
     warmup: {
       clientFiles: ["@mantine/core/**/*.cjs"],
+      ssrFiles: ["@mantine/core/**/*.cjs"],
     },
   },
   ssr: {
-    noExternal: ["@amcharts/amcharts4"],
+    noExternal: isCloudflare ? true : ["@amcharts/amcharts4"],
     optimizeDeps: {
       include: [],
     },
+    target: isCloudflare ? "webworker" : "node",
   },
   build: {
     rollupOptions: {

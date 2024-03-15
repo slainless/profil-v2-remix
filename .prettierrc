@@ -3,22 +3,19 @@
   "semi": false,
   "importOrderSeparation": true,
   "importOrder": [
-    "^Theme/(.*)$",
-    "^Components/(.*)$",
-    "^Layouts/(.*)$",
-    "^Providers/(.*)$",
-    "^Assets/(.*)$",
-    "^Metadata/(.*)$",
-    "^Locale/(.*)$",
+    "^#theme/(.*)$",
+    "^#components/(.*)$",
+    "^#providers/(.*)$",
+    "^#assets/(.*)$",
+    "^#locale/(.*)$",
 
-    "^GraphQL/(.*)$",
-    "^Queries/(.*)$",
-    "^Services/(.*)$",
-    "^Modules/(.*)$",
+    "^#graphql/(.*)$",
+    "^#queries/(.*)$",
+    "^#services/(.*)$",
+    "^#modules/(.*)$",
 
-    "^Server/(.*)$",
+    "^#server/(.*)$",
 
-    "^@/(.*)$",
     "^[./]"
   ],
   "importOrderParserPlugins": ["typescript", "jsx", "decorators"],

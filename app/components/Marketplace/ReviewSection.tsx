@@ -13,20 +13,20 @@ import { IconMoodEmpty } from "@tabler/icons-react"
 import { Fragment, useEffect } from "react"
 import { useQuery } from "urql"
 
-import { vars } from "Theme/artifact/vars.mjs"
-import utilStyles from "Theme/util.module.css"
+import { vars } from "#theme/artifact/vars.mjs"
+import utilStyles from "#theme/util.module.css"
 
-import { usePagination } from "Components/Hooks/use-pagination.ts"
-import { PageNavigation } from "Components/PageNavigation.tsx"
+import { usePagination } from "#components/Hooks/use-pagination.ts"
+import { PageNavigation } from "#components/PageNavigation.tsx"
 
-import { ReviewsQuery } from "GraphQL/graphql.ts"
+import { ReviewsQuery } from "#graphql/graphql.ts"
 
-import { reviewsQuery } from "Queries/marketplace.ts"
+import { reviewsQuery } from "#queries/marketplace.ts"
 
-import { asset } from "Services/assets.ts"
+import { asset } from "#services/assets.ts"
 
-import { contentsOrNone } from "Modules/css-utils.ts"
-import { formatDateOnly } from "Modules/date.ts"
+import { contentsOrNone } from "#modules/css-utils.ts"
+import { formatDateOnly } from "#modules/date.ts"
 
 import { ReviewItem } from "./ReviewItem.tsx"
 

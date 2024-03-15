@@ -4,12 +4,12 @@ import normalizeUrl from "normalize-url"
 import type { BreadcrumbList, Product, Review, WithContext } from "schema-dts"
 import urlJoin from "url-join"
 
-import type { GalleryItem, MarketItemVariant } from "GraphQL/graphql.ts"
+import type { GalleryItem, MarketItemVariant } from "#graphql/graphql.ts"
 
-import { asset } from "Services/assets.ts"
-import { getName, getSearchParams } from "Services/marketplace.ts"
+import { asset } from "#services/assets.ts"
+import { getName, getSearchParams } from "#services/marketplace.ts"
 
-import { OpenGraph } from "Modules/metadata.ts"
+import { OpenGraph } from "#modules/metadata.ts"
 
 import type { loader } from "./route.tsx"
 

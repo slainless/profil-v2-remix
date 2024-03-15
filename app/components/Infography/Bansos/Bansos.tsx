@@ -13,13 +13,13 @@ import { IconCircleX } from "@tabler/icons-react"
 import { useMemo, useEffect } from "react"
 import { useQuery } from "urql"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { DimmedNotice } from "Components/DimmedNotice"
+import { DimmedNotice } from "#components/DimmedNotice.tsx"
 
-import { bansosQuery } from "Queries/bansos.ts"
+import { bansosQuery } from "#queries/bansos.ts"
 
-import { contentsOrNone } from "Modules/css-utils"
+import { contentsOrNone } from "#modules/css-utils.ts"
 
 amchartsUseTheme(am4themes_animated)
 

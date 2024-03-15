@@ -1,6 +1,6 @@
 import { TabsPanel } from "@mantine/core"
 
-import PageContainer from "Components/PageContainer"
+import PageContainer from "#components/PageContainer.tsx"
 
 export namespace Layout {
   export const Root = PageContainer

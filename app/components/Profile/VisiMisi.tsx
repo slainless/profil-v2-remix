@@ -16,24 +16,24 @@ import { IconCircleX } from "@tabler/icons-react"
 import { useAtomValue } from "jotai"
 import { useQuery } from "urql"
 
-import { DimmedNotice } from "Components/DimmedNotice.tsx"
+import { DimmedNotice } from "#components/DimmedNotice.tsx"
 
-import { desaProfileAtom } from "Providers/desa-profile.ts"
+import { desaProfileAtom } from "#providers/desa-profile.ts"
 import {
   aliasDesaAtom,
   namaDesaAtom,
   profileAtom,
   schemaAtom,
-} from "Providers/profile.ts"
+} from "#providers/profile.ts"
 
-import placeholder from "Assets/fallback.png"
-import hero from "Assets/hero.png"
+import placeholder from "#assets/fallback.png"
+import hero from "#assets/hero.png"
 
-import { welcomeQuery } from "Queries/profile.ts"
+import { welcomeQuery } from "#queries/profile.ts"
 
-import { asset } from "Services/assets.ts"
+import { asset } from "#services/assets.ts"
 
-import { contentsOrNone } from "Modules/css-utils.ts"
+import { contentsOrNone } from "#modules/css-utils.ts"
 
 function VisiMisi() {
   const schema = useAtomValue(schemaAtom)

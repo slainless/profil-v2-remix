@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { Stunting } from "GraphQL/graphql.ts"
+import type { Stunting } from "#graphql/graphql.ts"
 
 export const barColors = ["#B9E581", "#4A977ECC", "#ffa8a8"]
 

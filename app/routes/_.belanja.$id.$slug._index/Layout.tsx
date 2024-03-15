@@ -1,8 +1,8 @@
 import { Box, BoxProps, Card, Stack, StackProps, Text } from "@mantine/core"
 import { PropsWithChildren } from "react"
 
-import PageContainer from "Components/PageContainer.tsx"
-import { Spacer } from "Components/Spacer.tsx"
+import PageContainer from "#components/PageContainer.tsx"
+import { Spacer } from "#components/Spacer.tsx"
 
 import style from "./Layout.module.css"
 

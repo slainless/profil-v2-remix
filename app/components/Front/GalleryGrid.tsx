@@ -15,17 +15,17 @@ import { IconNotes, IconPhotoX } from "@tabler/icons-react"
 import { useAtomValue } from "jotai"
 import { useQuery } from "urql"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { DimmedNotice } from "Components/DimmedNotice"
+import { DimmedNotice } from "#components/DimmedNotice.tsx"
 
-import { aliasDesaAtom } from "Providers/profile.ts"
+import { aliasDesaAtom } from "#providers/profile.ts"
 
-import { galleryItemsQuery } from "Queries/gallery.ts"
+import { galleryItemsQuery } from "#queries/gallery.ts"
 
-import { asset, withAtom } from "Services/assets.ts"
+import { asset, withAtom } from "#services/assets.ts"
 
-import { contentsOrNone } from "Modules/css-utils"
+import { contentsOrNone } from "#modules/css-utils.ts"
 
 function GalleryGrid() {
   const [{ data }] = useQuery({

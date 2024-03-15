@@ -1,8 +1,8 @@
 import { render } from "micromustache"
 
-import type { Locale } from "Locale/locale.ts"
+import type { Locale } from "#locale/locale.ts"
 
-import type { Profile } from "GraphQL/graphql.ts"
+import type { Profile } from "#graphql/graphql.ts"
 
 type Loc = Record<keyof typeof Locale.ID, string>
 

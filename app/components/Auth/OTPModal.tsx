@@ -4,21 +4,21 @@ import { Modal, LoadingOverlay } from "@mantine/core"
 import { useAtom } from "jotai"
 import { useCallback, useEffect } from "react"
 
-import { useReCAPTCHA } from "Components/Hooks/use-recaptcha.ts"
+import { useReCAPTCHA } from "#components/Hooks/use-recaptcha.ts"
 
 import {
   alertAtom,
   loadingAtom,
   phoneAtom,
   responseAtom,
-} from "Providers/otp.ts"
+} from "#providers/otp.ts"
 
-import { getLocale } from "Locale/locale.ts"
+import { getLocale } from "#locale/locale.ts"
 
-import { Compiled, requestOTP } from "Services/.client/otp.ts"
-import { getError, mustGetResponse } from "Services/response"
+import { Compiled, requestOTP } from "#services/.client/otp.ts"
+import { getError, mustGetResponse } from "#services/response.ts"
 
-import { errMsg, errTitle } from "Modules/strings.ts"
+import { errMsg, errTitle } from "#modules/strings.ts"
 
 import { OTPPrompt } from "./OTPPrompt"
 

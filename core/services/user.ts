@@ -1,4 +1,4 @@
-import { UserLevel, UserStatus } from "GraphQL/graphql.ts"
+import { UserLevel, UserStatus } from "#graphql/graphql.ts"
 
 export interface User {
   name: string

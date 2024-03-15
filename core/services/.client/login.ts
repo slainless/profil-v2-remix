@@ -1,10 +1,10 @@
 import { Static, Type } from "@sinclair/typebox"
 import { TypeCompiler } from "@sinclair/typebox/compiler"
 
-import { UserLevel, UserStatus } from "GraphQL/graphql.ts"
+import { UserLevel, UserStatus } from "#graphql/graphql.ts"
 
-import { ErrorCode, Schema as GenericSchema } from "Services/data.ts"
-import { Service } from "Services/oauth.ts"
+import { ErrorCode, Schema as GenericSchema } from "#services/data.ts"
+import { Service } from "#services/oauth.ts"
 
 import { rest } from "./rest.ts"
 

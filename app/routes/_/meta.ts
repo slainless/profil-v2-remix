@@ -2,9 +2,9 @@
 import type { MetaArgs } from "@remix-run/node"
 import type { RequiredDeep, WritableDeep } from "type-fest"
 
-import { getLocale, type Locale } from "Locale/locale.ts"
+import { getLocale, type Locale } from "#locale/locale.ts"
 
-import { asset } from "Services/assets.ts"
+import { asset } from "#services/assets.ts"
 
 import {
   link,
@@ -16,8 +16,8 @@ import {
   title,
   metadata,
   governmentOrganization,
-} from "Modules/metadata.ts"
-import { stripURL } from "Modules/url.ts"
+} from "#modules/metadata.ts"
+import { stripURL } from "#modules/url.ts"
 
 import { mustGetRootLayoutData } from "./data.ts"
 import {

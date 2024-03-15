@@ -18,19 +18,19 @@ import { useUncontrolled } from "@mantine/hooks"
 import { useCallback, useMemo } from "react"
 import { useForm } from "react-hook-form"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { useReCAPTCHA } from "Components/Hooks/use-recaptcha.ts"
+import { useReCAPTCHA } from "#components/Hooks/use-recaptcha.ts"
 
-import digidesLogo from "Assets/maskot digides-head-only.svg"
+import digidesLogo from "#assets/maskot digides-head-only.svg"
 
 import {
   FormPayload,
   LoginPayload,
   LoginWithThirdPartyPayload,
   Schema,
-} from "Services/.client/login.ts"
-import { Service } from "Services/oauth"
+} from "#services/.client/login.ts"
+import { Service } from "#services/oauth.ts"
 
 import styles from "./LoginForm.module.css"
 import { OAuthButton } from "./OAuthButton"

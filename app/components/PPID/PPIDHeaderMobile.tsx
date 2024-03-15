@@ -12,12 +12,12 @@ import {
 } from "@mantine/core"
 import { Link } from "@remix-run/react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import berkalaImage from "Assets/informasi-secara-berkala-mobile.png"
-import mertaImage from "Assets/informasi-serta-merta-mobile.png"
-import saatImage from "Assets/informasi-setiap-saat-mobile.png"
-import ppid from "Assets/ppid.png"
+import berkalaImage from "#assets/informasi-secara-berkala-mobile.png"
+import mertaImage from "#assets/informasi-serta-merta-mobile.png"
+import saatImage from "#assets/informasi-setiap-saat-mobile.png"
+import ppid from "#assets/ppid.png"
 
 export const PPIDHeaderMobile = () => {
   return (

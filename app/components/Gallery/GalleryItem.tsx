@@ -7,16 +7,16 @@ import LightGallery from "lightgallery/react"
 import { useEffect } from "react"
 import { useQuery } from "urql"
 
-import { usePagination } from "Components/Hooks/use-pagination.ts"
-import { PageNavigation } from "Components/PageNavigation"
+import { usePagination } from "#components/Hooks/use-pagination.ts"
+import { PageNavigation } from "#components/PageNavigation.tsx"
 
-import { GalleryItemsQuery } from "GraphQL/graphql.ts"
+import { GalleryItemsQuery } from "#graphql/graphql.ts"
 
-import { galleryItemsQuery } from "Queries/gallery.ts"
+import { galleryItemsQuery } from "#queries/gallery.ts"
 
-import { asset, withAtom } from "Services/assets"
+import { asset, withAtom } from "#services/assets.ts"
 
-import { contentsOrNone } from "Modules/css-utils"
+import { contentsOrNone } from "#modules/css-utils.ts"
 
 import containerStyle from "./GalleryItem.module.css"
 

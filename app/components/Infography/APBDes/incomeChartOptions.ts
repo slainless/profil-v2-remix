@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IDRFormatter } from "Modules/intl"
+import { IDRFormatter } from "#modules/intl.ts"
 
 export const chartOptions = (
   xAxisData: any[],

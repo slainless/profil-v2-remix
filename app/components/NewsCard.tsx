@@ -3,9 +3,9 @@ import { Link } from "@remix-run/react"
 import { IconEye, IconUser } from "@tabler/icons-react"
 import dayjs from "dayjs"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { FormattedNumber } from "Modules/intl"
+import { FormattedNumber } from "#modules/intl.ts"
 
 type Props = {
   title: string

@@ -1,6 +1,6 @@
 import { atom } from "jotai"
 
-import { IDM } from "Services/idm"
+import { IDM } from "#services/idm.ts"
 
 export const currentYearAtom = atom(0)
 

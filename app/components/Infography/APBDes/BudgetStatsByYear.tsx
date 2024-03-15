@@ -14,17 +14,17 @@ import {
 import { useAtom, useAtomValue } from "jotai"
 import { useEffect, useMemo } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
 import {
   APBDReportByTypeInCurrentYearAtom,
   APBDReportByYearAndTypeAtom,
   currentYearAtom,
-} from "Providers/APBD.ts"
-import { desaAtom, profileAtom, schemaAtom } from "Providers/profile.ts"
+} from "#providers/APBD.ts"
+import { desaAtom, profileAtom, schemaAtom } from "#providers/profile.ts"
 
-import { DomainHandler } from "Modules/domain-handler"
-import { IDRFormatter } from "Modules/intl"
+import { DomainHandler } from "#modules/domain-handler.ts"
+import { IDRFormatter } from "#modules/intl.ts"
 
 import { BudgetItemCard, getColor, getState } from "./BudgetItemCard"
 import { FinancingCard } from "./FinancingCard"

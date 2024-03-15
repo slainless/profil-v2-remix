@@ -15,22 +15,22 @@ import { useAtomValue } from "jotai"
 import { useMemo } from "react"
 import { useQuery } from "urql"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { DimmedNotice } from "Components/DimmedNotice.tsx"
-import PerangkatDesa from "Components/Profile/PerangkatDesa.tsx"
-import { Spacer } from "Components/Spacer.tsx"
+import { DimmedNotice } from "#components/DimmedNotice.tsx"
+import PerangkatDesa from "#components/Profile/PerangkatDesa.tsx"
+import { Spacer } from "#components/Spacer.tsx"
 
-import { ProfileLoader } from "Providers/desa-profile.ts"
-import { aliasDesaAtom } from "Providers/profile.ts"
+import { ProfileLoader } from "#providers/desa-profile.ts"
+import { aliasDesaAtom } from "#providers/profile.ts"
 
-import placeholder from "Assets/fallback.png"
+import placeholder from "#assets/fallback.png"
 
-import { orgMembersQuery } from "Queries/org.ts"
+import { orgMembersQuery } from "#queries/org.ts"
 
-import { asset, withAtom } from "Services/assets.ts"
+import { asset, withAtom } from "#services/assets.ts"
 
-import { contentsOrNone } from "Modules/css-utils.ts"
+import { contentsOrNone } from "#modules/css-utils.ts"
 
 function Content() {
   const [{ data }] = useQuery({

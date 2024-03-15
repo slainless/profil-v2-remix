@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { IDM } from "Services/idm.ts"
+import type { IDM } from "#services/idm.ts"
 
 export const chartOptions = (data: IDM.Main[]) => ({
   title: { show: false },

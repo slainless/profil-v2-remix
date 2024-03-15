@@ -1,9 +1,9 @@
 import Fuse from "fuse.js"
 import { useState, useMemo } from "react"
 
-import { PointOfInterest } from "GraphQL/graphql.ts"
+import { PointOfInterest } from "#graphql/graphql.ts"
 
-import { centerOfIndonesia } from "Modules/geojson-utils"
+import { centerOfIndonesia } from "#modules/geojson-utils.ts"
 
 export function useFilterList<
   T extends Pick<

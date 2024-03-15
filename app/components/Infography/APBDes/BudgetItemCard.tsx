@@ -6,9 +6,9 @@ import {
 } from "@tabler/icons-react"
 import { PropsWithChildren } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { IDRFormatter } from "Modules/intl.ts"
+import { IDRFormatter } from "#modules/intl.ts"
 
 export type BudgetItemProps = {
   title: string

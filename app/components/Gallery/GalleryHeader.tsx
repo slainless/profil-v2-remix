@@ -3,9 +3,9 @@
 import { Box, Title, Text } from "@mantine/core"
 import { useAtomValue } from "jotai"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { aliasDesaAtom } from "Providers/profile.ts"
+import { aliasDesaAtom } from "#providers/profile.ts"
 
 export const GalleryHeader = () => {
   const aliasDesa = useAtomValue(aliasDesaAtom)

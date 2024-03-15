@@ -1,10 +1,8 @@
+import { Format } from "#modules/typebox.ts"
+import { Schema as GenericSchema } from "#services/data.ts"
 import { Static, Type } from "@sinclair/typebox"
 import { TypeCompiler } from "@sinclair/typebox/compiler"
 import { NationalNumber } from "libphonenumber-js"
-
-import { Schema as GenericSchema } from "Services/data.ts"
-
-import { Format } from "Modules/typebox.ts"
 
 import { rest } from "./rest.ts"
 

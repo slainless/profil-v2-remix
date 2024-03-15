@@ -1,7 +1,7 @@
 import { atom } from "jotai"
 import { useHydrateAtoms } from "jotai/utils"
 
-import type { GalleryItem, MarketItemVariant } from "GraphQL/graphql.ts"
+import type { GalleryItem, MarketItemVariant } from "#graphql/graphql.ts"
 
 export const quantityAtom = atom(0)
 export const selectedImageAtom = atom<GalleryItem | null>(null)

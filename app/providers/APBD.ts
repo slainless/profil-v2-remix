@@ -7,9 +7,9 @@ import {
   TransactionType,
   type Transaction,
   type TransactionCategory,
-} from "GraphQL/graphql.ts"
+} from "#graphql/graphql.ts"
 
-import { getAPBDesReportsWithCategoriesQuery } from "Queries/apdes.ts"
+import { getAPBDesReportsWithCategoriesQuery } from "#queries/apdes.ts"
 
 export type WithTotal<T> = T & { total: number }
 

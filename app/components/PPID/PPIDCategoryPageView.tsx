@@ -3,9 +3,9 @@ import { Link } from "@remix-run/react"
 import { IconHome } from "@tabler/icons-react"
 import { Fragment } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import type { PpidType } from "GraphQL/graphql.ts"
+import type { PpidType } from "#graphql/graphql.ts"
 
 import { PPIDCategoryAccordion } from "./PPIDCategoryAccordion.tsx"
 

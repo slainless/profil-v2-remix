@@ -1,8 +1,7 @@
+import { formatDateOnly } from "#modules/date.ts"
+import { FormattedNumber } from "#modules/intl.ts"
 import { Group, GroupProps, Text } from "@mantine/core"
 import { IconEye, IconClock, IconUser } from "@tabler/icons-react"
-
-import { formatDateOnly } from "Modules/date.ts"
-import { FormattedNumber } from "Modules/intl.ts"
 
 export const ArticleMetaInfo = (
   props: GroupProps & {

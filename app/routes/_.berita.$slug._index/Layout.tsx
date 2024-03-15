@@ -1,8 +1,8 @@
 import { Box, Paper, Stack } from "@mantine/core"
 import { PropsWithChildren, ComponentProps } from "react"
 
-import { MoreArticleList } from "Components/Article/MoreArticleList.tsx"
-import PageContainer from "Components/PageContainer"
+import { MoreArticleList } from "#components/Article/MoreArticleList.tsx"
+import PageContainer from "#components/PageContainer.tsx"
 
 import styles from "./Layout.module.css"
 

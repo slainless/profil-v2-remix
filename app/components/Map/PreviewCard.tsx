@@ -2,9 +2,9 @@
 import { AspectRatio, Box, Image, Paper, PaperProps, Text } from "@mantine/core"
 import clsx from "clsx"
 
-import fallback from "Assets/location-illustration.svg"
+import fallback from "#assets/location-illustration.svg"
 
-import { rem } from "Modules/css-utils"
+import { rem } from "#modules/css-utils"
 
 import styles from "./PreviewCard.module.css"
 

@@ -9,10 +9,10 @@ import {
 } from "@mantine/core"
 import { useMemo } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
-import tableStyle from "Theme/table.module.css"
+import { vars } from "#theme/artifact/vars.mjs"
+import tableStyle from "#theme/table.module.css"
 
-import { Goal } from "Services/sdgs.ts"
+import { Goal } from "#services/sdgs.ts"
 
 export const SDGsTargetTable = ({ targets }: { targets: Goal.Target[] }) => {
   const sample = useMemo<Goal.Target | null>(

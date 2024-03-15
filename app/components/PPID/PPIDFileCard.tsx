@@ -13,11 +13,11 @@ import {
 import { IconNotes, IconClock, IconDownload } from "@tabler/icons-react"
 import { useState } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { asset, withAtom } from "Services/assets.ts"
+import { asset, withAtom } from "#services/assets.ts"
 
-import { formatDateOnlyWithDay } from "Modules/date.ts"
+import { formatDateOnlyWithDay } from "#modules/date.ts"
 
 import PPIDFileTypes from "./PPIDFileTypes.tsx"
 

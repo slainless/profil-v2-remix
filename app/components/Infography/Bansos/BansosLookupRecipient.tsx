@@ -6,9 +6,9 @@ import debounce from "lodash.debounce"
 import { ChangeEvent, useCallback, useState } from "react"
 import { useQuery } from "urql"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { bansosRecipientQuery } from "Queries/bansos.ts"
+import { bansosRecipientQuery } from "#queries/bansos.ts"
 
 import { BansosRecipientCard } from "./BansosRecipientCard.tsx"
 

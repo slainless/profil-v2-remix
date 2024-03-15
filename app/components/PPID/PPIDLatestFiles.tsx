@@ -9,16 +9,16 @@ import { useImmerAtom } from "jotai-immer"
 import { useEffect, useMemo } from "react"
 import { useQuery } from "urql"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { DimmedNotice } from "Components/DimmedNotice.tsx"
-import { PPIDViewModal } from "Components/PPID/PPIDViewModal.tsx"
+import { DimmedNotice } from "#components/DimmedNotice.tsx"
+import { PPIDViewModal } from "#components/PPID/PPIDViewModal.tsx"
 
-import { PPIDItemsAtom } from "Providers/PPID.ts"
+import { PPIDItemsAtom } from "#providers/PPID.ts"
 
-import { PPIDFilesQuery } from "Queries/PPID.ts"
+import { PPIDFilesQuery } from "#queries/PPID.ts"
 
-import { contentsOrNone } from "Modules/css-utils.ts"
+import { contentsOrNone } from "#modules/css-utils.ts"
 
 import { PPIDFileCard } from "./PPIDFileCard.tsx"
 

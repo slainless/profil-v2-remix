@@ -1,8 +1,8 @@
 import { Box, Title, Image, Button, Text, Stack, Group } from "@mantine/core"
 import { Link, useNavigate } from "@remix-run/react"
 
-import illustration404 from "Assets/404-illustration.svg"
-import illustration500 from "Assets/mild-panic-illustration.svg"
+import illustration404 from "#assets/404-illustration.svg"
+import illustration500 from "#assets/mild-panic-illustration.svg"
 
 import styles from "./Error.module.css"
 

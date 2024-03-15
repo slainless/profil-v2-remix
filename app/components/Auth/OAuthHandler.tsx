@@ -4,9 +4,9 @@ import { Center } from "@mantine/core"
 import { useHash } from "@mantine/hooks"
 import { useEffect, useMemo } from "react"
 
-import { Status, getOAuthResponse } from "Services/oauth"
+import { Status, getOAuthResponse } from "#services/oauth.ts"
 
-import { createMessage } from "Modules/tab-comm"
+import { createMessage } from "#modules/tab-comm.ts"
 
 import { OAuthError } from "./OAuthError"
 

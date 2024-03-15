@@ -2,9 +2,9 @@ import { atom, useSetAtom } from "jotai"
 import { useEffect } from "react"
 import { useQuery } from "urql"
 
-import type { DesaProfileQuery } from "GraphQL/graphql.ts"
+import type { DesaProfileQuery } from "#graphql/graphql.ts"
 
-import { desaProfileQuery } from "Queries/profile.ts"
+import { desaProfileQuery } from "#queries/profile.ts"
 
 export const desaProfileAtom = atom<DesaProfileQuery["profile"] | null>(null)
 

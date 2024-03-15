@@ -8,10 +8,10 @@ import {
   TableScrollContainer,
 } from "@mantine/core"
 
-import { vars } from "Theme/artifact/vars.mjs"
-import tableStyle from "Theme/table.module.css"
+import { vars } from "#theme/artifact/vars.mjs"
+import tableStyle from "#theme/table.module.css"
 
-import { Goal } from "Services/sdgs.ts"
+import { Goal } from "#services/sdgs.ts"
 
 import { TableParser } from "./SDGsTableParser.tsx"
 

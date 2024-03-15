@@ -22,19 +22,19 @@ import { useAtomValue } from "jotai"
 import { useCallback, useMemo, useState } from "react"
 import { useQuery } from "urql"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { DimmedNotice } from "Components/DimmedNotice.tsx"
+import { DimmedNotice } from "#components/DimmedNotice.tsx"
 
-import { profileAtom } from "Providers/profile.ts"
+import { profileAtom } from "#providers/profile.ts"
 
-import placeholder from "Assets/fallback.png"
+import placeholder from "#assets/fallback.png"
 
-import { orgMembersQuery } from "Queries/org.ts"
+import { orgMembersQuery } from "#queries/org.ts"
 
-import { asset, withAtom } from "Services/assets.ts"
+import { asset, withAtom } from "#services/assets.ts"
 
-import { contentsOrNone } from "Modules/css-utils"
+import { contentsOrNone } from "#modules/css-utils.ts"
 
 function Sotk() {
   const profile = useAtomValue(profileAtom)

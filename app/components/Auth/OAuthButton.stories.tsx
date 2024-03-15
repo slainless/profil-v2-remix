@@ -1,6 +1,5 @@
+import { Service } from "#services/oauth.ts"
 import { Meta, StoryObj } from "@storybook/react"
-
-import { Service } from "Services/oauth.ts"
 
 import { OAuthButton } from "./OAuthButton.tsx"
 

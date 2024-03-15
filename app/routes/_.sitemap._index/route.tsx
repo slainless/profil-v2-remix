@@ -1,6 +1,5 @@
+import { rest } from "#services/rest.ts"
 import type { LoaderFunctionArgs } from "@remix-run/node"
-
-import { rest } from "Services/rest.ts"
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url)

@@ -1,6 +1,5 @@
+import { APBDReportLoader } from "#providers/APBD.ts"
 import { Box, Stack } from "@mantine/core"
-
-import { APBDReportLoader } from "Providers/APBD.ts"
 
 import { BudgetStatsByYear } from "./BudgetStatsByYear.tsx"
 import Expense from "./ExpenseChart.tsx"

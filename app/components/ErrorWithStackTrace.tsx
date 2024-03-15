@@ -1,7 +1,7 @@
 import { CodeHighlight, InlineCodeHighlight } from "@mantine/code-highlight"
 import { Box, Title, Image, Text } from "@mantine/core"
 
-import illustration from "Assets/error-illustration.svg"
+import illustration from "#assets/error-illustration.svg"
 
 import styles from "./Error.module.css"
 

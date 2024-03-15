@@ -1,7 +1,6 @@
-import { schemaAtom } from "Providers/profile.ts"
-import { globalStore } from "Providers/store.ts"
-
-import { resolver } from "Modules/template.ts"
+import { resolver } from "#modules/template.ts"
+import { schemaAtom } from "#providers/profile.ts"
+import { globalStore } from "#providers/store.ts"
 
 const slasher = (schema: string) => schema.replaceAll("_", "/")
 const dotter = (schema: string) => schema.replaceAll("_", ".")

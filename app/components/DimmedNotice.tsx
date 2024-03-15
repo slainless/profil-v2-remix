@@ -1,9 +1,9 @@
 import { Paper, Group, Text } from "@mantine/core"
 import { TablerIconsProps } from "@tabler/icons-react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { rem } from "Modules/css-utils.ts"
+import { rem } from "#modules/css-utils.ts"
 
 export const DimmedNotice = (props: {
   icon: (props: TablerIconsProps) => JSX.Element

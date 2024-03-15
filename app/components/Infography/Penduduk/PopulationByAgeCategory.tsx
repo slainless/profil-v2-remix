@@ -6,11 +6,17 @@ import ReactECharts, { EChartsOption } from "echarts-for-react"
 import { useAtomValue } from "jotai"
 import { Fragment, useMemo } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { populationStatisticAtom } from "Providers/population.ts"
+import { populationStatisticAtom } from "#providers/population.ts"
 
-import type { IntKv } from "GraphQL/graphql.ts"
+import type { IntKv } from "#graphql/graphql.ts"
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 

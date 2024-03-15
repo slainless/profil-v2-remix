@@ -4,18 +4,18 @@ import { Stack, Box, Grid, Text, Title, Image } from "@mantine/core"
 import { useAtomValue } from "jotai"
 import { useMemo } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { populationStatisticAtom } from "Providers/population.ts"
+import { populationStatisticAtom } from "#providers/population.ts"
 
-import BelumKawin from "Assets/icons/icon-belum-kawin.svg"
-import CeraiHidup from "Assets/icons/icon-cerai-hidup.svg"
-import CeraiMati from "Assets/icons/icon-cerai-mati.svg"
-import KawinTakTercatat from "Assets/icons/icon-kawin-tak-tercatat.svg"
-import KawinTercatat from "Assets/icons/icon-kawin-tercatat.svg"
-import Kawin from "Assets/icons/icon-kawin.svg"
+import BelumKawin from "#assets/icons/icon-belum-kawin.svg"
+import CeraiHidup from "#assets/icons/icon-cerai-hidup.svg"
+import CeraiMati from "#assets/icons/icon-cerai-mati.svg"
+import KawinTakTercatat from "#assets/icons/icon-kawin-tak-tercatat.svg"
+import KawinTercatat from "#assets/icons/icon-kawin-tercatat.svg"
+import Kawin from "#assets/icons/icon-kawin.svg"
 
-import { FormattedNumber } from "Modules/intl.ts"
+import { FormattedNumber } from "#modules/intl.ts"
 
 const getIcon = (name: string) => {
   switch (name) {

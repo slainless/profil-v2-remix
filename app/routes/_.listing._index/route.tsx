@@ -1,10 +1,10 @@
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node"
 import { useLoaderData } from "@remix-run/react"
 
-import MapSection from "Components/Map/MapSection.tsx"
-import PageContainer from "Components/PageContainer.tsx"
+import MapSection from "#components/Map/MapSection.tsx"
+import PageContainer from "#components/PageContainer.tsx"
 
-import { assertCommonContext } from "Server/context.ts"
+import { assertCommonContext } from "#server/context.ts"
 
 import { renderCommonMetadata } from "../_/meta.ts"
 

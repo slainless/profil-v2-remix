@@ -1,17 +1,17 @@
 import { Stack, Box } from "@mantine/core"
 import type { MetaFunction } from "@remix-run/node"
 
-import PopulationByAgama from "Components/Infography/Penduduk/PopulationByAgama.tsx"
-import PopulationByAgeCategory from "Components/Infography/Penduduk/PopulationByAgeCategory.tsx"
-import PopulationByDusunCategory from "Components/Infography/Penduduk/PopulationByDusunCategory.tsx"
-import PopulationByPekerjaan from "Components/Infography/Penduduk/PopulationByPekerjaan.tsx"
-import PopulationByPendidikan from "Components/Infography/Penduduk/PopulationByPendidikan.tsx"
-import PopulationByPerkawinan from "Components/Infography/Penduduk/PopulationByPerkawinan.tsx"
-import PopulationByWajibPilih from "Components/Infography/Penduduk/PopulationByWajibPilih.tsx"
-import PopulationByYear from "Components/Infography/Penduduk/PopulationByYear.tsx"
-import PopulationSummary from "Components/Infography/Penduduk/PopulationSummary.tsx"
+import PopulationByAgama from "#components/Infography/Penduduk/PopulationByAgama.tsx"
+import PopulationByAgeCategory from "#components/Infography/Penduduk/PopulationByAgeCategory.tsx"
+import PopulationByDusunCategory from "#components/Infography/Penduduk/PopulationByDusunCategory.tsx"
+import PopulationByPekerjaan from "#components/Infography/Penduduk/PopulationByPekerjaan.tsx"
+import PopulationByPendidikan from "#components/Infography/Penduduk/PopulationByPendidikan.tsx"
+import PopulationByPerkawinan from "#components/Infography/Penduduk/PopulationByPerkawinan.tsx"
+import PopulationByWajibPilih from "#components/Infography/Penduduk/PopulationByWajibPilih.tsx"
+import PopulationByYear from "#components/Infography/Penduduk/PopulationByYear.tsx"
+import PopulationSummary from "#components/Infography/Penduduk/PopulationSummary.tsx"
 
-import { PopulationStatisticLoader } from "Providers/population.ts"
+import { PopulationStatisticLoader } from "#providers/population.ts"
 
 import { renderMetadata } from "../_.infografis/meta.ts"
 

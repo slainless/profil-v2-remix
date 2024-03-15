@@ -4,17 +4,17 @@ import { IconCircleX } from "@tabler/icons-react"
 import ReactECharts from "echarts-for-react"
 import { useQuery } from "urql"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { DimmedNotice } from "Components/DimmedNotice.tsx"
+import { DimmedNotice } from "#components/DimmedNotice.tsx"
 import {
   chartOptionsMobile,
   chartOptions,
-} from "Components/Infography/Stunting/stuntingViewChartOptions.ts"
+} from "#components/Infography/Stunting/stuntingViewChartOptions.ts"
 
-import { stuntingQuery } from "Queries/stats.ts"
+import { stuntingQuery } from "#queries/stats.ts"
 
-import { contentsOrNone } from "Modules/css-utils.ts"
+import { contentsOrNone } from "#modules/css-utils.ts"
 
 import { renderMetadata } from "../_.infografis/meta.ts"
 

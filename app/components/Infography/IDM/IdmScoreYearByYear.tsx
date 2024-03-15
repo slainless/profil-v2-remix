@@ -4,9 +4,9 @@ import { Box, Stack, Title } from "@mantine/core"
 import ReactECharts from "echarts-for-react"
 import { useAtomValue } from "jotai"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { IDMsAtom } from "Providers/IDM.ts"
+import { IDMsAtom } from "#providers/IDM.ts"
 
 import {
   chartOptions,

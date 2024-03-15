@@ -8,11 +8,11 @@ import Autoplay from "embla-carousel-autoplay"
 import { useRef } from "react"
 import { useQuery } from "urql"
 
-import { ArticleTypeValue } from "GraphQL/graphql.ts"
+import { ArticleTypeValue } from "#graphql/graphql.ts"
 
-import { articleCardsQuery } from "Queries/articles.ts"
+import { articleCardsQuery } from "#queries/articles.ts"
 
-import { asset, withAtom } from "Services/assets.ts"
+import { asset, withAtom } from "#services/assets.ts"
 
 import { ArticleSlide, WelcomeSlide } from "./JumbotronSlide.tsx"
 

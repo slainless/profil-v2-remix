@@ -1,10 +1,10 @@
 import { Stack, Title, Text } from "@mantine/core"
 import type { MetaFunction } from "@remix-run/node"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { PPIDRequestForm } from "Components/PPID/PPIDRequestForm.tsx"
-import PageContainer from "Components/PageContainer.tsx"
+import { PPIDRequestForm } from "#components/PPID/PPIDRequestForm.tsx"
+import PageContainer from "#components/PageContainer.tsx"
 
 import { page as parentPage } from "../_.ppid._index/meta.ts"
 import { renderCommonMetadata } from "../_/meta.ts"

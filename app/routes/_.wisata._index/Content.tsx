@@ -5,17 +5,17 @@ import { IconCircleX } from "@tabler/icons-react"
 import { useEffect } from "react"
 import { useQuery } from "urql"
 
-import { DimmedNotice } from "Components/DimmedNotice.tsx"
-import { usePagination } from "Components/Hooks/use-pagination.ts"
-import { PageNavigation } from "Components/PageNavigation.tsx"
+import { DimmedNotice } from "#components/DimmedNotice.tsx"
+import { usePagination } from "#components/Hooks/use-pagination.ts"
+import { PageNavigation } from "#components/PageNavigation.tsx"
 
-import { ArticleTypeValue, ArticlesQuery } from "GraphQL/graphql.ts"
+import { ArticleTypeValue, ArticlesQuery } from "#graphql/graphql.ts"
 
-import { articlesQuery } from "Queries/articles.ts"
+import { articlesQuery } from "#queries/articles.ts"
 
-import { asset, withAtom } from "Services/assets.ts"
+import { asset, withAtom } from "#services/assets.ts"
 
-import { contentsOrNone } from "Modules/css-utils.ts"
+import { contentsOrNone } from "#modules/css-utils.ts"
 
 import { WisataCard } from "./WisataCard.tsx"
 

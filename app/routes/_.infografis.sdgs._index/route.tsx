@@ -3,17 +3,17 @@ import type { MetaFunction } from "@remix-run/node"
 import { useAtom, useAtomValue } from "jotai"
 import { useEffect } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { SDGsCard } from "Components/Infography/SDGs/SDGsCard.tsx"
-import { SDGsGoalModal } from "Components/Infography/SDGs/SDGsGoalModal.tsx"
+import { SDGsCard } from "#components/Infography/SDGs/SDGsCard.tsx"
+import { SDGsGoalModal } from "#components/Infography/SDGs/SDGsGoalModal.tsx"
 
-import { scoreAtom } from "Providers/SDGs.ts"
-import { schemaAtom, aliasDesaAtom, namaDesaAtom } from "Providers/profile.ts"
+import { scoreAtom } from "#providers/SDGs.ts"
+import { schemaAtom, aliasDesaAtom, namaDesaAtom } from "#providers/profile.ts"
 
-import otherImage from "Assets/other-2.png"
+import otherImage from "#assets/other-2.png"
 
-import { getSDGsScore } from "Services/sdgs.ts"
+import { getSDGsScore } from "#services/sdgs.ts"
 
 import { renderMetadata } from "../_.infografis/meta.ts"
 

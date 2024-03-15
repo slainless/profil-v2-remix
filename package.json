@@ -3,8 +3,27 @@
   "private": true,
   "sideEffects": false,
   "type": "module",
+  "imports": {
+    "#theme/*": "./app/theme/*",
+    "#components/*": "./app/components/*",
+    "#providers/*": "./app/providers/*",
+    "#assets/*": "./app/assets/*",
+    "#locale/*": "./app/locale/*",
+    "#graphql/*": "./core/graphql/*",
+    "#queries/*": "./core/queries/*",
+    "#services/*": "./core/services/*",
+    "#modules/*": "./core/modules/*",
+    "#server/*": "./server/*",
+    "#entry.server": {
+      "types": "./app/entry/server.node.tsx",
+      "node": "./app/entry/server.node.tsx",
+      "browser": "./app/entry/server.browser.tsx"
+    }
+  },
   "scripts": {
-    "build": "remix vite:build && esbuild server.ts --packages=external --outfile=server.js",
+    "build": "remix vite:build",
+    "build:cloudflare": "cross-env USE_CLOUDFLARE=true remix vite:build",
+    "build:express-server": "esbuild server.ts --packages=external --outdir=build/express --format=esm",
     "dev": "vite-node ./server.ts",
     "dev:cloudflare": "cross-env USE_CLOUDFLARE=true remix vite:dev",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
@@ -12,7 +31,7 @@
     "start": "cross-env NODE_ENV=production node ./server.js",
     "typecheck": "tsc",
     "codegen": "graphql-codegen --config codegen.ts",
-    "start:wrangler": "wrangler pages dev ./build/client",
+    "start:wrangler": "wrangler pages dev ./build/client --compatibility-flags=\"nodejs_compat\"",
     "deploy:wrangler": "wrangler pages deploy ./build/client",
     "typegen": "wrangler types"
   },
@@ -39,7 +58,6 @@
     "@turf/centroid": "^6.5.0",
     "@urql/core": "^4.2.3",
     "@urql/exchange-graphcache": "^6.4.1",
-    "cacache": "^18.0.2",
     "clsx": "^2.1.0",
     "compression": "^1.7.4",
     "dayjs": "^1.11.10",
@@ -63,7 +81,6 @@
     "lodash.omit": "^4.5.0",
     "maplibre-gl": "^4.1.0",
     "micromustache": "^8.0.3",
-    "mime": "^4.0.1",
     "miniflare": "^3.20240304.1",
     "morgan": "^1.10.0",
     "normalize-url": "^8.0.0",

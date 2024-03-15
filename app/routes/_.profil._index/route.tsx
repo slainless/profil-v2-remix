@@ -1,13 +1,13 @@
 import { Stack, Box } from "@mantine/core"
 import type { MetaFunction } from "@remix-run/node"
 
-import PageContainer from "Components/PageContainer.tsx"
-import PemdesStructure from "Components/Profile/PemdesStructure.tsx"
-import PetaLokasi from "Components/Profile/PetaLokasi.tsx"
-import SejarahDesa from "Components/Profile/SejarahDesa.tsx"
-import VisiMisi from "Components/Profile/VisiMisi.tsx"
+import PageContainer from "#components/PageContainer.tsx"
+import PemdesStructure from "#components/Profile/PemdesStructure.tsx"
+import PetaLokasi from "#components/Profile/PetaLokasi.tsx"
+import SejarahDesa from "#components/Profile/SejarahDesa.tsx"
+import VisiMisi from "#components/Profile/VisiMisi.tsx"
 
-import { ProfileLoader } from "Providers/desa-profile.ts"
+import { ProfileLoader } from "#providers/desa-profile.ts"
 
 import { renderCommonMetadata } from "../_/meta.ts"
 

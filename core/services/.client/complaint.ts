@@ -1,6 +1,5 @@
+import { Format } from "#modules/typebox.ts"
 import { Static, Type } from "@sinclair/typebox"
-
-import { Format } from "Modules/typebox.ts"
 
 export const categories = [
   { value: "umum", label: "Umum" },

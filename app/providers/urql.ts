@@ -1,9 +1,8 @@
+import type { UnderscoredCode } from "#modules/domain-handler.ts"
+import { withHeaders } from "#modules/urql.ts"
 import merge from "lodash.merge"
 import { createElement, type PropsWithChildren } from "react"
 import { Client, Provider, cacheExchange, fetchExchange } from "urql"
-
-import type { UnderscoredCode } from "Modules/domain-handler.ts"
-import { withHeaders } from "Modules/urql.ts"
 
 export interface UrqlProviderProps extends PropsWithChildren {
   schema: UnderscoredCode

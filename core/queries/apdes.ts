@@ -1,4 +1,4 @@
-import { gql } from "GraphQL/gql.ts"
+import { gql } from "#graphql/gql.ts"
 
 export const commonTxnFieldsFragment = gql(`
   fragment commonTxnFields on Transaction {

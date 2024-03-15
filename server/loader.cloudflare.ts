@@ -1,4 +1,4 @@
-import type { UnderscoredCode } from "Modules/domain-handler.ts"
+import type { UnderscoredCode } from "#modules/domain-handler.ts"
 
 import { ErrorCode } from "../core/services/data.ts"
 import {

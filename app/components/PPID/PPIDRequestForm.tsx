@@ -24,12 +24,12 @@ import { useAtomValue } from "jotai"
 import { useMemo, useState } from "react"
 import { useForm } from "react-hook-form"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { schemaAtom } from "Providers/profile.ts"
+import { schemaAtom } from "#providers/profile.ts"
 
-import { Schema, type PPIDRequestPayload } from "Services/.client/ppid.ts"
-import { formData, rest } from "Services/rest.ts"
+import { Schema, type PPIDRequestPayload } from "#services/.client/ppid.ts"
+import { formData, rest } from "#services/rest.ts"
 
 import { fieldSpanFullStyle, requestFormStyle } from "./PPIDRequestForm.css"
 

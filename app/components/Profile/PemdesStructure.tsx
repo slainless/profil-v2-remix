@@ -3,13 +3,13 @@
 import { Accordion, Box, Stack, Text, Title } from "@mantine/core"
 import { useAtomValue } from "jotai"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { Spacer } from "Components/Spacer.tsx"
+import { Spacer } from "#components/Spacer.tsx"
 
-import { profileAtom } from "Providers/profile.ts"
+import { profileAtom } from "#providers/profile.ts"
 
-import { capitalizeEachWord } from "Modules/intl.ts"
+import { capitalizeEachWord } from "#modules/intl.ts"
 
 import PerangkatBPD from "./PerangkatBPD.tsx"
 import PerangkatDesa from "./PerangkatDesa.tsx"

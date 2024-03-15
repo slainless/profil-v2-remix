@@ -14,13 +14,13 @@ import { useImmerAtom } from "jotai-immer"
 import { useEffect, useState } from "react"
 import { useQuery } from "urql"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { PPIDItemsAtom } from "Providers/PPID"
+import { PPIDItemsAtom } from "#providers/PPID.ts"
 
-import type { PpidFilesQuery } from "GraphQL/graphql.ts"
+import type { PpidFilesQuery } from "#graphql/graphql.ts"
 
-import { PPIDFilesQuery } from "Queries/PPID.ts"
+import { PPIDFilesQuery } from "#queries/PPID.ts"
 
 import { PPIDFileStacks } from "./PPIDFileStacks.tsx"
 import { PPIDFileTable } from "./PPIDFileTable.tsx"

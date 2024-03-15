@@ -4,7 +4,7 @@ import { IconHome, IconReport, IconShoppingBag } from "@tabler/icons-react"
 import { IconNews } from "@tabler/icons-react"
 import React, { useState, useEffect } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
 const FloatingMenu: React.FC = () => {
   const [activeIcon, setActiveIcon] = useState<string>("home")

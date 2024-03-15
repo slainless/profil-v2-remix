@@ -6,22 +6,22 @@ import normalizeUrl from "normalize-url"
 import invariant from "tiny-invariant"
 import urlJoin from "url-join"
 
-import { ArticleHeader } from "Components/Article/ArticleHeader.tsx"
-import { ArticleRenderer } from "Components/Article/ArticleRenderer.tsx"
-import ShareArticle from "Components/ButtonShare.tsx"
+import { ArticleHeader } from "#components/Article/ArticleHeader.tsx"
+import { ArticleRenderer } from "#components/Article/ArticleRenderer.tsx"
+import ShareArticle from "#components/ButtonShare.tsx"
 
-import { desaAtom } from "Providers/profile.ts"
+import { desaAtom } from "#providers/profile.ts"
 
-import { getLocale } from "Locale/locale.ts"
+import { getLocale } from "#locale/locale.ts"
 
-import { ArticleTypeValue } from "GraphQL/graphql.ts"
+import { ArticleTypeValue } from "#graphql/graphql.ts"
 
-import { mustGetArticle } from "Services/articles.ts"
-import { asset } from "Services/assets.ts"
+import { mustGetArticle } from "#services/articles.ts"
+import { asset } from "#services/assets.ts"
 
-import { stripURL } from "Modules/url.ts"
+import { stripURL } from "#modules/url.ts"
 
-import { mustGetCommonContext } from "Server/context.ts"
+import { mustGetCommonContext } from "#server/context.ts"
 
 import { Layout } from "../_.berita.$slug._index/Layout.tsx"
 import {

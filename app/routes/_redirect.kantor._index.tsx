@@ -1,7 +1,7 @@
 import { redirect, type LoaderFunctionArgs } from "@remix-run/node"
 import urlJoin from "url-join"
 
-import { assertCommonContext } from "Server/context.ts"
+import { assertCommonContext } from "#server/context.ts"
 
 export async function loader({ request, context }: LoaderFunctionArgs) {
   assertCommonContext(context)

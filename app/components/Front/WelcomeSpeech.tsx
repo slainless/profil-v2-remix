@@ -13,17 +13,17 @@ import {
 import { useAtomValue } from "jotai"
 import { useQuery } from "urql"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { HTMLRenderer } from "Components/HTMLRenderer.tsx"
+import { HTMLRenderer } from "#components/HTMLRenderer.tsx"
 
-import { aliasDesaAtom, schemaAtom } from "Providers/profile.ts"
+import { aliasDesaAtom, schemaAtom } from "#providers/profile.ts"
 
-import placeholder from "Assets/fallback.png"
+import placeholder from "#assets/fallback.png"
 
-import { welcomeQuery } from "Queries/profile.ts"
+import { welcomeQuery } from "#queries/profile.ts"
 
-import { asset } from "Services/assets"
+import { asset } from "#services/assets.ts"
 
 import styles from "./WelcomeSpeech.module.css"
 

@@ -4,11 +4,11 @@ import { useAtom } from "jotai"
 import debounce from "lodash.debounce"
 import { useCallback } from "react"
 
-import { schemaAtom } from "Providers/profile"
+import { schemaAtom } from "#providers/profile.ts"
 
-import { DomainHandler } from "Modules/domain-handler"
+import { DomainHandler } from "#modules/domain-handler.ts"
 
-import RegularMap from "./RegularMap"
+import RegularMap from "./RegularMap.tsx"
 
 const meta = {
   title: "Map/Regular Map",

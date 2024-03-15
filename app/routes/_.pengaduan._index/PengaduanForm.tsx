@@ -23,21 +23,21 @@ import { useMemo, useState } from "react"
 import { Controller, useForm } from "react-hook-form"
 import { WritableDeep } from "type-fest"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { PhoneNumberInput } from "Components/PhoneNumberInput.tsx"
+import { PhoneNumberInput } from "#components/PhoneNumberInput.tsx"
 
-import { schemaAtom } from "Providers/profile.ts"
+import { schemaAtom } from "#providers/profile.ts"
 
 import {
   ComplaintPayload,
   Schema,
   categories,
-} from "Services/.client/complaint.ts"
-import { getError } from "Services/response.ts"
-import { formData, rest } from "Services/rest.ts"
+} from "#services/.client/complaint.ts"
+import { getError } from "#services/response.ts"
+import { formData, rest } from "#services/rest.ts"
 
-import { errMsg, errTitle } from "Modules/strings.ts"
+import { errMsg, errTitle } from "#modules/strings.ts"
 
 export function PengaduanForm() {
   const resolver = useMemo(() => typeboxResolver(Schema.payload), [])

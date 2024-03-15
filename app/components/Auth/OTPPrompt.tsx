@@ -12,13 +12,13 @@ import { TypeCompiler } from "@sinclair/typebox/compiler"
 import { NationalNumber } from "libphonenumber-js"
 import { FormEvent, useCallback, useEffect } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { useExpireCounter } from "Components/Hooks/use-expire-counter.ts"
-import { SimpleCounter } from "Components/SimpleCounter.tsx"
+import { useExpireCounter } from "#components/Hooks/use-expire-counter.ts"
+import { SimpleCounter } from "#components/SimpleCounter.tsx"
 
-import { Schema } from "Services/.client/otp.ts"
-import { Feedback } from "Services/response"
+import { Schema } from "#services/.client/otp.ts"
+import { Feedback } from "#services/response.ts"
 
 export interface OTPPromptProps {
   number?: NationalNumber

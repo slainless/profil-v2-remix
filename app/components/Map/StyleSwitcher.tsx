@@ -6,9 +6,9 @@ import clsx from "clsx"
 import { render } from "micromustache"
 import { useMemo } from "react"
 
-import basicThumbnail from "Assets/map/basic.webp"
-import satelliteThumbnail from "Assets/map/satellite.webp"
-import streetsThumbnail from "Assets/map/streets.webp"
+import basicThumbnail from "#assets/map/basic.webp"
+import satelliteThumbnail from "#assets/map/satellite.webp"
+import streetsThumbnail from "#assets/map/streets.webp"
 
 import styles from "./StyleSwitcher.module.css"
 

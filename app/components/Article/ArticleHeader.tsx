@@ -10,12 +10,12 @@ import {
 import { Link } from "@remix-run/react"
 import { IconClock, IconEye, IconHome, IconUser } from "@tabler/icons-react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { Span } from "Components/Span.tsx"
+import { Span } from "#components/Span.tsx"
 
-import { formatDateOnly } from "Modules/date.ts"
-import { FormattedNumber } from "Modules/intl.ts"
+import { formatDateOnly } from "#modules/date.ts"
+import { FormattedNumber } from "#modules/intl.ts"
 
 import styles from "./ArticleHeader.module.css"
 

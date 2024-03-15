@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import ky from "ky"
 
-import { UnderscoredCode } from "Modules/domain-handler"
+import { UnderscoredCode } from "#modules/domain-handler.ts"
 
 import { asset } from "./assets.ts"
 import { rest } from "./rest.ts"

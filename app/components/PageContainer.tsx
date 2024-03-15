@@ -1,7 +1,7 @@
 import { Container, ContainerProps } from "@mantine/core"
 import React from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
 type Props = {
   children: React.ReactNode

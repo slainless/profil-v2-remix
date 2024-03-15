@@ -1,9 +1,8 @@
 "use client"
 
+import { selectedVariantAtom } from "#providers/marketplace.ts"
 import { Title } from "@mantine/core"
 import { useAtomValue } from "jotai"
-
-import { selectedVariantAtom } from "Providers/marketplace.ts"
 
 function ProductName({ productName, fz }: { productName: string; fz: number }) {
   const selectedVariant = useAtomValue(selectedVariantAtom)

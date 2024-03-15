@@ -8,17 +8,17 @@ import { useAtomValue } from "jotai"
 import { render } from "micromustache"
 import { ReactNode } from "react"
 
-import { bp } from "Theme/artifact/vars.mjs"
+import { bp } from "#theme/artifact/vars.mjs"
 
-import { desaAtom, profileAtom } from "Providers/profile.ts"
+import { desaAtom, profileAtom } from "#providers/profile.ts"
 
-import fallback from "Assets/bg.webp"
+import fallback from "#assets/bg.webp"
 
-import { getLocale } from "Locale/locale.ts"
+import { getLocale } from "#locale/locale.ts"
 
-import { asset, withAtom } from "Services/assets.ts"
+import { asset, withAtom } from "#services/assets.ts"
 
-import { largerThan } from "Modules/css-utils"
+import { largerThan } from "#modules/css-utils.ts"
 
 import styles from "./Jumbotron.module.css"
 

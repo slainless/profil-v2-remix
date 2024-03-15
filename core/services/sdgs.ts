@@ -1,6 +1,5 @@
+import { UnderscoredCode } from "#modules/domain-handler.ts"
 import ky from "ky"
-
-import { UnderscoredCode } from "Modules/domain-handler.ts"
 
 import { asset } from "./assets.ts"
 

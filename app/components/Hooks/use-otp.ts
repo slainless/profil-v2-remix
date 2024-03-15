@@ -4,9 +4,9 @@ import { useAtom } from "jotai"
 import { NationalNumber } from "libphonenumber-js"
 import { useCallback, useEffect } from "react"
 
-import { alertAtom, phoneAtom, loadingAtom } from "Providers/otp"
+import { alertAtom, phoneAtom, loadingAtom } from "#providers/otp.ts"
 
-import { OTPPayload } from "Services/.client/otp.ts"
+import { OTPPayload } from "#services/.client/otp.ts"
 
 const detailValidator = TypeCompiler.Compile(
   Type.Object({

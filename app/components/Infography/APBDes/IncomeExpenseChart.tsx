@@ -6,14 +6,14 @@ import ReactECharts from "echarts-for-react"
 import { useAtomValue } from "jotai"
 import { useMemo } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { DimmedNotice } from "Components/DimmedNotice.tsx"
+import { DimmedNotice } from "#components/DimmedNotice.tsx"
 
-import { APBDReportByYearAndTypeAtom, Year } from "Providers/APBD.ts"
-import { aliasDesaAtom } from "Providers/profile.ts"
+import { APBDReportByYearAndTypeAtom, Year } from "#providers/APBD.ts"
+import { aliasDesaAtom } from "#providers/profile.ts"
 
-import { contentsOrNone } from "Modules/css-utils.ts"
+import { contentsOrNone } from "#modules/css-utils.ts"
 
 import { chartOptions, chartOptionsMobile } from "./incomeExpenseChartOption.ts"
 

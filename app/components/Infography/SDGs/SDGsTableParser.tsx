@@ -6,7 +6,7 @@ import htmlParser, {
 import { ElementType } from "htmlparser2"
 import omit from "lodash.omit"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
 function transformer(props: TableProps) {
   // @ts-expect-error ...

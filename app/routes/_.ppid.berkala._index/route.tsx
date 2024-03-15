@@ -1,9 +1,9 @@
 import type { MetaFunction } from "@remix-run/node"
 
-import { PPIDCategoryPageView } from "Components/PPID/PPIDCategoryPageView.tsx"
-import PageContainer from "Components/PageContainer.tsx"
+import { PPIDCategoryPageView } from "#components/PPID/PPIDCategoryPageView.tsx"
+import PageContainer from "#components/PageContainer.tsx"
 
-import { PpidType } from "GraphQL/graphql.ts"
+import { PpidType } from "#graphql/graphql.ts"
 
 import { renderCommonMetadata } from "../_/meta.ts"
 

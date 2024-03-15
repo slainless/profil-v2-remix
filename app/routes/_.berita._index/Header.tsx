@@ -3,9 +3,9 @@
 import { Box, Title, Text } from "@mantine/core"
 import { useAtomValue } from "jotai"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { namaDesaAtom, aliasDesaAtom } from "Providers/profile.ts"
+import { namaDesaAtom, aliasDesaAtom } from "#providers/profile.ts"
 
 export const Header = () => {
   const namaDesa = useAtomValue(namaDesaAtom)

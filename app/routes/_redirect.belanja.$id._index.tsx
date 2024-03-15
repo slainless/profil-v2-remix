@@ -1,8 +1,8 @@
 import { redirect, type LoaderFunctionArgs } from "@remix-run/node"
 
-import { mustGetMarketItemSlug } from "Services/marketplace.ts"
+import { mustGetMarketItemSlug } from "#services/marketplace.ts"
 
-import { assertCommonContext } from "Server/context"
+import { assertCommonContext } from "#server/context.ts"
 
 export async function loader({ context, params }: LoaderFunctionArgs) {
   const id = Number.parseInt(params["id"]!)

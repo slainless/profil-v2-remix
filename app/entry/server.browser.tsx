@@ -8,7 +8,7 @@ import { RemixServer } from "@remix-run/react"
 import { isbot } from "isbot"
 import * as ReactDOM from "react-dom/server"
 
-import type { Handler } from "./entry.server.tsx"
+import type { Handler } from "../entry.server.tsx"
 
 export const handleCloudflareRequest: Handler = async (
   request,

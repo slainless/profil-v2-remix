@@ -11,7 +11,7 @@ import { isbot } from "isbot"
 import { PassThrough } from "node:stream"
 import * as ReactDOM from "react-dom/server"
 
-import type { Handler } from "./entry.server.tsx"
+import type { Handler } from "../entry.server.tsx"
 
 const ABORT_DELAY = 5_000
 

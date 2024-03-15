@@ -1,7 +1,7 @@
 import { Carousel } from "@mantine/carousel"
 import { Box, Card, Image, Stack, Text, Title } from "@mantine/core"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
 export const PPIDMember = () => {
   return (

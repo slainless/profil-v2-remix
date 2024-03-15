@@ -2,11 +2,11 @@ import { atom } from "jotai"
 import { useHydrateAtoms } from "jotai/utils"
 import { render } from "micromustache"
 
-import { getLocale } from "Locale/locale.ts"
+import { getLocale } from "#locale/locale.ts"
 
-import type { ProfileQuery } from "GraphQL/graphql.ts"
+import type { ProfileQuery } from "#graphql/graphql.ts"
 
-import type { UnderscoredCode } from "Modules/domain-handler.ts"
+import type { UnderscoredCode } from "#modules/domain-handler.ts"
 
 export const profileAtom = atom<NonNullable<ProfileQuery["profile"]>>(
   Object.create(null),

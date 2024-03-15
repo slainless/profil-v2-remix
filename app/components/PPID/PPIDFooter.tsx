@@ -1,7 +1,7 @@
 import { Box, Button, Card, Center, Stack, Title } from "@mantine/core"
 import { Link } from "@remix-run/react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
 export const PPIDFooter = () => {
   return (

@@ -4,13 +4,13 @@ import { Stack, Title, Group, Button, Text, Divider } from "@mantine/core"
 import { IconClock, IconDownload } from "@tabler/icons-react"
 import { Fragment } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import type { PpidFilesQuery } from "GraphQL/graphql.ts"
+import type { PpidFilesQuery } from "#graphql/graphql.ts"
 
-import { asset, withAtom } from "Services/assets.ts"
+import { asset, withAtom } from "#services/assets.ts"
 
-import { formatDateOnlyWithDay } from "Modules/date.ts"
+import { formatDateOnlyWithDay } from "#modules/date.ts"
 
 import PPIDFileTypes from "./PPIDFileTypes.tsx"
 

@@ -21,20 +21,32 @@ import { useAtomValue } from "jotai"
 import { useMemo } from "react"
 import { useQuery } from "urql"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { desaProfileAtom } from "Providers/desa-profile.ts"
-import { aliasDesaAtom, namaDesaAtom } from "Providers/profile.ts"
+import { desaProfileAtom } from "#providers/desa-profile.ts"
+import { aliasDesaAtom, namaDesaAtom } from "#providers/profile.ts"
 
-import geografis from "Assets/geografis.png"
+import geografis from "#assets/geografis.png"
 
-import { StringKv } from "GraphQL/graphql.ts"
+import { StringKv } from "#graphql/graphql.ts"
 
-import { populationMutationSummaryQuery } from "Queries/stats.ts"
+import { populationMutationSummaryQuery } from "#queries/stats.ts"
 
-import { FormattedNumber, capitalize } from "Modules/intl.ts"
+import { FormattedNumber, capitalize } from "#modules/intl.ts"
 
 import BorderVillage from "./BorderVillageMap.tsx"
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 

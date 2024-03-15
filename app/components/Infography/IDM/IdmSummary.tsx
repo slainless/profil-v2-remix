@@ -4,9 +4,9 @@ import { Box, Grid, Stack, Title, Text, Card, Group } from "@mantine/core"
 import { useAtomValue } from "jotai"
 import { useMemo } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { latestIDMAtom } from "Providers/IDM.ts"
+import { latestIDMAtom } from "#providers/IDM.ts"
 
 function IdmSummary() {
   const latestIDM = useAtomValue(latestIDMAtom)

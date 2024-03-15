@@ -1,6 +1,6 @@
 import { Card, SimpleGrid, Box, Text } from "@mantine/core"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
 import { normalizeBudget, getState, BudgetItem } from "./BudgetItemCard.tsx"
 import styles from "./FinancingCard.module.css"

@@ -4,13 +4,16 @@ import { Carousel } from "@mantine/carousel"
 import { Stack, Image, AspectRatio } from "@mantine/core"
 import { useAtom } from "jotai"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { previewedImageAtom, selectedImageAtom } from "Providers/marketplace.ts"
+import {
+  previewedImageAtom,
+  selectedImageAtom,
+} from "#providers/marketplace.ts"
 
-import type { GalleryItem } from "GraphQL/graphql.ts"
+import type { GalleryItem } from "#graphql/graphql.ts"
 
-import { asset } from "Services/assets"
+import { asset } from "#services/assets.ts"
 
 import styles from "./Gallery.module.css"
 

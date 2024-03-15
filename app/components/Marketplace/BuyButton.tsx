@@ -1,7 +1,7 @@
 import { Button } from "@mantine/core"
-import { IconBrandWhatsapp, IconShoppingBag } from "@tabler/icons-react"
+import { IconBrandWhatsapp } from "@tabler/icons-react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
 export const WhatsappContactButton = (props: { number: string }) => {
   return (

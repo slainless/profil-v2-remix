@@ -4,14 +4,14 @@ import { Group, Title, Text, Image, Grid, Stack } from "@mantine/core"
 import { useAtom, useAtomValue } from "jotai"
 import { useEffect } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { scoreAtom } from "Providers/SDGs.ts"
-import { aliasDesaAtom, namaDesaAtom, schemaAtom } from "Providers/profile.ts"
+import { scoreAtom } from "#providers/SDGs.ts"
+import { aliasDesaAtom, namaDesaAtom, schemaAtom } from "#providers/profile.ts"
 
-import otherImage from "Assets/other-2.png"
+import otherImage from "#assets/other-2.png"
 
-import { getSDGsScore } from "Services/sdgs.ts"
+import { getSDGsScore } from "#services/sdgs.ts"
 
 import { SDGsCard } from "./SDGsCard"
 import { SDGsGoalModal } from "./SDGsGoalModal"

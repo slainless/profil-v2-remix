@@ -1,9 +1,9 @@
 import { Stack } from "@mantine/core"
 import type { MetaFunction } from "@remix-run/node"
 
-import PageContainer from "Components/PageContainer.tsx"
+import PageContainer from "#components/PageContainer.tsx"
 
-import { getLocale } from "Locale/locale.ts"
+import { getLocale } from "#locale/locale.ts"
 
 import { mustGetRootLayoutData } from "../_/data.ts"
 import {

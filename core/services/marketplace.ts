@@ -6,16 +6,16 @@ import type {
   GalleryItem,
   MarketItem,
   MarketItemVariant,
-} from "GraphQL/graphql.ts"
+} from "#graphql/graphql.ts"
 
 import {
   productSlugQuery,
   productQuery,
   productWithReviewsQuery,
-} from "Queries/marketplace.ts"
+} from "#queries/marketplace.ts"
 
-import type { UnderscoredCode } from "Modules/domain-handler.ts"
-import { withHeaders } from "Modules/urql.ts"
+import type { UnderscoredCode } from "#modules/domain-handler.ts"
+import { withHeaders } from "#modules/urql.ts"
 
 export const getDefaultPhoto = (
   item: Pick<MarketItem, "media"> & { defaultPhoto: Pick<GalleryItem, "ID"> },

@@ -6,20 +6,20 @@ import kebabCase from "lodash.kebabcase"
 import { render } from "micromustache"
 import { useEffect, useMemo, useState } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
 import {
   previewedImageAtom,
   selectedImageAtom,
   selectedVariantAtom,
-} from "Providers/marketplace.ts"
-import { desaAtom } from "Providers/profile.ts"
+} from "#providers/marketplace.ts"
+import { desaAtom } from "#providers/profile.ts"
 
-import { getLocale } from "Locale/locale.ts"
+import { getLocale } from "#locale/locale.ts"
 
-import type { GalleryItem, MarketItemVariant } from "GraphQL/graphql.ts"
+import type { GalleryItem, MarketItemVariant } from "#graphql/graphql.ts"
 
-import { asset } from "Services/assets.ts"
+import { asset } from "#services/assets.ts"
 
 interface Props {
   productName: string

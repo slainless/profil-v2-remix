@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FormattedNumber } from "Modules/intl.ts"
+import { FormattedNumber } from "#modules/intl.ts"
 
 export const chartOptions = (
   xAxisData: any[],

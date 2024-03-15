@@ -1,11 +1,11 @@
 import { Group, Rating, Divider, Text, Stack } from "@mantine/core"
 import { IconTags, IconMapPinFilled } from "@tabler/icons-react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import type { MarketItemCategory } from "GraphQL/graphql.ts"
+import type { MarketItemCategory } from "#graphql/graphql.ts"
 
-import { FormattedNumber } from "Modules/intl"
+import { FormattedNumber } from "#modules/intl.ts"
 
 interface Props {
   ratingN?: number

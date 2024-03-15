@@ -2,9 +2,9 @@ import { atom, useSetAtom } from "jotai"
 import { useEffect } from "react"
 import { useQuery } from "urql"
 
-import type { PopulationStatistic } from "GraphQL/graphql.ts"
+import type { PopulationStatistic } from "#graphql/graphql.ts"
 
-import { populationStatisticQuery } from "Queries/population.ts"
+import { populationStatisticQuery } from "#queries/population.ts"
 
 export const populationStatisticAtom = atom<PopulationStatistic | null>(null)
 

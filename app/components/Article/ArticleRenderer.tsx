@@ -5,9 +5,9 @@ import {
 } from "@mantine/core"
 import omit from "lodash.omit"
 
-import styles from "Theme/generated-content.module.css"
+import styles from "#theme/generated-content.module.css"
 
-import { HTMLRenderer } from "Components/HTMLRenderer"
+import { HTMLRenderer } from "#components/HTMLRenderer.tsx"
 
 export const ArticleRenderer = (
   props: TypographyStylesProviderProps & {

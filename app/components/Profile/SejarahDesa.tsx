@@ -14,15 +14,15 @@ import {
 import { IconClipboardOff } from "@tabler/icons-react"
 import { useAtomValue } from "jotai"
 
-import { DimmedNotice } from "Components/DimmedNotice"
-import { HTMLRenderer } from "Components/HTMLRenderer"
+import { DimmedNotice } from "#components/DimmedNotice.tsx"
+import { HTMLRenderer } from "#components/HTMLRenderer.tsx"
 
-import { desaProfileAtom } from "Providers/desa-profile.ts"
-import { schemaAtom, aliasDesaAtom, namaDesaAtom } from "Providers/profile.ts"
+import { desaProfileAtom } from "#providers/desa-profile.ts"
+import { schemaAtom, aliasDesaAtom, namaDesaAtom } from "#providers/profile.ts"
 
-import { asset } from "Services/assets.ts"
+import { asset } from "#services/assets.ts"
 
-import { contentsOrNone } from "Modules/css-utils.ts"
+import { contentsOrNone } from "#modules/css-utils.ts"
 
 function SejarahDesa() {
   const schema = useAtomValue(schemaAtom)

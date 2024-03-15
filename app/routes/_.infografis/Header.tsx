@@ -3,11 +3,11 @@
 import { Grid, Title, TabsList, ScrollArea } from "@mantine/core"
 import { useAtomValue } from "jotai"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { aliasDesaAtom, namaDesaAtom, schemaAtom } from "Providers/profile.ts"
+import { aliasDesaAtom, namaDesaAtom, schemaAtom } from "#providers/profile.ts"
 
-import { DomainHandler } from "Modules/domain-handler.ts"
+import { DomainHandler } from "#modules/domain-handler.ts"
 
 import { tabMapping } from "./Tabs.mapping.ts"
 import { Icon, Tab } from "./Tabs.tsx"

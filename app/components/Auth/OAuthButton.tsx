@@ -6,10 +6,10 @@ import { useLocation } from "@remix-run/react"
 import { useAtomValue } from "jotai"
 import { useEffect, useState } from "react"
 
-import { baseDomainAtom } from "Providers/profile"
+import { baseDomainAtom } from "#providers/profile.ts"
 
-import facebookLogo from "Assets/facebook-logo.svg"
-import googleLogo from "Assets/google-logo.svg"
+import facebookLogo from "#assets/facebook-logo.svg"
+import googleLogo from "#assets/google-logo.svg"
 
 import {
   Service,
@@ -17,9 +17,21 @@ import {
   createAuthUrl,
   labels,
   profileScopes,
-} from "Services/oauth"
+} from "#services/oauth.ts"
 
-import { parseMessage } from "Modules/tab-comm.ts"
+import { parseMessage } from "#modules/tab-comm.ts"
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 

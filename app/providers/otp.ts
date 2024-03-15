@@ -1,8 +1,8 @@
 import { atom } from "jotai"
 import { NationalNumber } from "libphonenumber-js"
 
-import { OTPResponse } from "Services/.client/otp.ts"
-import { Feedback } from "Services/response"
+import { OTPResponse } from "#services/.client/otp.ts"
+import { Feedback } from "#services/response.ts"
 
 // export const openedAtom = atom<boolean>(false)
 export const loadingAtom = atom<boolean>(false)

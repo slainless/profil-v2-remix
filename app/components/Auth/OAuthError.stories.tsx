@@ -1,9 +1,9 @@
 import { Box, Center } from "@mantine/core"
 import { Meta, StoryObj } from "@storybook/react"
 
-import PageContainer from "Components/PageContainer"
+import PageContainer from "#components/PageContainer.ts"
 
-import { Status, Service, labels } from "Services/oauth.ts"
+import { Status, Service, labels } from "#services/oauth.ts"
 
 import { OAuthError } from "./OAuthError"
 

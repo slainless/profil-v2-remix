@@ -1,5 +1,9 @@
 "use client"
 
+import { DomainHandler } from "#modules/domain-handler.ts"
+// import { UserAvatar } from "#components/Header/UserAvatar.tsx"
+import { profileAtom, schemaAtom } from "#providers/profile.ts"
+import { asset } from "#services/assets.ts"
 import {
   AppShell,
   Image,
@@ -28,14 +32,7 @@ import {
   useEffect,
 } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
-
-// import { UserAvatar } from "Components/Header/UserAvatar.tsx"
-import { profileAtom, schemaAtom } from "Providers/profile.ts"
-
-import { asset } from "Services/assets.ts"
-
-import { DomainHandler } from "Modules/domain-handler.ts"
+import { vars } from "#theme/artifact/vars.mjs"
 
 import { NavbarItem } from "./NavbarItem.tsx"
 import { navbarMenu } from "./navbar-menu.ts"

@@ -39,19 +39,19 @@ import { useAtomValue } from "jotai"
 import { useMemo } from "react"
 import { useQuery } from "urql"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { profileAtom, schemaAtom } from "Providers/profile.ts"
+import { profileAtom, schemaAtom } from "#providers/profile.ts"
 
-import { mainPointOfInterestQuery } from "Queries/poi.ts"
+import { mainPointOfInterestQuery } from "#queries/poi.ts"
 // import { visitStatisticAtom } from "Atoms/visitor"
-import { externalLinksQuery, importantContactsQuery } from "Queries/profile.ts"
+import { externalLinksQuery, importantContactsQuery } from "#queries/profile.ts"
 
-import { asset } from "Services/assets"
+import { asset } from "#services/assets"
 
-import { getMainPOI } from "Modules/geojson-utils.ts"
+import { getMainPOI } from "#modules/geojson-utils.ts"
 
-// import { FormattedNumber } from "Modules/intl.ts"
+// import { FormattedNumber } from "#modules/intl.ts"
 import FloatingMenu from "./FloatingMenu"
 
 const AppFooter = () => {

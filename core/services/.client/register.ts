@@ -1,10 +1,8 @@
+import { Format } from "#modules/typebox.ts"
+import { Schema as GenericSchema } from "#services/data.ts"
+import { Service } from "#services/oauth.ts"
 import { Static, Type } from "@sinclair/typebox"
 import { TypeCompiler } from "@sinclair/typebox/compiler"
-
-import { Schema as GenericSchema } from "Services/data.ts"
-import { Service } from "Services/oauth.ts"
-
-import { Format } from "Modules/typebox.ts"
 
 import { TokenResponse } from "./login.ts"
 import { Schema as OTPSchema } from "./otp.ts"

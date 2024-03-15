@@ -6,14 +6,14 @@ import ky from "ky"
 import { LngLat } from "maplibre-gl"
 import { useEffect, useState } from "react"
 
-import { isLoadedPoiAtom } from "Providers/map.ts"
+import { isLoadedPoiAtom } from "#providers/map.ts"
 
-import { PointOfInterest } from "GraphQL/graphql.ts"
+import { PointOfInterest } from "#graphql/graphql.ts"
 
-import { asset } from "Services/assets"
+import { asset } from "#services/assets.ts"
 
-import { UnderscoredCode } from "Modules/domain-handler"
-import { BorderDesa } from "Modules/geojson-utils"
+import { UnderscoredCode } from "#modules/domain-handler.ts"
+import { BorderDesa } from "#modules/geojson-utils.ts"
 
 export function useBorderDesa(schema: UnderscoredCode) {
   const [result, setResult] = useState<{

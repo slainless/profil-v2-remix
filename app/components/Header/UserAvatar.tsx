@@ -6,18 +6,18 @@ import { notifications } from "@mantine/notifications"
 import { useAtomValue } from "jotai"
 import { useMemo } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { AuthModal } from "Components/Auth/AuthModal"
+import { AuthModal } from "#components/Auth/AuthModal.tsx"
 
-import { aliasDesaAtom, desaAtom } from "Providers/profile"
-import { userAtom, usernameAtom } from "Providers/user"
+import { aliasDesaAtom, desaAtom } from "#providers/profile.ts"
+import { userAtom, usernameAtom } from "#providers/user.ts"
 
-import { asset } from "Services/assets"
+import { asset } from "#services/assets.ts"
 
-import { createInitial } from "Modules/avatar"
+import { createInitial } from "#modules/avatar.ts"
 
-import { UserMenu } from "./UserMenu"
+import { UserMenu } from "./UserMenu.tsx"
 
 export function UserAvatar() {
   const [opened, { open, close }] = useDisclosure(false)

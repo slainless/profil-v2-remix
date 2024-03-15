@@ -17,16 +17,16 @@ import { useAtomValue } from "jotai"
 import urlJoin from "url-join"
 import { useQuery } from "urql"
 
-import { schemaAtom } from "Providers/profile.ts"
+import { schemaAtom } from "#providers/profile.ts"
 
-import { Article, ArticleType } from "GraphQL/graphql.ts"
+import { Article, ArticleType } from "#graphql/graphql.ts"
 
-import { articlesQuery } from "Queries/articles.ts"
+import { articlesQuery } from "#queries/articles.ts"
 
-import { asset } from "Services/assets"
+import { asset } from "#services/assets.ts"
 
-import { formatDateOnly } from "Modules/date"
-import { FormattedNumber } from "Modules/intl"
+import { formatDateOnly } from "#modules/date.ts"
+import { FormattedNumber } from "#modules/intl.ts"
 
 const LIMIT = 8
 

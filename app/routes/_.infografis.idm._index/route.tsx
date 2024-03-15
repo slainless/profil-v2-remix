@@ -3,16 +3,16 @@ import type { MetaFunction } from "@remix-run/node"
 import { useAtomValue, useSetAtom } from "jotai"
 import { useEffect } from "react"
 
-import IdmScoreYearByYear from "Components/Infography/IDM/IdmScoreYearByYear.tsx"
-import IdmSummary from "Components/Infography/IDM/IdmSummary.tsx"
-import IdmTable from "Components/Infography/IDM/IdmTable.tsx"
+import IdmScoreYearByYear from "#components/Infography/IDM/IdmScoreYearByYear.tsx"
+import IdmSummary from "#components/Infography/IDM/IdmSummary.tsx"
+import IdmTable from "#components/Infography/IDM/IdmTable.tsx"
 
-import { IDMsAtom } from "Providers/IDM.ts"
-import { schemaAtom } from "Providers/profile.ts"
+import { IDMsAtom } from "#providers/IDM.ts"
+import { schemaAtom } from "#providers/profile.ts"
 
-import { getAvailableIDM, getIDM } from "Services/idm.ts"
+import { getAvailableIDM, getIDM } from "#services/idm.ts"
 
-import type { UnderscoredCode } from "Modules/domain-handler.ts"
+import type { UnderscoredCode } from "#modules/domain-handler.ts"
 
 import { renderMetadata } from "../_.infografis/meta.ts"
 

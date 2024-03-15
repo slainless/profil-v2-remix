@@ -14,11 +14,11 @@ import { IconChevronLeft } from "@tabler/icons-react"
 import { useAtomValue } from "jotai"
 import { PropsWithChildren, useState } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { desaAtom } from "Providers/profile.ts"
+import { desaAtom } from "#providers/profile.ts"
 
-import AssetsMapIllustration from "Assets/map-smartphone-illustration.svg"
+import AssetsMapIllustration from "#assets/map-smartphone-illustration.svg"
 
 import { DetailCard } from "./DetailCard.tsx"
 import { PreviewCard } from "./PreviewCard.tsx"

@@ -18,20 +18,20 @@ import {
 import { stripHtml } from "string-strip-html"
 import { useQuery } from "urql"
 
-import { theme } from "Theme/artifact/resolved-theme.mjs"
+import { theme } from "#theme/artifact/resolved-theme.mjs"
 
-import { isLoadedPoiAtom } from "Providers/map.ts"
-import { aliasDesaAtom, schemaAtom } from "Providers/profile.ts"
+import { isLoadedPoiAtom } from "#providers/map.ts"
+import { aliasDesaAtom, schemaAtom } from "#providers/profile.ts"
 
-import { PointOfInterest } from "GraphQL/graphql.ts"
+import { PointOfInterest } from "#graphql/graphql.ts"
 
-import { pointOfInterestsQuery } from "Queries/poi.ts"
+import { pointOfInterestsQuery } from "#queries/poi.ts"
 
-import { asset, withAtom } from "Services/assets.ts"
+import { asset, withAtom } from "#services/assets.ts"
 
-import { rem } from "Modules/css-utils.ts"
-import bbox from "Modules/geojson-bbox.js"
-import { boundsOfIndonesia, centerOfIndonesia } from "Modules/geojson-utils.ts"
+import { rem } from "#modules/css-utils.ts"
+import bbox from "#modules/geojson-bbox.js"
+import { boundsOfIndonesia, centerOfIndonesia } from "#modules/geojson-utils.ts"
 
 import { FocusButton } from "./FocusButton.tsx"
 import styles from "./InteractiveMap.module.css"

@@ -6,16 +6,16 @@ import { Link } from "@remix-run/react"
 import { IconCurrencyDollarOff } from "@tabler/icons-react"
 import { useQuery } from "urql"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { BumdesCard } from "Components/BumdesCard.tsx"
-import { DimmedNotice } from "Components/DimmedNotice.tsx"
+import { BumdesCard } from "#components/BumdesCard.tsx"
+import { DimmedNotice } from "#components/DimmedNotice.tsx"
 
-import { bumdesQuery } from "Queries/articles.ts"
+import { bumdesQuery } from "#queries/articles.ts"
 
-import { asset, withAtom } from "Services/assets.ts"
+import { asset, withAtom } from "#services/assets.ts"
 
-import { contentsOrNone } from "Modules/css-utils.ts"
+import { contentsOrNone } from "#modules/css-utils.ts"
 
 function BumdesPanel() {
   const [{ data }] = useQuery({ query: bumdesQuery })

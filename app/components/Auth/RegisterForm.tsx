@@ -15,17 +15,17 @@ import { IconAt, IconPhone } from "@tabler/icons-react"
 import { useEffect, useMemo } from "react"
 import { useForm } from "react-hook-form"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { useReCAPTCHA } from "Components/Hooks/use-recaptcha.ts"
-import { PhoneNumberInput } from "Components/PhoneNumberInput.tsx"
+import { useReCAPTCHA } from "#components/Hooks/use-recaptcha.ts"
+import { PhoneNumberInput } from "#components/PhoneNumberInput.tsx"
 
-import digidesLogo from "Assets/maskot digides-head-only.svg"
+import digidesLogo from "#assets/maskot digides-head-only.svg"
 
-import { RegisterPayload, Schema } from "Services/.client/register.ts"
-import { Service } from "Services/oauth"
+import { RegisterPayload, Schema } from "#services/.client/register.ts"
+import { Service } from "#services/oauth.ts"
 
-import { parsePhoneNumber } from "Modules/intl"
+import { parsePhoneNumber } from "#modules/intl.ts"
 
 export interface RegisterFormPrefill {
   name: string

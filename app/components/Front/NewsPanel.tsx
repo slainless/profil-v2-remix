@@ -23,21 +23,21 @@ import { useAtomValue } from "jotai"
 import { useCallback, useState } from "react"
 import { useQuery } from "urql"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { DimmedNotice } from "Components/DimmedNotice.tsx"
-import NewsItem from "Components/NewsCard.tsx"
-import NewsItemCarousel from "Components/NewsCarouselCard.tsx"
+import { DimmedNotice } from "#components/DimmedNotice.tsx"
+import NewsItem from "#components/NewsCard.tsx"
+import NewsItemCarousel from "#components/NewsCarouselCard.tsx"
 
-import { aliasDesaAtom, profileAtom } from "Providers/profile.ts"
+import { aliasDesaAtom, profileAtom } from "#providers/profile.ts"
 
-import { ArticleTypeValue } from "GraphQL/graphql.ts"
+import { ArticleTypeValue } from "#graphql/graphql.ts"
 
-import { articlesQuery } from "Queries/articles.ts"
+import { articlesQuery } from "#queries/articles.ts"
 
-import { asset, withAtom } from "Services/assets.ts"
+import { asset, withAtom } from "#services/assets.ts"
 
-import { contentsOrNone } from "Modules/css-utils.ts"
+import { contentsOrNone } from "#modules/css-utils.ts"
 
 function NewsPanel() {
   const profile = useAtomValue(profileAtom)

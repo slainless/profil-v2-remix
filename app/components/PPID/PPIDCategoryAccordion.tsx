@@ -5,15 +5,15 @@ import { IconFolderX } from "@tabler/icons-react"
 import { useAtomValue } from "jotai"
 import { useMemo, useState } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { PPIDViewModal } from "Components/PPID/PPIDViewModal.tsx"
+import { PPIDViewModal } from "#components/PPID/PPIDViewModal.tsx"
 
-import { PPIDCategoriesMapAtom } from "Providers/PPID.ts"
+import { PPIDCategoriesMapAtom } from "#providers/PPID.ts"
 
-import type { PpidType } from "GraphQL/graphql.ts"
+import type { PpidType } from "#graphql/graphql.ts"
 
-import { contentsOrNone } from "Modules/css-utils.ts"
+import { contentsOrNone } from "#modules/css-utils.ts"
 
 import { PPIDCategoryAccordionItem } from "./PPIDCategoryAccordionItem.tsx"
 

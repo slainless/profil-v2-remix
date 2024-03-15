@@ -3,20 +3,20 @@
 import { Stack, Box, Grid, Text, Title, Image, SimpleGrid } from "@mantine/core"
 import { useAtomValue } from "jotai"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { populationStatisticAtom } from "Providers/population.ts"
+import { populationStatisticAtom } from "#providers/population.ts"
 
-import KK from "Assets/icons/icon-kepala-keluarga.svg"
-import Laki from "Assets/icons/icon-laki.svg"
-import Perempuan from "Assets/icons/icon-perempuan.svg"
-import TotalPenduduk from "Assets/icons/icon-total-penduduk.svg"
-import kk from "Assets/kepala-keluarga.png"
-import laki from "Assets/laki.png"
-import perempuan from "Assets/perempuan.png"
-import total from "Assets/total-penduduk.png"
+import KK from "#assets/icons/icon-kepala-keluarga.svg"
+import Laki from "#assets/icons/icon-laki.svg"
+import Perempuan from "#assets/icons/icon-perempuan.svg"
+import TotalPenduduk from "#assets/icons/icon-total-penduduk.svg"
+import kk from "#assets/kepala-keluarga.png"
+import laki from "#assets/laki.png"
+import perempuan from "#assets/perempuan.png"
+import total from "#assets/total-penduduk.png"
 
-import { FormattedNumber } from "Modules/intl.ts"
+import { FormattedNumber } from "#modules/intl.ts"
 
 const int = (v: number | null | undefined) => (v == null ? 0 : v)
 

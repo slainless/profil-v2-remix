@@ -1,10 +1,10 @@
 import { Box, Group, ScrollArea, Table, Text } from "@mantine/core"
 import { useAtomValue } from "jotai"
 
-import { vars } from "Theme/artifact/vars.mjs"
-import tableStyle from "Theme/table.module.css"
+import { vars } from "#theme/artifact/vars.mjs"
+import tableStyle from "#theme/table.module.css"
 
-import { latestIDMAtom } from "Providers/IDM.ts"
+import { latestIDMAtom } from "#providers/IDM.ts"
 
 const IdmTable = () => {
   const latestIDM = useAtomValue(latestIDMAtom)

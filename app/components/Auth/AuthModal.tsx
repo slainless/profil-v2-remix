@@ -2,13 +2,13 @@ import { LoadingOverlay, Modal } from "@mantine/core"
 import { useSetAtom } from "jotai"
 import { createElement, useCallback, useState } from "react"
 
-import { useOTP } from "Components/Hooks/use-otp.ts"
-import { useReCAPTCHA } from "Components/Hooks/use-recaptcha.ts"
-import { SimpleCounter } from "Components/SimpleCounter.tsx"
+import { useOTP } from "#components/Hooks/use-otp.ts"
+import { useReCAPTCHA } from "#components/Hooks/use-recaptcha.ts"
+import { SimpleCounter } from "#components/SimpleCounter.tsx"
 
-import { credentialAtom, usernameAtom } from "Providers/user.ts"
+import { credentialAtom, usernameAtom } from "#providers/user.ts"
 
-import { getLocale } from "Locale/locale.ts"
+import { getLocale } from "#locale/locale.ts"
 
 import {
   Compiled,
@@ -16,16 +16,16 @@ import {
   LoginWithThirdPartyPayload,
   TokenResponse,
   login,
-} from "Services/.client/login.ts"
-import { RegisterPayload, register } from "Services/.client/register.ts"
-import { ErrorCode, is } from "Services/data.ts"
+} from "#services/.client/login.ts"
+import { RegisterPayload, register } from "#services/.client/register.ts"
+import { ErrorCode, is } from "#services/data.ts"
 import {
   mustGetResponse,
   getError,
   type Feedback,
   getErrorTitle,
   getErrorMessage,
-} from "Services/response.ts"
+} from "#services/response.ts"
 
 import { LoginForm } from "./LoginForm.tsx"
 import { RegisterForm, RegisterFormPrefill } from "./RegisterForm.tsx"

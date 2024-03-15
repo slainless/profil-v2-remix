@@ -7,29 +7,29 @@ import { useEffect, useMemo, useState } from "react"
 import { Map, Layer, MapRef, Marker, Source } from "react-map-gl/maplibre"
 import { useQuery } from "urql"
 
-import theme from "Theme/artifact/resolved-theme.mjs"
+import theme from "#theme/artifact/resolved-theme.mjs"
 
-import { FocusButton } from "Components/Map/FocusButton.tsx"
+import { FocusButton } from "#components/Map/FocusButton.tsx"
 import {
   Style,
   StyleSwitcher,
   mapStyle,
-} from "Components/Map/StyleSwitcher.tsx"
+} from "#components/Map/StyleSwitcher.tsx"
 
-import { isLoadedPoiAtom } from "Providers/map.ts"
-import { schemaAtom } from "Providers/profile.ts"
+import { isLoadedPoiAtom } from "#providers/map.ts"
+import { schemaAtom } from "#providers/profile.ts"
 
-import { PointOfInterest } from "GraphQL/graphql.ts"
+import { PointOfInterest } from "#graphql/graphql.ts"
 
-import { mainPointOfInterestQuery } from "Queries/poi.ts"
+import { mainPointOfInterestQuery } from "#queries/poi.ts"
 
-import bbox from "Modules/geojson-bbox.js"
+import bbox from "#modules/geojson-bbox.js"
 import {
   boundsOfIndonesia,
   centerOfIndonesia,
   getCenterOfGeometry,
   getMainPOI,
-} from "Modules/geojson-utils"
+} from "#modules/geojson-utils"
 
 import { useBorderDesa, useBorderPoi } from "../Map/use-border-desa"
 

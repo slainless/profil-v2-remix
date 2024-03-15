@@ -15,18 +15,18 @@ import {
 import { useSetAtom } from "jotai"
 import { PropsWithChildren, useCallback, useState } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { Icon } from "Components/Icon.tsx"
+import { Icon } from "#components/Icon.tsx"
 
-import { userAtom, usernameAtom, credentialAtom } from "Providers/user.ts"
+import { userAtom, usernameAtom, credentialAtom } from "#providers/user.ts"
 
-import { getLocale } from "Locale/locale.ts"
+import { getLocale } from "#locale/locale.ts"
 
-import { logout } from "Services/.client/login.ts"
-import { getError } from "Services/response"
+import { logout } from "#services/.client/login.ts"
+import { getError } from "#services/response.ts"
 
-import { errMsg, errTitle } from "Modules/strings.ts"
+import { errMsg, errTitle } from "#modules/strings.ts"
 
 const icon = (icon: IconType) => (
   <Icon icon={icon} c={vars("color-dimmed")} w={14} h={14} />

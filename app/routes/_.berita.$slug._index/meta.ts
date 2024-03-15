@@ -3,11 +3,11 @@ import normalizeUrl from "normalize-url"
 import type { Article, WithContext } from "schema-dts"
 import urlJoin from "url-join"
 
-import { type Locale } from "Locale/locale.ts"
+import { type Locale } from "#locale/locale.ts"
 
-import { asset } from "Services/assets.ts"
+import { asset } from "#services/assets.ts"
 
-import { richData } from "Modules/metadata.ts"
+import { richData } from "#modules/metadata.ts"
 
 import { orgName } from "../_/meta-utils.ts"
 import {

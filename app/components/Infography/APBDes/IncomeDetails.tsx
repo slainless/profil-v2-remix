@@ -6,16 +6,16 @@ import { IconListDetails } from "@tabler/icons-react"
 import { useAtomValue } from "jotai"
 import { useMemo } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { DimmedNotice } from "Components/DimmedNotice.tsx"
+import { DimmedNotice } from "#components/DimmedNotice.tsx"
 
 import {
   APBDReportByTypeInCurrentYearAtom,
   currentYearAtom,
-} from "Providers/APBD.ts"
+} from "#providers/APBD.ts"
 
-import { contentsOrNone } from "Modules/css-utils.ts"
+import { contentsOrNone } from "#modules/css-utils.ts"
 
 import { APBDReportAccordionItem } from "./APBDReportAccordionItem.tsx"
 

@@ -27,17 +27,17 @@ import { useCallback, useState } from "react"
 import { stripHtml } from "string-strip-html"
 import { useQuery } from "urql"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { DimmedNotice } from "Components/DimmedNotice"
+import { DimmedNotice } from "#components/DimmedNotice.tsx"
 
-import { aliasDesaAtom } from "Providers/profile.ts"
+import { aliasDesaAtom } from "#providers/profile.ts"
 
-import { potenciesQuery } from "Queries/articles.ts"
+import { potenciesQuery } from "#queries/articles.ts"
 
-import { asset, withAtom } from "Services/assets.ts"
+import { asset, withAtom } from "#services/assets.ts"
 
-import { contentsOrNone } from "Modules/css-utils.ts"
+import { contentsOrNone } from "#modules/css-utils.ts"
 
 function Potency() {
   const [{ data }] = useQuery({ query: potenciesQuery })

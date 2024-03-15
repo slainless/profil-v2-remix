@@ -1,6 +1,6 @@
 import type { MetaFunction } from "@remix-run/node"
 
-import PageContainer from "Components/PageContainer.tsx"
+import PageContainer from "#components/PageContainer.tsx"
 
 import { renderCommonMetadata } from "../_/meta.ts"
 import { PengaduanForm } from "./PengaduanForm.tsx"

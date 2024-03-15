@@ -1,9 +1,9 @@
 import { Stack } from "@mantine/core"
 import type { MetaFunction } from "@remix-run/node"
 
-import { GalleryHeader } from "Components/Gallery/GalleryHeader.tsx"
-import GalleryItem from "Components/Gallery/GalleryItem.tsx"
-import PageContainer from "Components/PageContainer.tsx"
+import { GalleryHeader } from "#components/Gallery/GalleryHeader.tsx"
+import GalleryItem from "#components/Gallery/GalleryItem.tsx"
+import PageContainer from "#components/PageContainer.tsx"
 
 import { renderCommonMetadata } from "../_/meta.ts"
 

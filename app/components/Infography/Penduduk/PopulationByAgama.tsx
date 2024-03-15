@@ -4,19 +4,19 @@ import { Stack, Box, Grid, Text, Title, Image } from "@mantine/core"
 import { useAtomValue } from "jotai"
 import { useMemo } from "react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { populationStatisticAtom } from "Providers/population"
+import { populationStatisticAtom } from "#providers/population.ts"
 
-import Buddha from "Assets/icons/icon-buddha.svg"
-import Hindu from "Assets/icons/icon-hindu.svg"
-import Islam from "Assets/icons/icon-islam.svg"
-import Katolik from "Assets/icons/icon-katolik.svg"
-import Lainnya from "Assets/icons/icon-kepercayaan-lainnya.svg"
-import Konghuchu from "Assets/icons/icon-konghuchu.svg"
-import Kristen from "Assets/icons/icon-kristen.svg"
+import Buddha from "#assets/icons/icon-buddha.svg"
+import Hindu from "#assets/icons/icon-hindu.svg"
+import Islam from "#assets/icons/icon-islam.svg"
+import Katolik from "#assets/icons/icon-katolik.svg"
+import Lainnya from "#assets/icons/icon-kepercayaan-lainnya.svg"
+import Konghuchu from "#assets/icons/icon-konghuchu.svg"
+import Kristen from "#assets/icons/icon-kristen.svg"
 
-import { FormattedNumber } from "Modules/intl"
+import { FormattedNumber } from "#modules/intl.ts"
 
 const getIcon = (name: string) => {
   switch (name) {

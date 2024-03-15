@@ -12,9 +12,9 @@ import {
 } from "@mantine/core"
 import { Link } from "@remix-run/react"
 
-import { MarketItemCategory } from "GraphQL/graphql.ts"
+import { MarketItemCategory } from "#graphql/graphql.ts"
 
-import { IDRFormatterNoComma } from "Modules/intl"
+import { IDRFormatterNoComma } from "#modules/intl.ts"
 
 type Props = {
   title: string

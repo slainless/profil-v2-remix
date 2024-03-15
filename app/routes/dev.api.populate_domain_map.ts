@@ -1,9 +1,9 @@
 import { json, type ActionFunctionArgs } from "@remix-run/node"
 
-import { Code, Domain, DomainHandler } from "Modules/domain-handler.ts"
+import { Code, Domain, DomainHandler } from "#modules/domain-handler.ts"
 
-import { assertServerContext, isCloudflareContext } from "Server/context.ts"
-import { mustGetDomainList } from "Server/express.ts"
+import { assertServerContext, isCloudflareContext } from "#server/context.ts"
+import { mustGetDomainList } from "#server/express.ts"
 
 const register = async (
   kv: KVNamespace,

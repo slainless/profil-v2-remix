@@ -7,9 +7,9 @@ import type {
   PpidCategoriesQuery,
   PpidFile,
   PpidType,
-} from "GraphQL/graphql.ts"
+} from "#graphql/graphql.ts"
 
-import { PPIDCategoriesQuery } from "Queries/PPID.ts"
+import { PPIDCategoriesQuery } from "#queries/PPID.ts"
 
 export const PPIDCategoriesAtom = atom<PpidCategoriesQuery["categories"]>([])
 

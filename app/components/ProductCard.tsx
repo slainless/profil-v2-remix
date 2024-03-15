@@ -15,9 +15,9 @@ import { Link } from "@remix-run/react"
 import { IconTags } from "@tabler/icons-react"
 import { IconBuildingStore } from "@tabler/icons-react"
 
-import { MarketItemCategory } from "GraphQL/graphql.ts"
+import { MarketItemCategory } from "#graphql/graphql.ts"
 
-import { IDRFormatterNoComma } from "Modules/intl"
+import { IDRFormatterNoComma } from "#modules/intl.ts"
 
 type Props = {
   title: string

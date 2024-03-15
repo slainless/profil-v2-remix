@@ -21,16 +21,16 @@ import { render } from "micromustache"
 import { useMemo } from "react"
 import { useQuery } from "urql"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { aliasDesaAtom, schemaAtom } from "Providers/profile.ts"
+import { aliasDesaAtom, schemaAtom } from "#providers/profile.ts"
 
-import otherImage from "Assets/other.png"
+import otherImage from "#assets/other.png"
 
-import { budgetSummaryQuery } from "Queries/stats.ts"
+import { budgetSummaryQuery } from "#queries/stats.ts"
 
-import { DomainHandler } from "Modules/domain-handler.ts"
-import { IDRFormatter } from "Modules/intl.ts"
+import { DomainHandler } from "#modules/domain-handler.ts"
+import { IDRFormatter } from "#modules/intl.ts"
 
 const title = `{{ apb }} {{ alias }} {{ year }}`
 const subTitle = `Akses cepat dan transparan terhadap {{ apb }} {{ alias }} serta proyek pembangunan`

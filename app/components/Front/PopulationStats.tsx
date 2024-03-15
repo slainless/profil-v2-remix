@@ -13,18 +13,18 @@ import {
 import { Fragment, useMemo } from "react"
 import { useQuery } from "urql"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import kk from "Assets/kepala-keluarga.png"
-import laki from "Assets/laki.png"
-import mutasi from "Assets/mutasi-penduduk.png"
-import sementara from "Assets/penduduk-sementara.png"
-import perempuan from "Assets/perempuan.png"
-import total from "Assets/total-penduduk.png"
+import kk from "#assets/kepala-keluarga.png"
+import laki from "#assets/laki.png"
+import mutasi from "#assets/mutasi-penduduk.png"
+import sementara from "#assets/penduduk-sementara.png"
+import perempuan from "#assets/perempuan.png"
+import total from "#assets/total-penduduk.png"
 
-import { populationSummaryQuery } from "Queries/stats.ts"
+import { populationSummaryQuery } from "#queries/stats.ts"
 
-import { FormattedNumber } from "Modules/intl"
+import { FormattedNumber } from "#modules/intl.ts"
 
 const int = (v: number | null | undefined) => (v == null ? 0 : v)
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

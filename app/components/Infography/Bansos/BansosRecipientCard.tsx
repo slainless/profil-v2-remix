@@ -10,7 +10,7 @@ import {
   Title,
 } from "@mantine/core"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
 interface Props {
   name: string

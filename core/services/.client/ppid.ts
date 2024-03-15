@@ -1,8 +1,7 @@
+import { Code, UnderscoredCode } from "#modules/domain-handler.ts"
+import { Format } from "#modules/typebox.ts"
 import { Static, Type } from "@sinclair/typebox"
 import { TypeCompiler } from "@sinclair/typebox/compiler"
-
-import { Code, UnderscoredCode } from "Modules/domain-handler.ts"
-import { Format } from "Modules/typebox.ts"
 
 import { rest } from "./rest.ts"
 

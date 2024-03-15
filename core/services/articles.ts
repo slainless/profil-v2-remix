@@ -1,11 +1,11 @@
 import type { Client } from "urql"
 
-import { ArticleTypeValue } from "GraphQL/graphql.ts"
+import { ArticleTypeValue } from "#graphql/graphql.ts"
 
-import { articleDetailQuery } from "Queries/articles.ts"
+import { articleDetailQuery } from "#queries/articles.ts"
 
-import type { UnderscoredCode } from "Modules/domain-handler"
-import { withHeaders } from "Modules/urql.ts"
+import type { UnderscoredCode } from "#modules/domain-handler.ts"
+import { withHeaders } from "#modules/urql.ts"
 
 export const getArticle = (
   client: Client,

@@ -4,13 +4,8 @@
  * again, you can run `npx remix reveal` ✨ For more information, see
  * https://remix.run/file-conventions/entry.server
  */
+import handler from "#entry.server"
 import type { AppLoadContext, EntryContext } from "@remix-run/node"
-import * as ReactDOM from "react-dom/server"
-
-import { handleCloudflareRequest } from "./entry.server.cloudflare.tsx"
-import { handleExpressRequest } from "./entry.server.express.tsx"
-
-const isNode = ReactDOM.renderToPipeableStream != null
 
 export type Handler = (
   request: Request,
@@ -24,6 +19,5 @@ export type Handler = (
 ) => Promise<unknown>
 
 export default async function handleRequest(...args: Parameters<Handler>) {
-  if (isNode) return handleExpressRequest(...args)
-  return handleCloudflareRequest(...args)
+  return handler(...args)
 }

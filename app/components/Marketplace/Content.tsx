@@ -6,20 +6,20 @@ import { useAtomValue } from "jotai"
 import { useEffect } from "react"
 import { useQuery } from "urql"
 
-import { DimmedNotice } from "Components/DimmedNotice.tsx"
-import { usePagination } from "Components/Hooks/use-pagination.ts"
-import { PageNavigation } from "Components/PageNavigation.tsx"
-import ProductItem from "Components/ProductCard.tsx"
+import { DimmedNotice } from "#components/DimmedNotice.tsx"
+import { usePagination } from "#components/Hooks/use-pagination.ts"
+import { PageNavigation } from "#components/PageNavigation.tsx"
+import ProductItem from "#components/ProductCard.tsx"
 
-import { schemaAtom } from "Providers/profile.ts"
+import { schemaAtom } from "#providers/profile.ts"
 
-import { MarketItemCategory, ProductsQuery } from "GraphQL/graphql.ts"
+import { MarketItemCategory, ProductsQuery } from "#graphql/graphql.ts"
 
-import { productCardsQuery } from "Queries/marketplace.ts"
+import { productCardsQuery } from "#queries/marketplace.ts"
 
-import { asset } from "Services/assets.ts"
+import { asset } from "#services/assets.ts"
 
-import { contentsOrNone } from "Modules/css-utils.ts"
+import { contentsOrNone } from "#modules/css-utils.ts"
 
 function Content() {
   const schema = useAtomValue(schemaAtom)

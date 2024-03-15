@@ -1,11 +1,11 @@
 import { Grid, Stack, Title, Group, Button, Text, GridCol } from "@mantine/core"
 import { Link } from "@remix-run/react"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import berkalaImage from "Assets/informasi-secara-berkala.png"
-import mertaImage from "Assets/informasi-serta-merta.png"
-import saatImage from "Assets/informasi-setiap-saat.png"
+import berkalaImage from "#assets/informasi-secara-berkala.png"
+import mertaImage from "#assets/informasi-serta-merta.png"
+import saatImage from "#assets/informasi-setiap-saat.png"
 
 import { PPIDNavigationCard } from "./PPIDNavigationCard.tsx"
 

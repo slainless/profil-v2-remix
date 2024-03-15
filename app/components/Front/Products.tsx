@@ -23,21 +23,21 @@ import { useAtomValue } from "jotai"
 import { useCallback, useState } from "react"
 import { useQuery } from "urql"
 
-import { vars } from "Theme/artifact/vars.mjs"
+import { vars } from "#theme/artifact/vars.mjs"
 
-import { DimmedNotice } from "Components/DimmedNotice.tsx"
-import ProductItem from "Components/ProductCard.tsx"
-import ProductItemCarousel from "Components/ProductCarouselCard.tsx"
+import { DimmedNotice } from "#components/DimmedNotice.tsx"
+import ProductItem from "#components/ProductCard.tsx"
+import ProductItemCarousel from "#components/ProductCarouselCard.tsx"
 
-import { aliasDesaAtom, schemaAtom } from "Providers/profile.ts"
+import { aliasDesaAtom, schemaAtom } from "#providers/profile.ts"
 
-import { MarketItemCategory } from "GraphQL/graphql.ts"
+import { MarketItemCategory } from "#graphql/graphql.ts"
 
-import { productCardsQuery } from "Queries/marketplace.ts"
+import { productCardsQuery } from "#queries/marketplace.ts"
 
-import { asset } from "Services/assets.ts"
+import { asset } from "#services/assets.ts"
 
-import { contentsOrNone } from "Modules/css-utils"
+import { contentsOrNone } from "#modules/css-utils.ts"
 
 function Products() {
   const schema = useAtomValue(schemaAtom)

@@ -1,6 +1,6 @@
 import type { MetaArgs } from "@remix-run/node"
 
-import { getLocale } from "Locale/locale.ts"
+import { getLocale } from "#locale/locale.ts"
 
 import { mustGetRootLayoutData } from "../_/data.ts"
 import { createTitle, createDescription } from "../_/meta-utils.ts"

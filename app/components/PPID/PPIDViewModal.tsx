@@ -16,11 +16,11 @@ import "@react-pdf-viewer/default-layout/lib/styles/index.css"
 import { useAtomValue } from "jotai"
 import { useCallback, useLayoutEffect, useMemo } from "react"
 
-import { usePathHash } from "Components/Hooks/use-path-hash.ts"
+import { usePathHash } from "#components/Hooks/use-path-hash.ts"
 
-import { PPIDItemsAtom } from "Providers/PPID.ts"
+import { PPIDItemsAtom } from "#providers/PPID.ts"
 
-import { asset, withAtom } from "Services/assets.ts"
+import { asset, withAtom } from "#services/assets.ts"
 
 import "./PPIDViewModal.css"
 

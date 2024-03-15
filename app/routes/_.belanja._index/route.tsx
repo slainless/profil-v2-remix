@@ -1,14 +1,14 @@
 import { Stack } from "@mantine/core"
 import type { MetaFunction } from "@remix-run/node"
 
-import Content from "Components/Marketplace/Content.tsx"
-import Header from "Components/Marketplace/Header.tsx"
-import PageContainer from "Components/PageContainer.tsx"
+import Content from "#components/Marketplace/Content.tsx"
+import Header from "#components/Marketplace/Header.tsx"
+import PageContainer from "#components/PageContainer.tsx"
 
-import { getLocale } from "Locale/locale.ts"
+import { getLocale } from "#locale/locale.ts"
 
-import { breadcrumb } from "Modules/metadata.ts"
-import { stripURL } from "Modules/url.ts"
+import { breadcrumb } from "#modules/metadata.ts"
+import { stripURL } from "#modules/url.ts"
 
 import { mustGetRootLayoutData } from "../_/data.ts"
 import { createDescription, createTitle } from "../_/meta-utils.ts"

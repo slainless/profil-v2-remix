@@ -17,21 +17,21 @@ import {
 import merge from "lodash.merge"
 import "normalize.css"
 
-import "Theme/artifact/mantine.css"
-import "Theme/global.css"
-import theme from "Theme/mantine.js"
+import "#theme/artifact/mantine.css"
+import "#theme/global.css"
+import theme from "#theme/mantine.js"
 
-import { ErrorSimple } from "Components/ErrorSimple.tsx"
-import { ErrorWithStackTrace } from "Components/ErrorWithStackTrace.tsx"
+import { ErrorSimple } from "#components/ErrorSimple.tsx"
+import { ErrorWithStackTrace } from "#components/ErrorWithStackTrace.tsx"
 
-import { getLocale } from "Locale/locale.ts"
+import { getLocale } from "#locale/locale.ts"
 
-import { isNormalizedError } from "Services/response.ts"
+import { isNormalizedError } from "#services/response.ts"
 
-import { Base } from "Modules/metadata.ts"
-import { errMsg, errTitle } from "Modules/strings.ts"
+import { Base } from "#modules/metadata.ts"
+import { errMsg, errTitle } from "#modules/strings.ts"
 
-import { mustGetCommonContext } from "Server/context.ts"
+import { mustGetCommonContext } from "#server/context.ts"
 
 export function loader({ context }: LoaderFunctionArgs) {
   return mustGetCommonContext(context)

@@ -1,15 +1,12 @@
 "use client"
 
+import { UnderscoredCode } from "#modules/domain-handler.ts"
+import { IDMsAtom } from "#providers/IDM.ts"
+import { schemaAtom } from "#providers/profile.ts"
+import { getAvailableIDM, getIDM } from "#services/idm.ts"
 import { Box, Stack } from "@mantine/core"
 import { useAtomValue, useSetAtom } from "jotai"
 import { useEffect } from "react"
-
-import { IDMsAtom } from "Providers/IDM.ts"
-import { schemaAtom } from "Providers/profile.ts"
-
-import { getAvailableIDM, getIDM } from "Services/idm.ts"
-
-import { UnderscoredCode } from "Modules/domain-handler.ts"
 
 import IdmScoreYearByYear from "./IdmScoreYearByYear.tsx"
 import IdmSummary from "./IdmSummary.tsx"

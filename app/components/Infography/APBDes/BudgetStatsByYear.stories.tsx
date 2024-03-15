@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react"
 
-import PageContainer from "Components/PageContainer"
+import PageContainer from "#components/PageContainer.tsx"
 
-import { APBDReportLoader } from "Providers/APBDReportLoader"
+import { APBDReportLoader } from "#providers/APBD.ts"
 
 import { BudgetStatsByYear } from "./BudgetStatsByYear"
 
@@ -23,6 +23,5 @@ const meta = {
 } satisfies Meta<typeof BudgetStatsByYear>
 
 export default meta
-type Story = StoryObj<typeof meta>
 
 export const Default = {}

@@ -1,10 +1,9 @@
 "use client"
 
+import { quantityAtom } from "#providers/marketplace.ts"
 import { Group, Button, Text } from "@mantine/core"
 import { useAtom } from "jotai"
 import { useCallback } from "react"
-
-import { quantityAtom } from "Providers/marketplace.ts"
 
 export const QuantityInput = () => {
   const [qty, setQty] = useAtom(quantityAtom)
