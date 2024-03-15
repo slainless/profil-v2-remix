@@ -5,11 +5,14 @@
  * https://remix.run/file-conventions/entry.server
  */
 import type { AppLoadContext, EntryContext } from "@remix-run/node"
-import { RemixServer } from "@remix-run/react"
-import { isbot } from "isbot"
-import { renderToReadableStream } from "react-dom/server"
+import * as ReactDOM from "react-dom/server"
 
-export default async function handleRequest(
+import { handleCloudflareRequest } from "./entry.server.cloudflare.tsx"
+import { handleExpressRequest } from "./entry.server.express.tsx"
+
+const isNode = ReactDOM.renderToPipeableStream != null
+
+export type Handler = (
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
@@ -18,26 +21,9 @@ export default async function handleRequest(
   // free to delete this parameter in your app if you're not using it!
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   loadContext: AppLoadContext,
-) {
-  const body = await renderToReadableStream(
-    <RemixServer context={remixContext} url={request.url} />,
-    {
-      signal: request.signal,
-      onError(error: unknown) {
-        // Log streaming rendering errors from inside the shell
-        console.error(error)
-        responseStatusCode = 500
-      },
-    },
-  )
+) => Promise<unknown>
 
-  if (isbot(request.headers.get("user-agent") || "")) {
-    await body.allReady
-  }
-
-  responseHeaders.set("Content-Type", "text/html")
-  return new Response(body, {
-    headers: responseHeaders,
-    status: responseStatusCode,
-  })
+export default async function handleRequest(...args: Parameters<Handler>) {
+  if (isNode) return handleExpressRequest(...args)
+  return handleCloudflareRequest(...args)
 }
