@@ -4,12 +4,15 @@ import { useLoaderData } from "@remix-run/react"
 import MapSection from "#components/Map/MapSection.tsx"
 import PageContainer from "#components/PageContainer.tsx"
 
+import { tick, TickType } from "#services/.server/visit.js"
+
 import { assertCommonContext } from "#server/context.ts"
 
 import { renderCommonMetadata } from "../_/meta.ts"
 
 export async function loader({ context }: LoaderFunctionArgs) {
   assertCommonContext(context)
+  tick(context.schema, TickType.GENERAL, "/listing")
   return {
     slug: context.slug,
   }

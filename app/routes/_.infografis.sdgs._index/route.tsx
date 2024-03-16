@@ -1,5 +1,5 @@
 import { Stack, Grid, Title, Group, Text, Image } from "@mantine/core"
-import type { MetaFunction } from "@remix-run/node"
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node"
 import { useAtom, useAtomValue } from "jotai"
 import { useEffect } from "react"
 
@@ -13,9 +13,18 @@ import { schemaAtom, aliasDesaAtom, namaDesaAtom } from "#providers/profile.ts"
 
 import otherImage from "#assets/other-2.png"
 
+import { tick, TickType } from "#services/.server/visit.js"
 import { getSDGsScore } from "#services/sdgs.ts"
 
+import { assertCommonContext } from "#server/context.js"
+
 import { renderMetadata } from "../_.infografis/meta.ts"
+
+export function loader({ context }: LoaderFunctionArgs) {
+  assertCommonContext(context)
+  tick(context.schema, TickType.GENERAL, "/infografis/sdgs")
+  return null
+}
 
 export const meta: MetaFunction = (args) => {
   return renderMetadata(args, "sdgs")

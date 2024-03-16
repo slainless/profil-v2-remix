@@ -1,9 +1,13 @@
 import { Stack } from "@mantine/core"
-import type { MetaFunction } from "@remix-run/node"
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node"
 
 import PageContainer from "#components/PageContainer.tsx"
 
 import { getLocale } from "#locale/locale.ts"
+
+import { tick, TickType } from "#services/.server/visit.js"
+
+import { assertCommonContext } from "#server/context.js"
 
 import { mustGetRootLayoutData } from "../_/data.ts"
 import {
@@ -23,6 +27,12 @@ namespace page {
   export const ogTitle = "SOTK {{ desa_fullname }}"
   export const description =
     "Struktur Organisasi dan Tata Kerja {{ desa_fullname }}"
+}
+
+export function loader({ context }: LoaderFunctionArgs) {
+  assertCommonContext(context)
+  tick(context.schema, TickType.GENERAL, "/pemerintah")
+  return null
 }
 
 export const meta: MetaFunction = ({ matches }) => {

@@ -1,5 +1,5 @@
 import { Stack } from "@mantine/core"
-import type { MetaFunction } from "@remix-run/node"
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node"
 
 import Content from "#components/Marketplace/Content.tsx"
 import Header from "#components/Marketplace/Header.tsx"
@@ -7,8 +7,12 @@ import PageContainer from "#components/PageContainer.tsx"
 
 import { getLocale } from "#locale/locale.ts"
 
+import { TickType, tick } from "#services/.server/visit.js"
+
 import { breadcrumb } from "#modules/metadata.ts"
 import { stripURL } from "#modules/url.ts"
+
+import { assertCommonContext } from "#server/context.js"
 
 import { mustGetRootLayoutData } from "../_/data.ts"
 import { createDescription, createTitle } from "../_/meta-utils.ts"
@@ -24,6 +28,12 @@ namespace page {
   export const ogTitle = "Beli dari {{ desa_fullname }}"
   export const description =
     "Layanan yang disediakan untuk promosi produk UMKM sehingga mampu meningkatkan perekonomian masyarakat {{ desa_fullname }}"
+}
+
+export function loader({ context }: LoaderFunctionArgs) {
+  assertCommonContext(context)
+  tick(context.schema, TickType.GENERAL, "/")
+  return null
 }
 
 export const meta: MetaFunction = ({ matches }) => {

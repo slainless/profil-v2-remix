@@ -1,5 +1,5 @@
 import { Stack, Box } from "@mantine/core"
-import type { MetaFunction } from "@remix-run/node"
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node"
 
 import PageContainer from "#components/PageContainer.tsx"
 import PemdesStructure from "#components/Profile/PemdesStructure.tsx"
@@ -9,6 +9,10 @@ import VisiMisi from "#components/Profile/VisiMisi.tsx"
 
 import { ProfileLoader } from "#providers/desa-profile.ts"
 
+import { tick, TickType } from "#services/.server/visit.js"
+
+import { assertCommonContext } from "#server/context.js"
+
 import { renderCommonMetadata } from "../_/meta.ts"
 
 export namespace page {
@@ -17,6 +21,12 @@ export namespace page {
   export const description =
     // TODO: desa_alias here should be lowercased
     "Informasi profil, sejarah, visi dan misi, batas-batas {{ desa_alias }}, dan struktur pemerintahan {{ desa_fullname }}"
+}
+
+export function loader({ context }: LoaderFunctionArgs) {
+  assertCommonContext(context)
+  tick(context.schema, TickType.GENERAL, "/profil")
+  return null
 }
 
 export const meta: MetaFunction = (args) => {

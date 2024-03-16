@@ -17,6 +17,7 @@ import { getLocale } from "#locale/locale.ts"
 
 import { ArticleTypeValue } from "#graphql/graphql.ts"
 
+import { tick, TickType } from "#services/.server/visit.js"
 import { mustGetArticle } from "#services/articles.ts"
 import { asset } from "#services/assets.ts"
 
@@ -46,6 +47,7 @@ export async function loader({ context, params }: LoaderFunctionArgs) {
     ArticleTypeValue.Potential,
   )
 
+  tick(ctx.schema, TickType.GENERAL, `/potensi/${slug}`)
   return {
     ...ctx,
     article,

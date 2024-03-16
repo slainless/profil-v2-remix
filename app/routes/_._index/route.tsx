@@ -1,4 +1,5 @@
 import { Stack, Box } from "@mantine/core"
+import type { LoaderFunctionArgs } from "@remix-run/node"
 import { useAtomValue } from "jotai"
 
 import BudgetStats from "#components/Front/BudgetStats.tsx"
@@ -16,6 +17,16 @@ import MapSection from "#components/Map/MapSection.tsx"
 import PageContainer from "#components/PageContainer.tsx"
 
 import { subdomainAtom } from "#providers/profile.ts"
+
+import { TickType, tick } from "#services/.server/visit.js"
+
+import { assertCommonContext } from "#server/context.js"
+
+export function loader({ context }: LoaderFunctionArgs) {
+  assertCommonContext(context)
+  tick(context.schema, TickType.GENERAL, "/")
+  return null
+}
 
 export default function Index() {
   const slug = useAtomValue(subdomainAtom)

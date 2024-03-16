@@ -1,5 +1,5 @@
 import { Stack, Box } from "@mantine/core"
-import type { MetaFunction } from "@remix-run/node"
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node"
 
 import PopulationByAgama from "#components/Infography/Penduduk/PopulationByAgama.tsx"
 import PopulationByAgeCategory from "#components/Infography/Penduduk/PopulationByAgeCategory.tsx"
@@ -13,7 +13,17 @@ import PopulationSummary from "#components/Infography/Penduduk/PopulationSummary
 
 import { PopulationStatisticLoader } from "#providers/population.ts"
 
+import { tick, TickType } from "#services/.server/visit.js"
+
+import { assertCommonContext } from "#server/context.js"
+
 import { renderMetadata } from "../_.infografis/meta.ts"
+
+export function loader({ context }: LoaderFunctionArgs) {
+  assertCommonContext(context)
+  tick(context.schema, TickType.GENERAL, "/infografis/penduduk")
+  return null
+}
 
 export const meta: MetaFunction = (args) => {
   return renderMetadata(args, "penduduk")

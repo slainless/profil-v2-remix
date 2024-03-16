@@ -1,7 +1,11 @@
 import { Stack } from "@mantine/core"
-import type { MetaFunction } from "@remix-run/node"
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node"
 
 import PageContainer from "#components/PageContainer.tsx"
+
+import { tick, TickType } from "#services/.server/visit.js"
+
+import { assertCommonContext } from "#server/context.js"
 
 import { renderCommonMetadata } from "../_/meta.ts"
 import { Content } from "./Content.tsx"
@@ -12,6 +16,12 @@ export namespace page {
   export const ogTitle = "Wisata {{ desa_fullname }}"
   export const description =
     "Segala hal mengenai lokasi wisata {{ desa_fullname }} yang menjadi daya tarik untuk turis domestik maupun mancanegara"
+}
+
+export function loader({ context }: LoaderFunctionArgs) {
+  assertCommonContext(context)
+  tick(context.schema, TickType.GENERAL, "/wisata")
+  return null
 }
 
 export const meta: MetaFunction = (args) => {

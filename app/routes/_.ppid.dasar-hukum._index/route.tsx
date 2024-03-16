@@ -1,9 +1,13 @@
 import { Stack, Title, Card, List, ListItem, Text } from "@mantine/core"
-import type { MetaFunction } from "@remix-run/node"
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node"
 
 import { vars } from "#theme/artifact/vars.mjs"
 
 import PageContainer from "#components/PageContainer.tsx"
+
+import { tick, TickType } from "#services/.server/visit.js"
+
+import { assertCommonContext } from "#server/context.js"
 
 import { page as parentPage } from "../_.ppid._index/meta.ts"
 import { renderCommonMetadata } from "../_/meta.ts"
@@ -12,6 +16,12 @@ export namespace page {
   export const title = `Dasar Hukum`
   export const ogTitle = `Dasar Hukum {{= it.desa }}`
   export const description = parentPage.description
+}
+
+export function loader({ context }: LoaderFunctionArgs) {
+  assertCommonContext(context)
+  tick(context.schema, TickType.GENERAL, "/ppid/dasar-hukum")
+  return null
 }
 
 export const meta: MetaFunction = (args) => {

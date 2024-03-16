@@ -22,12 +22,12 @@ import Pengaduan from "#components/Pengaduan.tsx"
 import VisitorCounter from "#components/VisitorCounter.tsx"
 
 import { ProfileHydrator } from "#providers/profile.ts"
-import { JotaiGlobalStore, globalStore } from "#providers/store.ts"
+import { JotaiGlobalStore } from "#providers/store.ts"
 import { UrqlProvider } from "#providers/urql.ts"
 
 import { getLocale } from "#locale/locale.ts"
 
-import EnvHydrator, { assetBaseUrlAtom } from "#services/env.js"
+import EnvHydrator from "#services/env.js"
 
 import type { loader } from "../../root.tsx"
 import { mustGetRootLayoutData } from "./data.ts"

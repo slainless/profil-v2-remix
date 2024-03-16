@@ -20,6 +20,7 @@ import { getLocale } from "#locale/locale.ts"
 
 import type { MarketItemCategory } from "#graphql/graphql.ts"
 
+import { TickType, tick } from "#services/.server/visit.js"
 import {
   mustGetMarketItemWithReviews,
   mustGetVariant,
@@ -66,6 +67,9 @@ export async function loader({ params, context }: LoaderFunctionArgs) {
 
   const variant = mustGetVariant(data.product, params)
   const baseUrl = stripURL(ctx.canonUrl)
+
+  tick(ctx.schema, TickType.GENERAL, `/belanja/${id}`)
+  tick(ctx.schema, TickType.MARKET_ITEM, id.toString())
   return {
     product: data.product,
     reviews: data.reviews,

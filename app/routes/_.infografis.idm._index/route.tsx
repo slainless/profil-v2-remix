@@ -1,5 +1,5 @@
 import { Stack, Box } from "@mantine/core"
-import type { MetaFunction } from "@remix-run/node"
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node"
 import { useAtomValue, useSetAtom } from "jotai"
 import { useEffect } from "react"
 
@@ -10,11 +10,20 @@ import IdmTable from "#components/Infography/IDM/IdmTable.tsx"
 import { IDMsAtom } from "#providers/IDM.ts"
 import { schemaAtom } from "#providers/profile.ts"
 
+import { tick, TickType } from "#services/.server/visit.js"
 import { getAvailableIDM, getIDM } from "#services/idm.ts"
 
 import type { UnderscoredCode } from "#modules/domain-handler.ts"
 
+import { assertCommonContext } from "#server/context.js"
+
 import { renderMetadata } from "../_.infografis/meta.ts"
+
+export function loader({ context }: LoaderFunctionArgs) {
+  assertCommonContext(context)
+  tick(context.schema, TickType.GENERAL, "/infografis/idm")
+  return null
+}
 
 export const meta: MetaFunction = (args) => {
   return renderMetadata(args, "idm")

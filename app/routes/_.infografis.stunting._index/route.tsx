@@ -1,5 +1,5 @@
 import { Stack, Box, Flex, Title } from "@mantine/core"
-import type { MetaFunction } from "@remix-run/node"
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node"
 import { IconCircleX } from "@tabler/icons-react"
 import ReactECharts from "echarts-for-react"
 import { useQuery } from "urql"
@@ -14,9 +14,19 @@ import {
 
 import { stuntingQuery } from "#queries/stats.ts"
 
+import { tick, TickType } from "#services/.server/visit.js"
+
 import { contentsOrNone } from "#modules/css-utils.ts"
 
+import { assertCommonContext } from "#server/context.js"
+
 import { renderMetadata } from "../_.infografis/meta.ts"
+
+export function loader({ context }: LoaderFunctionArgs) {
+  assertCommonContext(context)
+  tick(context.schema, TickType.GENERAL, "/infografis/stunting")
+  return null
+}
 
 export const meta: MetaFunction = (args) => {
   return renderMetadata(args, "stunting")

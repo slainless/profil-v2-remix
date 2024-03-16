@@ -1,5 +1,5 @@
 import { Stack, Box } from "@mantine/core"
-import type { MetaFunction } from "@remix-run/node"
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node"
 
 import { BudgetStatsByYear } from "#components/Infography/APBDes/BudgetStatsByYear.tsx"
 import Expense from "#components/Infography/APBDes/ExpenseChart.tsx"
@@ -12,7 +12,17 @@ import IncomeExpense from "#components/Infography/APBDes/IncomeExpenseChart.tsx"
 
 import { APBDReportLoader } from "#providers/APBD.ts"
 
+import { tick, TickType } from "#services/.server/visit.js"
+
+import { assertCommonContext } from "#server/context.js"
+
 import { renderMetadata } from "../_.infografis/meta.ts"
+
+export function loader({ context }: LoaderFunctionArgs) {
+  assertCommonContext(context)
+  tick(context.schema, TickType.GENERAL, "/infografis/bansos")
+  return null
+}
 
 export const meta: MetaFunction = (args) => {
   return renderMetadata(args, "apbdes")
