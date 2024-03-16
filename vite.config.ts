@@ -68,6 +68,7 @@ export default defineConfig({
   },
   build: {
     assetsInlineLimit: 0,
+    minify: "esbuild",
     rollupOptions: {
       onwarn(warning, defaultHandler) {
         if (
