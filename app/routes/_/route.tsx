@@ -42,7 +42,6 @@ import {
 } from "./meta.ts"
 
 export const meta: MetaFunction = ({ matches }) => {
-  console.log(globalStore.get(assetBaseUrlAtom), "fuck")
   const data = mustGetRootLayoutData(matches)
   const locale = getLocale("ID")
 
@@ -120,6 +119,11 @@ export default function Layout() {
           </Fragment>
         </AppShell>
       </UrqlProvider>
+
+      <Fragment key="scripts">
+        <script async src="/accessibility.bundle.js" />
+        <script async src="/accessibility.config.js" />
+      </Fragment>
     </JotaiGlobalStore>
   )
 }
@@ -202,11 +206,6 @@ export function ErrorBoundary() {
           <Fragment key="floater"></Fragment>
         </AppShell>
       </UrqlProvider>
-
-      <Fragment key="scripts">
-        <script async src="/accessibility.bundle.js" />
-        <script async src="/accessibility.config.js" />
-      </Fragment>
     </JotaiGlobalStore>
   )
 }
