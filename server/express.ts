@@ -18,7 +18,6 @@ export async function domainContextLoader(
   handler: DomainHandler,
 ): Promise<DomainContext | undefined> {
   const host = normalizeHost(mustGetHost(request), process.env.BASE_DOMAIN!)
-  console.log(host)
   const schema = handler.domainToCode(host)
   if (schema == null) return
   const slug = handler.codeToSlug(schema)

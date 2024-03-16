@@ -52,6 +52,7 @@ const documents = {
     "\n  query populationSummary {\n    summary: populationStatistic {\n      total\n      male\n      female\n      temporary\n      mutation\n      mutationOut     { value }\n      statusInFamily  { name value }\n    }\n  }\n": types.PopulationSummaryDocument,
     "\n  query populationMutationSummary {\n    summary: populationStatistic {\n      total\n      mutationOut { value }\n    }\n  }\n": types.PopulationMutationSummaryDocument,
     "\n  query stunting {\n    stunting(limit: 3) {\n      year\n      keluargaSasaran\n      berisiko\n      baduta\n      balita\n      pasanganUsiaSubur\n      pasanganUsiaSuburHamil\n    }\n  }\n": types.StuntingDocument,
+    "\n  query visitStats {\n    stats: visitorStatistic {\n      total\n      today\n      yesterday\n      thisWeek\n      lastWeek\n      thisMonth\n      lastMonth\n    }\n  }\n": types.VisitStatsDocument,
     "\n  query user($username: String!) {\n    user: userByUsername(username: $username) {\n      ID\n      desa {\n        deskel\n        kabkota\n        provinsi\n      }\n      name\n      phone\n      photoURL\n    }\n  }\n": types.UserDocument,
 };
 
@@ -225,6 +226,10 @@ export function gql(source: "\n  query populationMutationSummary {\n    summary:
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(source: "\n  query stunting {\n    stunting(limit: 3) {\n      year\n      keluargaSasaran\n      berisiko\n      baduta\n      balita\n      pasanganUsiaSubur\n      pasanganUsiaSuburHamil\n    }\n  }\n"): (typeof documents)["\n  query stunting {\n    stunting(limit: 3) {\n      year\n      keluargaSasaran\n      berisiko\n      baduta\n      balita\n      pasanganUsiaSubur\n      pasanganUsiaSuburHamil\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query visitStats {\n    stats: visitorStatistic {\n      total\n      today\n      yesterday\n      thisWeek\n      lastWeek\n      thisMonth\n      lastMonth\n    }\n  }\n"): (typeof documents)["\n  query visitStats {\n    stats: visitorStatistic {\n      total\n      today\n      yesterday\n      thisWeek\n      lastWeek\n      thisMonth\n      lastMonth\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

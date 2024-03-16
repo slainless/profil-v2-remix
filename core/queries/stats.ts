@@ -48,3 +48,17 @@ export const stuntingQuery = gql(`
     }
   }
 `)
+
+export const visitStatsQuery = gql(`
+  query visitStats {
+    stats: visitorStatistic {
+      total
+      today
+      yesterday
+      thisWeek
+      lastWeek
+      thisMonth
+      lastMonth
+    }
+  }
+`)

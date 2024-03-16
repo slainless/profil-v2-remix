@@ -26,7 +26,7 @@ import { ErrorWithStackTrace } from "#components/ErrorWithStackTrace.tsx"
 
 import { getLocale } from "#locale/locale.ts"
 
-import { hydrateServerEnv, pickClientEnv } from "#services/env.js"
+import { hydrateServerEnv, pickClientEnv } from "#services/env.ts"
 import { isNormalizedError } from "#services/response.ts"
 
 import { Base } from "#modules/metadata.ts"

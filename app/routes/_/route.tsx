@@ -18,6 +18,8 @@ import AppFooter from "#components/MainLayouts/Footer.tsx"
 import AppHeader from "#components/MainLayouts/Header.tsx"
 import PageContainer from "#components/PageContainer.tsx"
 import { PageLoadingBar } from "#components/PageLoadingBar.tsx"
+import Pengaduan from "#components/Pengaduan.tsx"
+import VisitorCounter from "#components/VisitorCounter.tsx"
 
 import { ProfileHydrator } from "#providers/profile.ts"
 import { JotaiGlobalStore, globalStore } from "#providers/store.ts"
@@ -111,6 +113,11 @@ export default function Layout() {
             <Outlet />
           </Box>
           <AppFooter />
+
+          <Fragment key="floater">
+            <Pengaduan />
+            <VisitorCounter />
+          </Fragment>
         </AppShell>
       </UrqlProvider>
     </JotaiGlobalStore>
@@ -191,8 +198,15 @@ export function ErrorBoundary() {
             </PageContainer>
           </Box>
           <AppFooter />
+
+          <Fragment key="floater"></Fragment>
         </AppShell>
       </UrqlProvider>
+
+      <Fragment key="scripts">
+        <script async src="/accessibility.bundle.js" />
+        <script async src="/accessibility.config.js" />
+      </Fragment>
     </JotaiGlobalStore>
   )
 }

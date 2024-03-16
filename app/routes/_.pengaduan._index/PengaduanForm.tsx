@@ -29,11 +29,7 @@ import { PhoneNumberInput } from "#components/PhoneNumberInput.tsx"
 
 import { schemaAtom } from "#providers/profile.ts"
 
-import {
-  ComplaintPayload,
-  Schema,
-  categories,
-} from "#services/.client/complaint.ts"
+import { ComplaintPayload, Schema, categories } from "#services/complaint.js"
 import { getError } from "#services/response.ts"
 import { formData, getPublicRest } from "#services/rest.js"
 
