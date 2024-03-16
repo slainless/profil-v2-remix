@@ -34,25 +34,9 @@ import { populationMutationSummaryQuery } from "#queries/stats.ts"
 
 import { FormattedNumber, capitalize } from "#modules/intl.ts"
 
-import BorderVillage from "./BorderVillageMap.tsx"
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
+// import BorderVillage from "./BorderVillageMap.tsx"
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -101,9 +85,7 @@ function PetaLokasi() {
         >
           PETA LOKASI {aliasDesa}
         </Title>
-        <Box h={350}>
-          <BorderVillage />
-        </Box>
+        <Box h={350}>{/* <BorderVillage /> */}</Box>
         <Title
           tt={"uppercase"}
           fz={20}

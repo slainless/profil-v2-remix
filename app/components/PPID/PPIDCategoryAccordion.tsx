@@ -7,8 +7,7 @@ import { useMemo, useState } from "react"
 
 import { vars } from "#theme/artifact/vars.mjs"
 
-import { PPIDViewModal } from "#components/PPID/PPIDViewModal.tsx"
-
+// import { PPIDViewModal } from "#components/PPID/PPIDViewModal.tsx"
 import { PPIDCategoriesMapAtom } from "#providers/PPID.ts"
 
 import type { PpidType } from "#graphql/graphql.ts"
@@ -28,7 +27,7 @@ export const PPIDCategoryAccordion = ({ type }: { type: PpidType }) => {
 
   return (
     <>
-      <PPIDViewModal />
+      {/* <PPIDViewModal /> */}
       <Accordion
         multiple
         value={value}

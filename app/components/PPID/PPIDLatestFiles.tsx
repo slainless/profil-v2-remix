@@ -12,8 +12,8 @@ import { useQuery } from "urql"
 import { vars } from "#theme/artifact/vars.mjs"
 
 import { DimmedNotice } from "#components/DimmedNotice.tsx"
-import { PPIDViewModal } from "#components/PPID/PPIDViewModal.tsx"
 
+// import { PPIDViewModal } from "#components/PPID/PPIDViewModal.tsx"
 import { PPIDItemsAtom } from "#providers/PPID.ts"
 
 import { PPIDFilesQuery } from "#queries/PPID.ts"
@@ -50,7 +50,7 @@ export const PPIDLatestFiles = () => {
 
   return (
     <Box>
-      <PPIDViewModal />
+      {/* <PPIDViewModal /> */}
 
       <Title
         fz={{ base: 20, sm: 40 }}
