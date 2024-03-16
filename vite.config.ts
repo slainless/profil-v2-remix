@@ -47,7 +47,7 @@ export default defineConfig({
     },
   },
   ssr: {
-    noExternal: isCloudflare ? true : [],
+    noExternal: isCloudflare ? [] : [],
     optimizeDeps: {
       include: [],
     },
