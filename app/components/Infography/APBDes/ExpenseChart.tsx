@@ -2,7 +2,7 @@
 
 import { Box, Flex, Stack, Title, useMantineTheme } from "@mantine/core"
 import { IconReportOff } from "@tabler/icons-react"
-import ReactECharts from "echarts-for-react"
+import ReactEChartsCore from "echarts-for-react/lib/core"
 import { useAtomValue } from "jotai"
 import { useMemo } from "react"
 
@@ -13,12 +13,13 @@ import { DimmedNotice } from "#components/DimmedNotice.tsx"
 import {
   APBDReportByTypeInCurrentYearAtom,
   currentYearAtom,
-} from "#providers/APBD"
+} from "#providers/APBD.ts"
 import { aliasDesaAtom } from "#providers/profile.ts"
 
 import { contentsOrNone } from "#modules/css-utils.ts"
+import { echarts } from "#modules/echarts.js"
 
-import { chartOptions, chartOptionsMobile } from "./expenseChartOptions"
+import { chartOptions, chartOptionsMobile } from "./expenseChartOptions.ts"
 
 const Expense = () => {
   const aliasDesa = useAtomValue(aliasDesaAtom)
@@ -54,7 +55,8 @@ const Expense = () => {
               Belanja {aliasDesa} {currentYear}
             </Title>
             <Box display={contentsOrNone(expense.length > 0)}>
-              <ReactECharts
+              <ReactEChartsCore
+                echarts={echarts}
                 option={chartOptionsMobile(
                   expense.map((d) => d.total),
                   expense.map((d) => d.category.name),
@@ -95,7 +97,8 @@ const Expense = () => {
           h="480px"
         >
           <Box display={contentsOrNone(expense.length > 0)}>
-            <ReactECharts
+            <ReactEChartsCore
+              echarts={echarts}
               option={chartOptions(
                 expense.map((d) => d.category.name),
                 expense.map((d) => d.total),

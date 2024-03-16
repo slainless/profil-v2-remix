@@ -1,5 +1,4 @@
 import "@mantine/carousel/styles.css"
-import "@mantine/code-highlight/styles.css"
 import { Box, Center, ColorSchemeScript, MantineProvider } from "@mantine/core"
 import "@mantine/core/styles.css"
 import "@mantine/notifications/styles.css"

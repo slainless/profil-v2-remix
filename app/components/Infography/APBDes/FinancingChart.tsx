@@ -2,7 +2,7 @@
 
 import { Box, Flex, Stack, Title, useMantineTheme } from "@mantine/core"
 import { IconReportOff } from "@tabler/icons-react"
-import ReactECharts from "echarts-for-react"
+import ReactEChartsCore from "echarts-for-react/lib/core"
 import { useAtomValue } from "jotai"
 import { useMemo } from "react"
 
@@ -17,6 +17,7 @@ import {
 import { aliasDesaAtom } from "#providers/profile.ts"
 
 import { contentsOrNone } from "#modules/css-utils.ts"
+import { echarts } from "#modules/echarts.js"
 
 import { chartOptions, chartOptionsMobile } from "./financingChartOptions.ts"
 
@@ -56,7 +57,8 @@ const Financing = () => {
               Pembiayaan {aliasDesa} {currentYear}
             </Title>
             <Box display={contentsOrNone(financing.length > 0)}>
-              <ReactECharts
+              <ReactEChartsCore
+                echarts={echarts}
                 option={chartOptionsMobile(
                   financing.map((d) => d.total),
                   financing.map((d) => d.category.name),
@@ -97,7 +99,8 @@ const Financing = () => {
           h="480px"
         >
           <Box display={contentsOrNone(financing.length > 0)}>
-            <ReactECharts
+            <ReactEChartsCore
+              echarts={echarts}
               option={chartOptions(
                 financing.map((d) => d.category.name),
                 financing.map((d) => d.total),

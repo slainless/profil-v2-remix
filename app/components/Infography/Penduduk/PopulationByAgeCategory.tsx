@@ -2,7 +2,8 @@
 "use client"
 
 import { Box, Stack, Text, Title } from "@mantine/core"
-import ReactECharts, { EChartsOption } from "echarts-for-react"
+import type { EChartsOption } from "echarts-for-react"
+import ReactEChartsCore from "echarts-for-react/lib/core"
 import { useAtomValue } from "jotai"
 import { Fragment, useMemo } from "react"
 
@@ -11,6 +12,10 @@ import { vars } from "#theme/artifact/vars.mjs"
 import { populationStatisticAtom } from "#providers/population.ts"
 
 import type { IntKv } from "#graphql/graphql.ts"
+
+import { echarts } from "#modules/echarts.js"
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -291,7 +296,8 @@ const PopulationByAgeCategory = () => {
           >
             BERDASARKAN KELOMPOK UMUR
           </Title>
-          <ReactECharts
+          <ReactEChartsCore
+            echarts={echarts}
             option={chartOptionsMobile}
             style={{ width: "100%", height: "450px" }}
           />
@@ -366,7 +372,8 @@ const PopulationByAgeCategory = () => {
           py={"md"}
           px={"md"}
         >
-          <ReactECharts
+          <ReactEChartsCore
+            echarts={echarts}
             option={chartOptions}
             style={{ width: "100%", height: "500px" }}
           />

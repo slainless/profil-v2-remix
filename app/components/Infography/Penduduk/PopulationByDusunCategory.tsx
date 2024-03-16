@@ -3,7 +3,7 @@
 
 import { Box, Group, Stack, Text, Title } from "@mantine/core"
 import { IconCircleX } from "@tabler/icons-react"
-import ReactECharts from "echarts-for-react"
+import ReactEChartsCore from "echarts-for-react/lib/core"
 import { useAtomValue } from "jotai"
 
 import { vars } from "#theme/artifact/vars.mjs"
@@ -13,7 +13,10 @@ import { DimmedNotice } from "#components/DimmedNotice.tsx"
 import { populationStatisticAtom } from "#providers/population.ts"
 
 import { contentsOrNone } from "#modules/css-utils.ts"
+import { echarts } from "#modules/echarts.js"
 import { FormattedNumber } from "#modules/intl.ts"
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -70,7 +73,11 @@ const PopulationByDusunCategory = () => {
         >
           <Group gap={"xs"}>
             <Box w={"50vw"}>
-              <ReactECharts option={chartOptions} style={{ width: "100%" }} />
+              <ReactEChartsCore
+                echarts={echarts}
+                option={chartOptions}
+                style={{ width: "100%" }}
+              />
             </Box>
             <Stack mt={-150} gap={0}>
               <Title size={20} ml={-20} mb={3}>

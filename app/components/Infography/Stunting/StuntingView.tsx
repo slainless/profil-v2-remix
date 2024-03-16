@@ -2,7 +2,7 @@
 
 import { Stack, Title, Box, Flex } from "@mantine/core"
 import { IconCircleX } from "@tabler/icons-react"
-import ReactECharts from "echarts-for-react"
+import ReactEChartsCore from "echarts-for-react/lib/core"
 import { useQuery } from "urql"
 
 import { vars } from "#theme/artifact/vars.mjs"
@@ -12,6 +12,7 @@ import { DimmedNotice } from "#components/DimmedNotice.tsx"
 import { stuntingQuery } from "#queries/stats.ts"
 
 import { contentsOrNone } from "#modules/css-utils.ts"
+import { echarts } from "#modules/echarts.js"
 
 import { chartOptions, chartOptionsMobile } from "./stuntingViewChartOptions.ts"
 
@@ -40,7 +41,8 @@ export const StuntingView = () => {
           >
             Data Stunting
           </Title>
-          <ReactECharts
+          <ReactEChartsCore
+            echarts={echarts}
             option={chartOptionsMobile(
               [...(data?.stunting ?? [])].sort((a, b) => a.year - b.year) ?? [],
             )}
@@ -89,7 +91,8 @@ export const StuntingView = () => {
                 data?.stunting != null && data?.stunting.length > 0,
               )}
             >
-              <ReactECharts
+              <ReactEChartsCore
+                echarts={echarts}
                 option={chartOptions(
                   [...(data?.stunting ?? [])].sort((a, b) => a.year - b.year) ??
                     [],

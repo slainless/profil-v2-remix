@@ -2,7 +2,7 @@
 
 import { Box, Flex, Stack, Title, useMantineTheme } from "@mantine/core"
 import { IconCircleX } from "@tabler/icons-react"
-import ReactECharts from "echarts-for-react"
+import ReactEChartsCore from "echarts-for-react/lib/core"
 import { useAtomValue } from "jotai"
 
 import { vars } from "#theme/artifact/vars.mjs"
@@ -12,6 +12,7 @@ import { DimmedNotice } from "#components/DimmedNotice.tsx"
 import { populationStatisticAtom } from "#providers/population.ts"
 
 import { contentsOrNone } from "#modules/css-utils.ts"
+import { echarts } from "#modules/echarts.js"
 
 import { chartOptions } from "./populationByWajibPilihChartOption.ts"
 
@@ -40,7 +41,8 @@ const PopulationByWajibPilih = () => {
               statistic?.wajibPilih != null && statistic?.wajibPilih.length > 0,
             )}
           >
-            <ReactECharts
+            <ReactEChartsCore
+              echarts={echarts}
               option={chartOptions(
                 statistic?.wajibPilih.map((v) => v.name) ?? [],
                 statistic?.wajibPilih.map((v) => v.value) ?? [],

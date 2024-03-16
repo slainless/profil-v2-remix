@@ -1,7 +1,7 @@
 import { Stack, Box, Flex, Title } from "@mantine/core"
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node"
 import { IconCircleX } from "@tabler/icons-react"
-import ReactECharts from "echarts-for-react"
+import ReactEChartsCore from "echarts-for-react/lib/core"
 import { useQuery } from "urql"
 
 import { vars } from "#theme/artifact/vars.mjs"
@@ -17,6 +17,7 @@ import { stuntingQuery } from "#queries/stats.ts"
 import { tick, TickType } from "#services/.server/visit.js"
 
 import { contentsOrNone } from "#modules/css-utils.ts"
+import { echarts } from "#modules/echarts.js"
 
 import { assertCommonContext } from "#server/context.js"
 
@@ -57,7 +58,8 @@ export default function Stunting() {
           >
             Data Stunting
           </Title>
-          <ReactECharts
+          <ReactEChartsCore
+            echarts={echarts}
             option={chartOptionsMobile(
               [...(data?.stunting ?? [])].sort((a, b) => a.year - b.year) ?? [],
             )}
@@ -106,7 +108,8 @@ export default function Stunting() {
                 data?.stunting != null && data?.stunting.length > 0,
               )}
             >
-              <ReactECharts
+              <ReactEChartsCore
+                echarts={echarts}
                 option={chartOptions(
                   [...(data?.stunting ?? [])].sort((a, b) => a.year - b.year) ??
                     [],

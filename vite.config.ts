@@ -1,9 +1,11 @@
+import templateLiteralPlugin from "@gatsbylabs/vite-plugin-minify-template-literals"
 import {
   vitePlugin as remix,
   cloudflareDevProxyVitePlugin as remixCloudflareDevProxy,
 } from "@remix-run/dev"
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin"
 import { remixDevTools } from "remix-development-tools"
+import { visualizer } from "rollup-plugin-visualizer"
 import { defineConfig } from "vite"
 import { cjsInterop } from "vite-plugin-cjs-interop"
 import tsconfigPaths from "vite-tsconfig-paths"
@@ -15,6 +17,9 @@ const isCloudflare = process.env.USE_CLOUDFLARE != null
 
 export default defineConfig({
   plugins: [
+    visualizer(),
+    // @ts-expect-error vendor fault...
+    templateLiteralPlugin.default(),
     ...(isCloudflare && isDev
       ? [remixCloudflareDevProxy({ getLoadContext: cloudflareContextLoader })]
       : []),
@@ -42,15 +47,14 @@ export default defineConfig({
     },
   },
   ssr: {
-    noExternal: isCloudflare
-      ? ["@amcharts/amcharts4", "@react-pdf-viewer/core", "raf"]
-      : ["@amcharts/amcharts4"],
+    noExternal: isCloudflare ? true : [],
     optimizeDeps: {
       include: [],
     },
     target: isCloudflare ? "webworker" : "node",
   },
   build: {
+    assetsInlineLimit: 0,
     rollupOptions: {
       onwarn(warning, defaultHandler) {
         if (

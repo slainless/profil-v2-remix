@@ -2,7 +2,7 @@
 
 import { Box, Flex, Stack, Title, useMantineTheme } from "@mantine/core"
 import { IconChartDots3 } from "@tabler/icons-react"
-import ReactECharts from "echarts-for-react"
+import ReactEChartsCore from "echarts-for-react/lib/core"
 import { useAtomValue } from "jotai"
 import { useMemo } from "react"
 
@@ -14,6 +14,7 @@ import { APBDReportByYearAndTypeAtom, Year } from "#providers/APBD.ts"
 import { aliasDesaAtom } from "#providers/profile.ts"
 
 import { contentsOrNone } from "#modules/css-utils.ts"
+import { echarts } from "#modules/echarts.js"
 
 import { chartOptions, chartOptionsMobile } from "./incomeExpenseChartOption.ts"
 
@@ -51,7 +52,8 @@ const IncomeExpense = () => {
               dari Tahun ke Tahun
             </Title>
             <Box display={contentsOrNone(reportsByYear.length > 0)}>
-              <ReactECharts
+              <ReactEChartsCore
+                echarts={echarts}
                 option={chartOptionsMobile(
                   reportsByYear.map((v) => v.year),
                   reportsByYear.map((v) => v.report["INCOME"].total),
@@ -94,7 +96,8 @@ const IncomeExpense = () => {
           align="center"
         >
           <Box display={contentsOrNone(reportsByYear.length > 0)}>
-            <ReactECharts
+            <ReactEChartsCore
+              echarts={echarts}
               option={chartOptions(
                 reportsByYear.map((v) => v.year),
                 reportsByYear.map((v) => v.report["INCOME"].total),

@@ -1,5 +1,4 @@
-import { CodeHighlight, InlineCodeHighlight } from "@mantine/code-highlight"
-import { Box, Title, Image, Text } from "@mantine/core"
+import { Box, Title, Image, Text, Code } from "@mantine/core"
 
 import illustration from "#assets/error-illustration.svg"
 
@@ -30,11 +29,10 @@ export function ErrorWithStackTrace({
           gangguan dapat segera diperbaiki. Mohon maaf atas ketidaknyamanannya
           🙏.
         </Text>
-        <InlineCodeHighlight code={message ?? "No message"} mb={"md"} />
-        <CodeHighlight
-          code={stackTrace ?? "No stack trace"}
-          style={{ display: "grid" }}
-        />
+        <Code mb="md">{message ?? "No message"}</Code>
+        <Code block style={{ display: "grid" }}>
+          {stackTrace ?? "No stack trace"}
+        </Code>
       </Box>
     </Box>
   )

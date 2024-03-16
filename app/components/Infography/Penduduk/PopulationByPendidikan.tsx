@@ -2,7 +2,7 @@
 "use client"
 
 import { Box, Stack, Title, useMantineTheme } from "@mantine/core"
-import ReactECharts from "echarts-for-react"
+import ReactEChartsCore from "echarts-for-react/lib/core"
 import { useAtomValue } from "jotai"
 import { useMemo } from "react"
 
@@ -11,7 +11,10 @@ import { vars } from "#theme/artifact/vars.mjs"
 import { populationStatisticAtom } from "#providers/population.ts"
 
 import { createSortByValue, sortByValue } from "#modules/array.ts"
+import { echarts } from "#modules/echarts.js"
 import { FormattedNumber } from "#modules/intl.ts"
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -143,7 +146,8 @@ const PopulationByPendidikan = () => {
           py={"md"}
           px={"md"}
         >
-          <ReactECharts
+          <ReactEChartsCore
+            echarts={echarts}
             option={chartOptions}
             style={{ width: "100%", height: "500px" }}
           />

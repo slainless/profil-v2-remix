@@ -2,7 +2,7 @@
 
 import { Box, Flex, Stack, Title, useMantineTheme } from "@mantine/core"
 import { IconReportOff } from "@tabler/icons-react"
-import ReactECharts from "echarts-for-react"
+import ReactEChartsCore from "echarts-for-react/lib/core"
 import { useAtomValue } from "jotai"
 import { useMemo } from "react"
 
@@ -17,6 +17,7 @@ import {
 import { aliasDesaAtom } from "#providers/profile.ts"
 
 import { contentsOrNone } from "#modules/css-utils.ts"
+import { echarts } from "#modules/echarts.js"
 
 import { chartOptions, chartOptionsMobile } from "./incomeChartOptions.ts"
 
@@ -54,7 +55,8 @@ const Income = () => {
               Pendapatan {aliasDesa} {currentYear}
             </Title>
             <Box display={contentsOrNone(income.length > 0)}>
-              <ReactECharts
+              <ReactEChartsCore
+                echarts={echarts}
                 option={chartOptionsMobile(
                   income.map((d) => d.total),
                   income.map((d) => d.category.name),
@@ -95,7 +97,8 @@ const Income = () => {
           h="480px"
         >
           <Box display={contentsOrNone(income.length > 0)}>
-            <ReactECharts
+            <ReactEChartsCore
+              echarts={echarts}
               option={chartOptions(
                 income.map((d) => d.category.name),
                 income.map((d) => d.total),

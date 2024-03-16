@@ -1,13 +1,5 @@
 "use client"
 
-import { PieChart3D, PieSeries3D } from "@amcharts/amcharts4/charts"
-import {
-  useTheme as amchartsUseTheme,
-  create,
-  options,
-  percent,
-} from "@amcharts/amcharts4/core"
-import am4themes_animated from "@amcharts/amcharts4/themes/animated"
 import { Stack, Box, Grid, Text, Title } from "@mantine/core"
 import { IconCircleX } from "@tabler/icons-react"
 import { useMemo, useEffect } from "react"
@@ -20,8 +12,6 @@ import { DimmedNotice } from "#components/DimmedNotice.tsx"
 import { bansosQuery } from "#queries/bansos.ts"
 
 import { contentsOrNone } from "#modules/css-utils.ts"
-
-amchartsUseTheme(am4themes_animated)
 
 const Card = ({ name, value }: { name: string; value: number }) => {
   return (
@@ -100,10 +90,6 @@ const Bansos = () => {
 
   return (
     <>
-      {/* Mobile */}
-      <Box w={"100%"} id="bansosChart" hiddenFrom="sm" />
-      {/* End Mobile */}
-
       {/* Desktop */}
       <Stack
         visibleFrom="sm"

@@ -1,12 +1,14 @@
 "use client"
 
 import { Box, Stack, Title } from "@mantine/core"
-import ReactECharts from "echarts-for-react"
+import ReactEChartsCore from "echarts-for-react/lib/core"
 import { useAtomValue } from "jotai"
 
 import { vars } from "#theme/artifact/vars.mjs"
 
 import { IDMsAtom } from "#providers/IDM.ts"
+
+import { echarts } from "#modules/echarts.js"
 
 import {
   chartOptions,
@@ -34,7 +36,8 @@ const IdmScoreYearByYear = () => {
           backdropFilter: "blur(2px)",
         }}
       >
-        <ReactECharts
+        <ReactEChartsCore
+          echarts={echarts}
           option={chartOptions(IDMs)}
           style={{ width: "100%", height: "450px" }}
         />
@@ -48,7 +51,8 @@ const IdmScoreYearByYear = () => {
           backdropFilter: "blur(2px)",
         }}
       >
-        <ReactECharts
+        <ReactEChartsCore
+          echarts={echarts}
           option={chartOptionsMobile(IDMs)}
           style={{ width: "100%" }}
         />
