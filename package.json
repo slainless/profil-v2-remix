@@ -32,7 +32,7 @@
     "start": "cross-env NODE_ENV=production node ./server.js",
     "typecheck": "tsc",
     "codegen": "graphql-codegen --config codegen.ts",
-    "start:wrangler": "wrangler pages dev ./build/client --compatibility-flags=\"nodejs_compat\"",
+    "start:wrangler": "wrangler pages dev ./build/client",
     "deploy:wrangler": "wrangler pages deploy ./build/client",
     "typegen": "wrangler types",
     "typegen:typebox": "vite-node ./scripts/typebox-typegen/index.ts ./core/schema"
@@ -154,7 +154,7 @@
     "vite": "^5.1.0",
     "vite-plugin-cjs-interop": "^2.0.6",
     "vite-tsconfig-paths": "^4.3.1",
-    "wrangler": "^3.33.0"
+    "wrangler": "^3.34.2"
   },
   "engines": {
     "node": ">=18.0.0"

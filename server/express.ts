@@ -10,14 +10,18 @@ import type {
   UnderscoredCode,
 } from "../core/modules/domain-handler.ts"
 import { domainMapQuery } from "../core/queries/domain.ts"
+import type { Environment } from "../core/schema/env.ts"
 import type { DomainContext } from "./domain.ts"
 import { mustGetHost, normalizeHost } from "./tenancy.ts"
 
 export async function domainContextLoader(
   request: Request,
+  env: Environment,
   handler: DomainHandler,
 ): Promise<DomainContext | undefined> {
-  const host = normalizeHost(mustGetHost(request), process.env.BASE_DOMAIN!)
+  const host =
+    (env.BYPASS_FIX_REQUEST_HOSTNAME as Domain) ??
+    normalizeHost(mustGetHost(request), process.env.BASE_DOMAIN!)
   const schema = handler.domainToCode(host)
   if (schema == null) return
   const slug = handler.codeToSlug(schema)

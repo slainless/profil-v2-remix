@@ -12,9 +12,8 @@ import {
   type ErrorContext,
 } from "./context.ts"
 import { isDomainContext } from "./domain.ts"
-import type { EnvContext } from "./env.ts"
 import { baseContextLoader } from "./loader.base.ts"
-import { createServerContext, type ServerContext } from "./loader.server.ts"
+import { createServerContext } from "./loader.server.ts"
 import { mustGetHost, normalizeHost } from "./tenancy.ts"
 
 export interface CloudflareContext extends Context {
@@ -29,29 +28,19 @@ export async function cloudflareContextLoader({
   request,
   context,
 }: CloudflareContextLoaderArgs): Promise<
-  | (CommonContext & CloudflareContext)
-  | (ServerContext & EnvContext & CloudflareContext)
-  | ErrorContext
+  (CommonContext & CloudflareContext) | ErrorContext
 > {
-  if (!isEnvironment(context.cloudflare.env)) {
-    console.error(Array.from(Value.Errors(Environment, context.cloudflare.env)))
+  const env = context.cloudflare.env
+  if (!isEnvironment(env)) {
+    console.error(Array.from(Value.Errors(Environment, env)))
     return createErrorContext(ErrorCode.MisconfiguredEnv, 500)
   }
 
-  const serverContext = createServerContext(context.cloudflare.env)
-  const host = normalizeHost(
-    mustGetHost(request),
-    context.cloudflare.env.BASE_DOMAIN,
-  )
-  if (new URL(request.url).hostname === context.cloudflare.env.BASE_DOMAIN)
-    return {
-      ...serverContext,
-      ...context,
-    } as ServerContext & EnvContext & CloudflareContext
-  const domainContext = await context.cloudflare.env.DOMAIN_MAP_KV.get(
-    host,
-    "json",
-  )
+  const serverContext = createServerContext(env)
+  const host =
+    env.BYPASS_FIX_REQUEST_HOSTNAME ??
+    normalizeHost(mustGetHost(request), env.BASE_DOMAIN)
+  const domainContext = await env.DOMAIN_MAP_KV.get(host, "json")
   if (!isDomainContext(domainContext))
     return createErrorContext(ErrorCode.SchemaNotFound, 404)
   domainContext.schema = domainContext.schema.replaceAll(
@@ -66,9 +55,9 @@ export async function cloudflareContextLoader({
     ...(await baseContextLoader(
       request,
       serverContext.gqlClient,
-      context.cloudflare.env,
+      env,
       domainContext,
     )),
-    env: context.cloudflare.env,
+    env,
   } as CommonContext & CloudflareContext
 }

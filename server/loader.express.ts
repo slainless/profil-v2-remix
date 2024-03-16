@@ -22,8 +22,7 @@ export async function createExpressContextLoader() {
   )
 
   return async (request: Request) => {
-    if (request.hostname === process.env.BASE_DOMAIN) return serverContext
-    const domainContext = await domainContextLoader(request, domainHandler)
+    const domainContext = await domainContextLoader(request, env, domainHandler)
     if (domainContext == null)
       return createErrorContext(ErrorCode.SchemaNotFound, 404)
     return {
