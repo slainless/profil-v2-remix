@@ -4,7 +4,7 @@ import { Code, UnderscoredCode } from "#modules/domain-handler.ts"
 import { TypeCompiler } from "#modules/typebox-compiler.ts"
 import { Format } from "#modules/typebox.ts"
 
-import { getPublicRest } from "./rest.ts"
+import { getPublicRest } from "../rest.ts"
 
 export namespace Schema {
   export const payload = Type.Object({

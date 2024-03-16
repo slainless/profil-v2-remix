@@ -6,7 +6,7 @@ import { Schema as GenericSchema } from "#services/data.ts"
 import { TypeCompiler } from "#modules/typebox-compiler.ts"
 import { Format } from "#modules/typebox.ts"
 
-import { getPublicRest } from "./rest.ts"
+import { getPublicRest } from "../rest.ts"
 
 export namespace Schema {
   export const otp = Type.Object({

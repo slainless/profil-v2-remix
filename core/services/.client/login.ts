@@ -7,7 +7,7 @@ import { Service } from "#services/oauth.ts"
 
 import { TypeCompiler } from "#modules/typebox-compiler.ts"
 
-import { getPublicRest } from "./rest.ts"
+import { getPublicRest } from "../rest.ts"
 
 export namespace Schema {
   export const token = Type.Object({
