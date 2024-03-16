@@ -35,7 +35,7 @@ import {
   categories,
 } from "#services/.client/complaint.ts"
 import { getError } from "#services/response.ts"
-import { formData, rest } from "#services/rest.ts"
+import { formData, getPublicRest } from "#services/rest.js"
 
 import { errMsg, errTitle } from "#modules/strings.ts"
 
@@ -62,7 +62,7 @@ export function PengaduanForm() {
     }
 
     setLoading(true)
-    rest
+    getPublicRest()
       .post("pengaduan", {
         body: formData({ ...data, attachment: file }),
         headers: { "X-Digides-Schema": schema },

@@ -11,8 +11,8 @@ import { vars } from "#theme/artifact/vars.mjs"
 import { AuthModal } from "#components/Auth/AuthModal.tsx"
 
 import { aliasDesaAtom, desaAtom } from "#providers/profile.ts"
-import { userAtom, usernameAtom } from "#providers/user.ts"
 
+import { userAtom, usernameAtom } from "#services/.client/user.js"
 import { asset } from "#services/assets.ts"
 
 import { createInitial } from "#modules/avatar.ts"

@@ -18,7 +18,8 @@ export const Environment = Type.Object({
   BASE_DOMAIN: Type.String(),
   GRAPHQL_ACCESS_WEBTOKEN: Type.String(),
   WEBTOKEN_SIGNING_SECRET: Type.String(),
-  BACKOFFICE_DOMAIN: Type.String(),
+  BACKOFFICE_DOMAIN: Type.Optional(Type.String()),
+  KANTOR_REDIRECT_PATH: Type.Optional(Type.String()),
 })
 
 export type Environment = Static<typeof Environment>

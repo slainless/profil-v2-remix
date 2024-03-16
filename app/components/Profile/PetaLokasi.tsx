@@ -50,6 +50,12 @@ import BorderVillage from "./BorderVillageMap.tsx"
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 const int = (v: number | null | undefined) => (v == null ? 0 : v)
 
 const mapBorder = (borders: StringKv[]) => {

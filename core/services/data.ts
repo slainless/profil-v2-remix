@@ -1,7 +1,7 @@
 // import { TypeOf, compile, v } from "suretype"
 import { Static, Type } from "@sinclair/typebox"
-import { TypeCompiler } from "@sinclair/typebox/compiler"
 
+import { TypeCompiler } from "../modules/typebox-compiler.ts"
 import { Service } from "./oauth.ts"
 
 export enum ErrorCode {
@@ -51,6 +51,7 @@ export enum ErrorCode {
   ProfileDataEmpty = "profile_data_empty",
 
   ContextEmpty = "context_empty",
+  MisconfiguredEnv = "misconfigured_env",
 }
 
 export const ErrorCodeReverse = Object.fromEntries(

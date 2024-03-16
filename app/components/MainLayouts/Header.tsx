@@ -1,9 +1,5 @@
 "use client"
 
-import { DomainHandler } from "#modules/domain-handler.ts"
-// import { UserAvatar } from "#components/Header/UserAvatar.tsx"
-import { profileAtom, schemaAtom } from "#providers/profile.ts"
-import { asset } from "#services/assets.ts"
 import {
   AppShell,
   Image,
@@ -16,6 +12,8 @@ import {
 } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
 import { Link, useLocation } from "@remix-run/react"
+// import { UserAvatar } from "#components/Header/UserAvatar.tsx"
+import { profileAtom, schemaAtom } from "#providers/profile.ts"
 // import { Spotlight, spotlight } from "@mantine/spotlight"
 // import {
 //   IconSearch,
@@ -33,6 +31,10 @@ import {
 } from "react"
 
 import { vars } from "#theme/artifact/vars.mjs"
+
+import { asset } from "#services/assets.ts"
+
+import { DomainHandler } from "#modules/domain-handler.ts"
 
 import { NavbarItem } from "./NavbarItem.tsx"
 import { navbarMenu } from "./navbar-menu.ts"
@@ -62,6 +64,8 @@ const AppHeader = ({ forceNonTransparent }: AppHeaderProps) => {
       setIsTransparent(false)
       return
     }
+
+    if (typeof document == "undefined") return
 
     setIsTransparent(checkIsTop())
 

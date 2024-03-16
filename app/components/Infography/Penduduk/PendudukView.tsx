@@ -1,5 +1,6 @@
-import { PopulationStatisticLoader } from "#providers/population.ts"
 import { Box, Stack } from "@mantine/core"
+
+import { PopulationStatisticLoader } from "#providers/population.ts"
 
 import PopulationByAgama from "./PopulationByAgama"
 import PopulationByAgeCategory from "./PopulationByAgeCategory"

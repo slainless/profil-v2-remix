@@ -1,6 +1,12 @@
-import { resolver } from "#modules/template.ts"
+import normalizeUrl from "normalize-url"
+import urlJoin from "url-join"
+
 import { schemaAtom } from "#providers/profile.ts"
 import { globalStore } from "#providers/store.ts"
+
+import { assetBaseUrlAtom, graphEndpointAtom } from "#services/env.js"
+
+import { resolver } from "#modules/template.ts"
 
 const slasher = (schema: string) => schema.replaceAll("_", "/")
 const dotter = (schema: string) => schema.replaceAll("_", ".")
@@ -8,9 +14,9 @@ const dotter = (schema: string) => schema.replaceAll("_", ".")
 // prettier-ignore
 const withDefault =
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    <T extends (v: any) => string>(fn: T, def: Record<string, string>): T =>
+    <T extends (v: any) => string>(fn: T, def: Record<string, () => string>): T =>
     // @ts-expect-error ...
-    (v) => fn({ ...v, ...def, })
+    (v) => fn({ ...v, ...Object.fromEntries(Object.entries(def).map(([k, v]) => [k, v()])), })
 
 export namespace Template {
   export const gallery = "{{ asset }}/profil/{{ schema }}/berita/{{ file }}"
@@ -27,8 +33,9 @@ export namespace Template {
   export const ppidDDL = "{{ api }}/ppid_download/{{ schema }}{{ ID }}"
 }
 
-const asset = import.meta.env.VITE_ASSET_BASE_URL!
-const api = import.meta.env.VITE_GRAPHQL_ENDPOINT!
+const asset = () => globalStore.get(assetBaseUrlAtom)
+const api = () =>
+  normalizeUrl(urlJoin(globalStore.get(graphEndpointAtom), "../"))
 
 // prettier-ignore
 export namespace Resolver {

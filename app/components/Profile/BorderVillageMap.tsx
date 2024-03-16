@@ -3,6 +3,7 @@
 import { Group, Paper } from "@mantine/core"
 import { useAtomValue } from "jotai"
 import "maplibre-gl/dist/maplibre-gl.css"
+import { render } from "micromustache"
 import { useEffect, useMemo, useState } from "react"
 import { Map, Layer, MapRef, Marker, Source } from "react-map-gl/maplibre"
 import { useQuery } from "urql"
@@ -14,6 +15,7 @@ import {
   Style,
   StyleSwitcher,
   mapStyle,
+  tileUrl,
 } from "#components/Map/StyleSwitcher.tsx"
 
 import { isLoadedPoiAtom } from "#providers/map.ts"
@@ -23,13 +25,15 @@ import { PointOfInterest } from "#graphql/graphql.ts"
 
 import { mainPointOfInterestQuery } from "#queries/poi.ts"
 
+import { maptilerKeyAtom } from "#services/env.js"
+
 import bbox from "#modules/geojson-bbox.js"
 import {
   boundsOfIndonesia,
   centerOfIndonesia,
   getCenterOfGeometry,
   getMainPOI,
-} from "#modules/geojson-utils"
+} from "#modules/geojson-utils.ts"
 
 import { useBorderDesa, useBorderPoi } from "../Map/use-border-desa"
 
@@ -97,6 +101,7 @@ const BorderVillage = () => {
     ] as [number, number, number, number]
   }, [center])
 
+  const mapTilerKey = useAtomValue(maptilerKeyAtom)
   return (
     <Paper
       radius="md"
@@ -112,7 +117,7 @@ const BorderVillage = () => {
         dragRotate={false}
         touchZoomRotate={false}
         style={{ width: "100%" }}
-        mapStyle={ms.tile}
+        mapStyle={render(tileUrl, { style: ms.style, key: mapTilerKey })}
         cooperativeGestures={true}
         ref={setMap}
         attributionControl={false}

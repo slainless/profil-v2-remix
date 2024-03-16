@@ -1,12 +1,14 @@
 "use client"
 
-import { rem } from "#modules/css-utils.ts"
-import { currentTabAtom } from "#providers/infography.ts"
 import { TabsTab, Tabs as _Tabs } from "@mantine/core"
 import { Link } from "@remix-run/react"
 import type { TablerIconsProps } from "@tabler/icons-react"
 import { useAtomValue } from "jotai"
 import { type FunctionComponent, type ReactNode } from "react"
+
+import { currentTabAtom } from "#providers/infography.ts"
+
+import { rem } from "#modules/css-utils.ts"
 
 export const Icon = ({ as }: { as: FunctionComponent<TablerIconsProps> }) => {
   const Component = as

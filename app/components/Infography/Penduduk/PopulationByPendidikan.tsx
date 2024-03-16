@@ -15,12 +15,6 @@ import { FormattedNumber } from "#modules/intl.ts"
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 const order = createSortByValue([
   "Strata III",
   "Strata II",

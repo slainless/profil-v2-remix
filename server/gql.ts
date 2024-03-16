@@ -1,15 +1,16 @@
+import type { Environment } from "#schema/env.js"
 import { Client, fetchExchange } from "@urql/core"
 
 // import { cacheExchange } from '@urql/exchange-graphcache'
 
-export function createGQLClient() {
+export function createGQLClient(env: Environment) {
   return new Client({
-    url: process.env.VITE_GRAPHQL_ENDPOINT!,
+    url: env.VITE_GRAPHQL_ENDPOINT!,
     exchanges: [fetchExchange],
     fetchOptions: {
       cache: "no-cache",
       headers: {
-        Authorization: `Bearer ${process.env.VITE_GRAPHQL_ACCESS_WEBTOKEN}`,
+        Authorization: `Bearer ${env.VITE_GRAPHQL_ACCESS_WEBTOKEN}`,
       },
     },
   })

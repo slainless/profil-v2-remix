@@ -1,8 +1,9 @@
 "use client"
 
-import { desaAtom } from "#providers/profile.ts"
 import { useAtomValue } from "jotai"
 import "maplibre-gl/dist/maplibre-gl.css"
+
+import { desaAtom } from "#providers/profile.ts"
 
 const IframeMap = ({ url }: { url: string }) => {
   const desa = useAtomValue(desaAtom)

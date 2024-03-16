@@ -26,15 +26,21 @@ import { ErrorWithStackTrace } from "#components/ErrorWithStackTrace.tsx"
 
 import { getLocale } from "#locale/locale.ts"
 
+import { hydrateServerEnv, pickClientEnv } from "#services/env.js"
 import { isNormalizedError } from "#services/response.ts"
 
 import { Base } from "#modules/metadata.ts"
 import { errMsg, errTitle } from "#modules/strings.ts"
 
-import { mustGetCommonContext } from "#server/context.ts"
+import { assertCommonContext } from "#server/context.ts"
 
 export function loader({ context }: LoaderFunctionArgs) {
-  return mustGetCommonContext(context)
+  assertCommonContext(context)
+  hydrateServerEnv(context.env)
+  return {
+    ...context,
+    env: pickClientEnv(context.env),
+  }
 }
 
 export const meta: MetaFunction<typeof loader> = () => {

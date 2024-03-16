@@ -1,3 +1,4 @@
+import type { Environment } from "#schema/env.js"
 import type { Request as ExpressRequest } from "express"
 import type { Client } from "urql"
 
@@ -23,6 +24,7 @@ export interface BaseContext extends Context {
 export async function baseContextLoader(
   request: Request | ExpressRequest,
   client: Client,
+  env: Environment,
   domainCtx?: DomainContext,
 ): Promise<ErrorContext | BaseContext> {
   if (domainCtx == null)
@@ -44,7 +46,7 @@ export async function baseContextLoader(
     url,
     canonUrl: getCanonUrl(domainCtx, url),
 
-    token: process.env.VITE_GRAPHQL_ACCESS_WEBTOKEN!,
-    baseDomain: process.env.BASE_DOMAIN!,
+    token: env.VITE_GRAPHQL_ACCESS_WEBTOKEN!,
+    baseDomain: env.BASE_DOMAIN!,
   } satisfies BaseContext
 }

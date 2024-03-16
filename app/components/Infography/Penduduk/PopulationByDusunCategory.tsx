@@ -17,16 +17,6 @@ import { FormattedNumber } from "#modules/intl.ts"
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 const PopulationByDusunCategory = () => {
   const stats = useAtomValue(populationStatisticAtom)
 

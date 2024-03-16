@@ -1,10 +1,12 @@
-import { Format } from "#modules/typebox.ts"
-import { Schema as GenericSchema } from "#services/data.ts"
 import { Static, Type } from "@sinclair/typebox"
-import { TypeCompiler } from "@sinclair/typebox/compiler"
 import { NationalNumber } from "libphonenumber-js"
 
-import { rest } from "./rest.ts"
+import { Schema as GenericSchema } from "#services/data.ts"
+
+import { TypeCompiler } from "#modules/typebox-compiler.ts"
+import { Format } from "#modules/typebox.ts"
+
+import { getPublicRest } from "./rest.ts"
 
 export namespace Schema {
   export const otp = Type.Object({
@@ -40,7 +42,7 @@ export type RequestPayload = Static<typeof Schema.request>
 export type OTPPayload = Static<typeof Schema.payload>
 
 export function requestOTP(captcha: string, phoneNumber: NationalNumber) {
-  return rest.post("request_otp", {
+  return getPublicRest().post("request_otp", {
     json: {
       captcha,
       phone_number: phoneNumber,

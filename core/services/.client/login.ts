@@ -1,12 +1,13 @@
 import { Static, Type } from "@sinclair/typebox"
-import { TypeCompiler } from "@sinclair/typebox/compiler"
 
 import { UserLevel, UserStatus } from "#graphql/graphql.ts"
 
 import { ErrorCode, Schema as GenericSchema } from "#services/data.ts"
 import { Service } from "#services/oauth.ts"
 
-import { rest } from "./rest.ts"
+import { TypeCompiler } from "#modules/typebox-compiler.ts"
+
+import { getPublicRest } from "./rest.ts"
 
 export namespace Schema {
   export const token = Type.Object({
@@ -64,14 +65,14 @@ export async function login(
         captcha: payload.captcha,
       }
 
-  return rest.post("login", {
+  return getPublicRest().post("login", {
     credentials: "include",
     json,
   })
 }
 
 export async function logout() {
-  return rest.post("logout", {
+  return getPublicRest().post("logout", {
     credentials: "include",
   })
 }

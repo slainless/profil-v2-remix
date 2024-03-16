@@ -1,7 +1,7 @@
 import { Type, type Static } from "@sinclair/typebox"
-import { TypeCompiler } from "@sinclair/typebox/compiler"
 
 import type { UnderscoredCode, Domain } from "../core/modules/domain-handler.ts"
+import { TypeCompiler } from "../core/modules/typebox-compiler.ts"
 import type { Context } from "./context.ts"
 
 export const DomainContextSchema = Type.Object({

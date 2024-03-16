@@ -1,4 +1,4 @@
-compatibility_flags = [ "nodejs_compat" ]
+compatibility_flags = [ "nodejs_compat", "global_navigator" ]
 
 [[kv_namespaces]]
 binding="DOMAIN_MAP_KV"

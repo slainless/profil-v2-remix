@@ -19,11 +19,14 @@ import { vars } from "#theme/artifact/vars.mjs"
 
 import { Icon } from "#components/Icon.tsx"
 
-import { userAtom, usernameAtom, credentialAtom } from "#providers/user.ts"
-
 import { getLocale } from "#locale/locale.ts"
 
 import { logout } from "#services/.client/login.ts"
+import {
+  userAtom,
+  usernameAtom,
+  credentialAtom,
+} from "#services/.client/user.js"
 import { getError } from "#services/response.ts"
 
 import { errMsg, errTitle } from "#modules/strings.ts"

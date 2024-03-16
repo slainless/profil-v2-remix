@@ -50,7 +50,7 @@ export const VariantSelector = ({ productName, images, variants }: Props) => {
       desa_fullname: desa,
       page_name: pageName,
     })
-    document.title = siteName
+    if (typeof document != "undefined") document.title = siteName
   }, [desa, productName, selectedVariant])
 
   useEffect(() => {

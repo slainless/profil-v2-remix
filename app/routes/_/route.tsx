@@ -11,7 +11,6 @@ import "lightgallery/css/lg-thumbnail.css"
 import "lightgallery/css/lg-zoom.css"
 import "lightgallery/css/lightgallery.css"
 import { Fragment } from "react"
-import type { loader } from "~/root.tsx"
 
 import { ErrorSimple } from "#components/ErrorSimple.tsx"
 import { ErrorWithStackTrace } from "#components/ErrorWithStackTrace.tsx"
@@ -21,11 +20,14 @@ import PageContainer from "#components/PageContainer.tsx"
 import { PageLoadingBar } from "#components/PageLoadingBar.tsx"
 
 import { ProfileHydrator } from "#providers/profile.ts"
-import { JotaiGlobalStore } from "#providers/store.ts"
+import { JotaiGlobalStore, globalStore } from "#providers/store.ts"
 import { UrqlProvider } from "#providers/urql.ts"
 
 import { getLocale } from "#locale/locale.ts"
 
+import EnvHydrator, { assetBaseUrlAtom } from "#services/env.js"
+
+import type { loader } from "../../root.tsx"
 import { mustGetRootLayoutData } from "./data.ts"
 import {
   createMetadata,
@@ -38,6 +40,7 @@ import {
 } from "./meta.ts"
 
 export const meta: MetaFunction = ({ matches }) => {
+  console.log(globalStore.get(assetBaseUrlAtom), "fuck")
   const data = mustGetRootLayoutData(matches)
   const locale = getLocale("ID")
 
@@ -76,6 +79,7 @@ export default function Layout() {
           subdomain={data.slug}
           baseDomain={data.baseDomain}
         />
+        <EnvHydrator env={data.env} />
       </Fragment>
 
       <Fragment key="other" /* === Other === */>

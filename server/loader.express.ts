@@ -1,5 +1,9 @@
-import { ErrorCode } from "#services/data.ts"
+import { isEnvironment } from "#schema/env.compiled.js"
+import { Environment } from "#schema/env.js"
+import { Value } from "@sinclair/typebox/value"
 import type { Request } from "express"
+
+import { ErrorCode } from "#services/data.ts"
 
 import { DomainHandler } from "../core/modules/domain-handler.ts"
 import { createErrorContext, type CommonContext } from "./context.ts"
@@ -8,7 +12,11 @@ import { baseContextLoader } from "./loader.base.ts"
 import { createServerContext } from "./loader.server.ts"
 
 export async function createExpressContextLoader() {
-  const serverContext = createServerContext()
+  const env = process.env
+  if (!isEnvironment(env)) {
+    throw Value.Errors(Environment, env)
+  }
+  const serverContext = createServerContext(env)
   const domainHandler = new DomainHandler(
     await mustGetDomainList(serverContext.gqlClient),
   )
@@ -24,8 +32,10 @@ export async function createExpressContextLoader() {
       ...(await baseContextLoader(
         request,
         serverContext.gqlClient,
+        env,
         domainContext,
       )),
+      env,
     } as CommonContext
   }
 }

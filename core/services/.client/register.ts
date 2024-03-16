@@ -1,12 +1,14 @@
-import { Format } from "#modules/typebox.ts"
+import { Static, Type } from "@sinclair/typebox"
+
 import { Schema as GenericSchema } from "#services/data.ts"
 import { Service } from "#services/oauth.ts"
-import { Static, Type } from "@sinclair/typebox"
-import { TypeCompiler } from "@sinclair/typebox/compiler"
+
+import { TypeCompiler } from "#modules/typebox-compiler.ts"
+import { Format } from "#modules/typebox.ts"
 
 import { TokenResponse } from "./login.ts"
 import { Schema as OTPSchema } from "./otp.ts"
-import { rest } from "./rest.ts"
+import { getPublicRest } from "./rest.ts"
 
 export namespace Schema {
   export const prefill = Type.Object({
@@ -64,7 +66,7 @@ export type RegisterPayload = Static<typeof Schema.payload>
 export async function register(
   payload: RegisterPayload,
 ): Promise<KyResponse<TokenResponse>> {
-  return rest.post("register", {
+  return getPublicRest().post("register", {
     credentials: "include",
     json: payload,
   })

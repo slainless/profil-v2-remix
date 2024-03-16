@@ -1,23 +1,11 @@
 import { Static, Type } from "@sinclair/typebox"
-import { TypeCompiler } from "@sinclair/typebox/compiler"
+
+import { TypeCompiler } from "../modules/typebox-compiler.ts"
 
 export enum Service {
   Facebook = "facebook",
   Google = "google",
 }
-
-export const clientIds = (() => {
-  if (typeof process == "undefined" || process?.env == null)
-    return {
-      [Service.Google]: import.meta.env.VITE_GOOGLE_OAUTH_CLIENT_ID,
-      [Service.Facebook]: import.meta.env.VITE_FACEBOOK_OAUTH_CLIENT_ID,
-    }
-  else
-    return {
-      [Service.Google]: process.env.VITE_GOOGLE_OAUTH_CLIENT_ID,
-      [Service.Facebook]: process.env.VITE_FACEBOOK_OAUTH_CLIENT_ID,
-    }
-})()
 
 export const channel = "oauth_channel"
 
@@ -100,11 +88,11 @@ export const getOAuthResponse = (hash: string | null): OAuthResponse => {
 export const createAuthUrl = (
   rootOrigin: string,
   origin: string,
+  clientId: string,
   service: Service,
   scopes: string[],
 ) => {
   if (rootOrigin == "" || origin == "") return ""
-  const clientId = clientIds[service]
   if (clientId == null)
     throw new Error(
       `Cannot create auth url for service ${service}: Client ID not found!`,

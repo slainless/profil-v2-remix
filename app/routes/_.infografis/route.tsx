@@ -1,5 +1,6 @@
-import { TabHydrator } from "#providers/infography.ts"
 import { Outlet, useMatches } from "@remix-run/react"
+
+import { TabHydrator } from "#providers/infography.ts"
 
 import { Tabs, Header } from "./Header.tsx"
 import { Layout } from "./Layout.tsx"

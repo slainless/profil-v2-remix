@@ -14,12 +14,6 @@ import type { IntKv } from "#graphql/graphql.ts"
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 const ABSOLUTE_BOUND_LIMIT = 50
 const MIN_ABSOLUTE_BOUND_LIMIT = 10
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

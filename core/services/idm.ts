@@ -4,7 +4,7 @@ import ky from "ky"
 import { UnderscoredCode } from "#modules/domain-handler.ts"
 
 import { asset } from "./assets.ts"
-import { rest } from "./rest.ts"
+import { getPublicRest } from "./rest.ts"
 
 type IDMResponse = {
   error: boolean
@@ -59,7 +59,9 @@ export namespace IDM {
 export interface IDM {}
 
 export const getAvailableIDM = (schema: UnderscoredCode) =>
-  rest("idm_available/" + schema).json<number[]>()
+  getPublicRest()
+    .get("idm_available/" + schema)
+    .json<number[]>()
 
 export const getIDM = (schema: UnderscoredCode, year: number) =>
   ky.get(asset.idm({ schema, year: year + ".json" })).json<IDMResponse>()

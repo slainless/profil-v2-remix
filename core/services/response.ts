@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Static, TSchema, Type } from "@sinclair/typebox"
-import { TypeCheck, TypeCompiler } from "@sinclair/typebox/compiler"
 import { HTTPError, TimeoutError } from "ky"
 import { render } from "micromustache"
 import type { Writable } from "type-fest"
 
 import { errMsg, errTitle } from "../modules/strings.ts"
+import { TypeCheck, TypeCompiler } from "../modules/typebox-compiler.ts"
 import { ErrorCode, ErrorCodeReverse, is } from "./data.ts"
 
 export namespace Schema {

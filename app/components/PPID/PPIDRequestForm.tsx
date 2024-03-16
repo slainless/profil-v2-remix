@@ -29,7 +29,7 @@ import { vars } from "#theme/artifact/vars.mjs"
 import { schemaAtom } from "#providers/profile.ts"
 
 import { Schema, type PPIDRequestPayload } from "#services/.client/ppid.ts"
-import { formData, rest } from "#services/rest.ts"
+import { formData, getPublicRest } from "#services/rest.ts"
 
 import { fieldSpanFullStyle, requestFormStyle } from "./PPIDRequestForm.css"
 
@@ -52,7 +52,7 @@ export const PPIDRequestForm = () => {
     }
 
     setLoading(true)
-    rest
+    getPublicRest()
       .post("ppid_request", {
         body: formData(data),
         headers: { "X-Digides-Schema": schema },

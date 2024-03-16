@@ -1,6 +1,5 @@
 "use client"
 
-import { selectedVariantAtom } from "#providers/marketplace.ts"
 import {
   CopyButton,
   ActionIcon,
@@ -24,6 +23,8 @@ import {
   TwitterShareButton,
   WhatsappShareButton,
 } from "react-share"
+
+import { selectedVariantAtom } from "#providers/marketplace.ts"
 
 interface Props {
   url: string

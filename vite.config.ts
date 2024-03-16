@@ -42,7 +42,9 @@ export default defineConfig({
     },
   },
   ssr: {
-    noExternal: isCloudflare ? true : ["@amcharts/amcharts4"],
+    noExternal: isCloudflare
+      ? ["@amcharts/amcharts4", "@react-pdf-viewer/core", "raf"]
+      : ["@amcharts/amcharts4"],
     optimizeDeps: {
       include: [],
     },
@@ -62,5 +64,8 @@ export default defineConfig({
         defaultHandler(warning)
       },
     },
+  },
+  resolve: {
+    alias: isCloudflare ? { "@remix-run/node": "@remix-run/cloudflare" } : {},
   },
 })

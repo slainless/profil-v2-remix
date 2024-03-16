@@ -7,6 +7,7 @@ import {
   TableTd,
   TableScrollContainer,
 } from "@mantine/core"
+import { stripHtml } from "string-strip-html"
 
 import { vars } from "#theme/artifact/vars.mjs"
 import tableStyle from "#theme/table.module.css"
@@ -49,15 +50,20 @@ export const SDGsRecommendationTable = (props: {
         </TableThead>
         <TableTbody>
           {props.recommendations.map((r) => {
-            const bnba = document.createElement("div")
-            bnba.innerHTML = r.bnba
+            const bnba = (() => {
+              if (typeof document == "undefined")
+                return stripHtml(r.bnba).result
+              const bnba = document.createElement("div")
+              bnba.innerHTML = r.bnba
+              return bnba.textContent
+            })()
 
             return (
               <TableTr key={r.no} style={{ verticalAlign: "baseline" }}>
                 <TableTd>{r.no}</TableTd>
                 <TableTd>{r.name}</TableTd>
                 <TableTd>{r.score}</TableTd>
-                <TableTd>{bnba.textContent}</TableTd>
+                <TableTd>{bnba}</TableTd>
                 <TableTd>{r.unit}</TableTd>
                 <TableTd p={0}>
                   <TableParser

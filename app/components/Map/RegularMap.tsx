@@ -28,6 +28,7 @@ import { PointOfInterest } from "#graphql/graphql.ts"
 import { pointOfInterestsQuery } from "#queries/poi.ts"
 
 import { asset, withAtom } from "#services/assets.ts"
+import { maptilerKeyAtom } from "#services/env.js"
 
 import { rem } from "#modules/css-utils.ts"
 import bbox from "#modules/geojson-bbox.js"
@@ -36,7 +37,7 @@ import { boundsOfIndonesia, centerOfIndonesia } from "#modules/geojson-utils.ts"
 import { FocusButton } from "./FocusButton.tsx"
 import styles from "./InteractiveMap.module.css"
 import { PreviewCard } from "./PreviewCard.tsx"
-import { Style, StyleSwitcher, mapStyle } from "./StyleSwitcher.tsx"
+import { Style, StyleSwitcher, mapStyle, tileUrl } from "./StyleSwitcher.tsx"
 import { categories } from "./category.ts"
 import { useBorderDesa, useBorderPoi } from "./use-border-desa.ts"
 import { useFilterList } from "./use-filter-list.ts"
@@ -128,12 +129,13 @@ const RegularMap = () => {
     }
   }, [borderDesa, borderPoi, centerPoi, countPoi, isLoadedPoi, map])
 
+  const mapTilerKey = useAtomValue(maptilerKeyAtom)
   return (
     <Map
       initialViewState={{ bounds: boundsOfIndonesia }}
       maxBounds={boundsOfIndonesia}
       style={{ width: "100%", height: "100vh", maxHeight: rem(480) }}
-      mapStyle={ms.tile}
+      mapStyle={render(tileUrl, { style: ms.style, key: mapTilerKey })}
       cooperativeGestures={true}
       ref={setMap}
       attributionControl={false}

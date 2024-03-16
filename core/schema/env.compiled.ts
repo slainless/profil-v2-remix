@@ -17,7 +17,8 @@ export function isEnvironment(value: unknown): value is Environment {
     (typeof value.BASE_DOMAIN === 'string') &&
     (typeof value.GRAPHQL_ACCESS_WEBTOKEN === 'string') &&
     (typeof value.WEBTOKEN_SIGNING_SECRET === 'string') &&
-    (typeof value.BACKOFFICE_DOMAIN === 'string')
+    (value.BACKOFFICE_DOMAIN !== undefined ? ((typeof value.BACKOFFICE_DOMAIN === 'string')) : true) &&
+    (value.KANTOR_REDIRECT_PATH !== undefined ? ((typeof value.KANTOR_REDIRECT_PATH === 'string')) : true)
   )
 }
 

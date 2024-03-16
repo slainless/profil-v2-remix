@@ -1,5 +1,6 @@
-import { errTitle, errMsg } from "#modules/strings.ts"
 import { ErrorCode } from "#services/data.ts"
+
+import { errTitle, errMsg } from "#modules/strings.ts"
 
 export default {
   DESA_PROFILE_WEBSITE_TITLE: "Website Resmi {{desa_fullname}}",
@@ -61,6 +62,7 @@ export default {
   [errTitle(ErrorCode.ProfileLoadError)]: "Gagal membaca data desa",
   [errTitle(ErrorCode.ProfileDataEmpty)]: "Gagal membaca data desa",
   [errTitle(ErrorCode.ContextEmpty)]: "Kesalahan konfigurasi",
+  [errTitle(ErrorCode.MisconfiguredEnv)]: "Kesalahan konfigurasi",
 
   /* -------------------------------------------------------------------------- */
   /*                                Error Message                               */
@@ -127,4 +129,6 @@ export default {
     "Data desa kosong! Silakan hubungi administrator DIGIDES",
   [errMsg(ErrorCode.ContextEmpty)]:
     "Konfigurasi konteks server bermasalah, silakan hubungi administrator DIGIDES",
+  [errMsg(ErrorCode.MisconfiguredEnv)]:
+    "Konfigurasi environment server bermasalah, silakan hubungi administrator DIGIDES",
 } as const

@@ -1,5 +1,4 @@
 import { Type, Static } from "@sinclair/typebox"
-import { TypeCompiler } from "@sinclair/typebox/compiler"
 // @ts-expect-error ...
 import centroid from "@turf/centroid"
 import type { Feature, Point } from "geojson"
@@ -9,6 +8,8 @@ import type {
   PointOfInterest,
   Point as PointType,
 } from "#graphql/graphql.ts"
+
+import { TypeCompiler } from "#modules/typebox-compiler.ts"
 
 export const boundsOfIndonesia: [number, number, number, number] = [
   // 94.791205, -10.945325, 141.138935, 6.033016, // @audit original points

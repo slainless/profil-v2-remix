@@ -3,7 +3,6 @@
 import { AspectRatio, Box, BoxProps, Image, Text } from "@mantine/core"
 import { useUncontrolled } from "@mantine/hooks"
 import clsx from "clsx"
-import { render } from "micromustache"
 import { useMemo } from "react"
 
 import basicThumbnail from "#assets/map/basic.webp"
@@ -12,10 +11,10 @@ import streetsThumbnail from "#assets/map/streets.webp"
 
 import styles from "./StyleSwitcher.module.css"
 
-const tile = `https://api.maptiler.com/maps/{{ style }}/style.json?key=${import.meta.env.VITE_MAPTILER_KEY}`
+export const tileUrl = `https://api.maptiler.com/maps/{{ style }}/style.json?key={{ key }}`
 type MapStyle = {
   name: string
-  tile: string
+  style: string
   thumbnail: JSX.Element
 }
 
@@ -28,17 +27,17 @@ export const enum Style {
 export const mapStyle = {
   [Style.SATELLITE]: {
     name: "Satellite",
-    tile: render(tile, { style: "satellite" }),
+    style: "satellite",
     thumbnail: <Image src={satelliteThumbnail} alt="Satellite" />,
   },
   [Style.STREETS]: {
     name: "Streets",
-    tile: render(tile, { style: "streets" }),
+    style: "streets",
     thumbnail: <Image src={streetsThumbnail} alt="Streets" />,
   },
   [Style.BASIC]: {
     name: "Basic",
-    tile: render(tile, { style: "basic" }),
+    style: "basic",
     thumbnail: <Image src={basicThumbnail} alt="Basic" />,
   },
 } satisfies Record<string, MapStyle>
