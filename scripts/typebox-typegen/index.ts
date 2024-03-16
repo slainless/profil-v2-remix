@@ -37,13 +37,14 @@ const transform = async (p: string) => {
     const tasks: Promise<void>[] = []
     console.log("• Transforming:", path)
     const module = await import(path)
-    await writer(
-      `/* eslint-disable @typescript-eslint/ban-ts-comment */\n` +
-        `// @ts-nocheck\n` +
-        `import { ${Object.keys(module)
-          .filter((k) => k !== "default")
-          .join(", ")} } from "./${basename(path)}"\n\n`,
-    )
+    if (ext === ".ts")
+      await writer(
+        `/* eslint-disable @typescript-eslint/ban-ts-comment */\n` +
+          `// @ts-nocheck\n` +
+          `import type { ${Object.keys(module)
+            .filter((k) => k !== "default")
+            .join(", ")} } from "./${basename(path)}"\n\n`,
+      )
     for (const exportedKey in module) {
       const exported = module[exportedKey]
       console.log("> Discovered exported:", exportedKey, "| from:", path)
