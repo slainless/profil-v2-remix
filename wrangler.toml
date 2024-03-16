@@ -1,4 +1,7 @@
-compatibility_flags = [ "nodejs_compat", "global_navigator" ]
+name="profil-v2-remix"
+compatibility_flags = [ "nodejs_compat" ]
+compatibility_date = "2024-03-16"
+minify = true
 
 [vars]
 VITE_ASSET_BASE_URL="https://assets.digitaldesa.id"

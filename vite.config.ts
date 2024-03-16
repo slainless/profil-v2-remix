@@ -47,14 +47,28 @@ export default defineConfig({
     },
   },
   ssr: {
-    noExternal: isCloudflare ? [] : [],
+    noExternal: isCloudflare ? true : [],
     optimizeDeps: {
       include: [],
     },
     target: isCloudflare ? "webworker" : "node",
+    resolve: {
+      conditions: isCloudflare
+        ? [
+            "workerd",
+            "worker",
+            "import",
+            "module",
+            "browser",
+            "default",
+            process.env.NODE_ENV,
+          ]
+        : ["import", "module", "browser", "default", process.env.NODE_ENV],
+    },
   },
   build: {
     assetsInlineLimit: 0,
+    minify: false,
     rollupOptions: {
       onwarn(warning, defaultHandler) {
         if (
