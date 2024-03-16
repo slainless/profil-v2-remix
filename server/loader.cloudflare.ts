@@ -1,6 +1,9 @@
+import { Value } from "@sinclair/typebox/value"
+
 import type { UnderscoredCode } from "#modules/domain-handler.ts"
 
 import { isEnvironment } from "../core/schema/env.compiled.ts"
+import { Environment } from "../core/schema/env.js"
 import { ErrorCode } from "../core/services/data.ts"
 import {
   createErrorContext,
@@ -30,12 +33,17 @@ export async function cloudflareContextLoader({
   | (ServerContext & EnvContext & CloudflareContext)
   | ErrorContext
 > {
-  if (!isEnvironment(context.env))
+  if (!isEnvironment(context.cloudflare.env)) {
+    console.error(Array.from(Value.Errors(Environment, context.cloudflare.env)))
     return createErrorContext(ErrorCode.MisconfiguredEnv, 500)
+  }
 
-  const serverContext = createServerContext(context.env)
-  const host = normalizeHost(mustGetHost(request), context.env.BASE_DOMAIN)
-  if (new URL(request.url).hostname === context.env.BASE_DOMAIN)
+  const serverContext = createServerContext(context.cloudflare.env)
+  const host = normalizeHost(
+    mustGetHost(request),
+    context.cloudflare.env.BASE_DOMAIN,
+  )
+  if (new URL(request.url).hostname === context.cloudflare.env.BASE_DOMAIN)
     return {
       ...serverContext,
       ...context,
@@ -58,8 +66,9 @@ export async function cloudflareContextLoader({
     ...(await baseContextLoader(
       request,
       serverContext.gqlClient,
-      context.env,
+      context.cloudflare.env,
       domainContext,
     )),
+    env: context.cloudflare.env,
   } as CommonContext & CloudflareContext
 }

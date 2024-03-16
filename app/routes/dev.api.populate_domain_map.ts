@@ -31,7 +31,7 @@ export async function action({ context }: ActionFunctionArgs) {
     Object.entries(domainList).map(([host, schema]) =>
       (async () => {
         try {
-          register(
+          await register(
             context.cloudflare.env.DOMAIN_MAP_KV,
             handler,
             host as Domain,
