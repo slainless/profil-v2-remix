@@ -58,34 +58,28 @@ const Bansos = () => {
   )
 
   useEffect(() => {
-    // Create the chart
-    const chart = create("bansosChart", PieChart3D)
-    chart.hiddenState.properties.opacity = 0 // Initial fade-in
-    options.commercialLicense = true
-
-    chart.data = bansos || []
-
-    chart.radius = percent(90)
-    chart.innerRadius = percent(20)
-
-    const series = chart.series.push(new PieSeries3D())
-    series.dataFields.value = "value"
-    series.dataFields.category = "name"
-    series.depth = 10
-
-    series.labels.template.disabled = false
-    series.ticks.template.disabled = false
-
-    // Create custom labels to display on both sides
-    series.labels.template.text = "{category}: {value}"
-    series.labels.template.wrap = true
-    series.labels.template.maxWidth = 100
-    series.labels.template.fontSize = 12
-
-    // Clean up when the component unmounts
-    return () => {
-      chart.dispose()
-    }
+    // // Create the chart
+    // const chart = create("bansosChart", PieChart3D)
+    // chart.hiddenState.properties.opacity = 0 // Initial fade-in
+    // options.commercialLicense = true
+    // chart.data = bansos || []
+    // chart.radius = percent(90)
+    // chart.innerRadius = percent(20)
+    // const series = chart.series.push(new PieSeries3D())
+    // series.dataFields.value = "value"
+    // series.dataFields.category = "name"
+    // series.depth = 10
+    // series.labels.template.disabled = false
+    // series.ticks.template.disabled = false
+    // // Create custom labels to display on both sides
+    // series.labels.template.text = "{category}: {value}"
+    // series.labels.template.wrap = true
+    // series.labels.template.maxWidth = 100
+    // series.labels.template.fontSize = 12
+    // // Clean up when the component unmounts
+    // return () => {
+    //   chart.dispose()
+    // }
   }, [bansos])
 
   return (
